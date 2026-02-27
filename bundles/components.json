@@ -8,8 +8,9 @@
       "domain": "components",
       "title": "Variant rejection: Color in name",
       "severity": "warning",
-      "description": "Use semantic name like 'primary'",
-      "example": "Bad: variant='blue'",
+      "description": "Never name variants after colors (e.g., 'blue', 'red'). Colors are implementation details that change with themes and dark mode. Use semantic names that describe purpose: 'primary', 'destructive', 'success'. When you rename a color in your design system, semantic variants survive; color-named variants break everywhere.",
+      "example": "variant='destructive' — survives theme changes because it describes intent, not appearance.",
+      "counterExample": "variant='red' or variant='blue' — breaks when brand colors change or dark mode inverts the palette.",
       "tags": [
         "components",
         "variants",
@@ -22,8 +23,9 @@
       "domain": "components",
       "title": "Variant rejection: Shape in name",
       "severity": "warning",
-      "description": "Use prop like `radius`",
-      "example": "Bad: variant='rounded'",
+      "description": "Shape differences (rounded, square, pill) are cosmetic, not semantic. They should be controlled by dedicated props like `radius` or `shape`, not variants. Variants encode meaning (primary vs destructive); props encode appearance (rounded vs square). Mixing shape into variants creates combinatorial explosion when combined with semantic variants.",
+      "example": "variant='primary' radius='full' — separates meaning from appearance cleanly.",
+      "counterExample": "variant='rounded' or variant='pill' — what does a 'rounded destructive' button look like? Unclear.",
       "tags": [
         "components",
         "variants",
@@ -36,8 +38,9 @@
       "domain": "components",
       "title": "Variant rejection: Combination name",
       "severity": "warning",
-      "description": "Compose: `variant='primary' size='lg'`",
-      "example": "Bad: variant='primaryLarge'",
+      "description": "Never combine multiple dimensions into a single variant name (e.g., 'primaryLarge'). Each independent dimension (intent, size, shape) should be its own prop. Combination variants create exponential growth: 4 intents × 3 sizes = 12 combined variants vs 4 + 3 = 7 separate prop values. Compose orthogonal concerns with separate props.",
+      "example": "variant='primary' size='lg' — two independent props, composable and predictable.",
+      "counterExample": "variant='primaryLarge', variant='destructiveSmall' — combinatorial explosion, impossible to maintain.",
       "tags": [
         "components",
         "variants",
@@ -50,8 +53,9 @@
       "domain": "components",
       "title": "Variant rejection: Single use case",
       "severity": "warning",
-      "description": "Create specialized component instead",
-      "example": "Bad: variant='specialHeaderButton'",
+      "description": "If a variant would only be used by one component instance, it doesn't belong in the shared component API. Create a specialized component instead. Variants must be used in 3+ places to justify the API complexity they add. Single-use variants pollute the component API for all consumers and violate the principle that variants serve the many, not the few.",
+      "example": "Create <HeaderCTA /> as a specialized component with its own styling, rather than adding variant='headerSpecial' to Button.",
+      "counterExample": "variant='specialHeaderButton' — only used once in the header, but now every Button consumer sees it in their autocomplete.",
       "tags": [
         "components",
         "variants",
@@ -64,8 +68,9 @@
       "domain": "components",
       "title": "Variant rejection: Not in design system",
       "severity": "warning",
-      "description": "Variants must come from design",
-      "example": "Bad: Exists in code only",
+      "description": "Every variant must correspond to a pattern defined in the design system (e.g., Figma). Code-only variants create visual inconsistency and bypass design review. If a variant isn't in the design system, either propose it to the design team first, or solve the problem with existing variants + props. The design system is the single source of truth for variant decisions.",
+      "example": "Variant exists in Figma component library with defined styles, spacing, and states → safe to implement.",
+      "counterExample": "Developer adds variant='compact' because they want tighter spacing — not in Figma, not reviewed by design.",
       "tags": [
         "components",
         "variants",
@@ -2080,7 +2085,7 @@
       "domain": "components",
       "title": "Safe change: Improve Internals",
       "severity": "suggestion",
-      "description": "Internal changes only, no API surface changes",
+      "description": "Internal-only changes are always safe: optimize performance, improve type definitions, add missing ref forwarding, refactor implementation without changing the public API. These are low-risk because no consumer code needs to change. The contract (props, behavior, output) stays identical.",
       "example": "Optimize re-render performance; Improve type definitions; Add missing ref forwarding",
       "tags": [
         "components",
@@ -2166,7 +2171,9 @@
       "domain": "components",
       "title": "Clean code: Dead code",
       "severity": "warning",
-      "description": "Problem: Commented out code, unused variables. Fix: Remove completely - version control is your backup",
+      "description": "Remove dead code completely — commented-out blocks, unused variables, unreachable branches, and deprecated functions. Version control is your backup; you can always recover deleted code from git history. Dead code creates noise, confuses readers who wonder if it's intentionally disabled, and can accidentally be re-enabled. Grep for unused imports and exports regularly.",
+      "example": "Delete the unused function entirely. If needed later, git log will have it.",
+      "counterExample": "// TODO: might need this later\n// function oldHandler() { ... } — clutters the file and misleads readers.",
       "tags": [
         "components",
         "clean-code",
@@ -2218,7 +2225,9 @@
       "domain": "components",
       "title": "Clean code: Magic numbers",
       "severity": "warning",
-      "description": "Problem: Hardcoded values without context. Fix: Named constants with meaningful names",
+      "description": "Hardcoded numbers and strings without context force readers to guess their meaning. Extract to named constants: app-wide constants in a constants directory, module-specific at top of file, validation rules inside the validation function. Named constants are self-documenting and make changes safe — update one place instead of hunting for scattered literals.",
+      "example": "const MAX_RETRIES = 3; const API_TIMEOUT_MS = 5000; — name explains the intent.",
+      "counterExample": "if (retries > 3) or setTimeout(fn, 5000) — reader has no idea why 3 or 5000.",
       "tags": [
         "components",
         "clean-code",
@@ -2231,7 +2240,7 @@
       "domain": "components",
       "title": "Function size Warning: 25-35 lines",
       "severity": "warning",
-      "description": "Consider extraction",
+      "description": "Functions in the 25-35 line range are a warning sign — they likely contain multiple responsibilities. Look for extraction opportunities: repeated calculations, nested conditionals, or distinct logical phases. Extract helper functions with descriptive names that read like documentation.",
       "tags": [
         "components",
         "clean-code",
@@ -2244,7 +2253,7 @@
       "domain": "components",
       "title": "Function size Critical: >35 lines",
       "severity": "critical",
-      "description": "Extract immediately",
+      "description": "Functions over 35 lines violate single responsibility and must be extracted immediately. Triggers for extraction: >30 lines total, repeated calculations, logic duplication, complex conditionals with 3+ branches. Break into smaller functions that each do one thing with a descriptive verb-first name.",
       "tags": [
         "components",
         "clean-code",
@@ -2301,6 +2310,298 @@
         "components",
         "clean-code",
         "file-limits"
+      ]
+    },
+    {
+      "id": "components-naming-conventions",
+      "type": "rule",
+      "domain": "components",
+      "title": "Clean code: Naming conventions",
+      "severity": "warning",
+      "description": "Consistent naming communicates intent at a glance. Components: PascalCase (UserProfileCard). Functions: camelCase, verb-first (parseSchemaField, formatCurrency). Constants: SCREAMING_SNAKE_CASE (MAX_RETRIES, API_TIMEOUT_MS). Types/Interfaces: PascalCase (UserProfile, ApiResponse). Booleans: is/has/should prefix (isLoading, hasPermission, shouldRetry). Target: a junior developer should understand the code in 30 seconds.",
+      "example": "isLoading, hasPermission, formatCurrency, MAX_RETRIES, UserProfileCard",
+      "counterExample": "data, flag, x, temp, doStuff — names that require mental mapping to understand.",
+      "tags": [
+        "components",
+        "clean-code",
+        "naming"
+      ]
+    },
+    {
+      "id": "components-function-size-targets",
+      "type": "rule",
+      "domain": "components",
+      "title": "Clean code: Function size targets",
+      "severity": "warning",
+      "description": "Function length thresholds that balance readability and maintainability: <15 lines is ideal (maintain as-is). 15-25 lines is acceptable (monitor for growth). 25-35 lines is a warning (consider extracting helpers). >35 lines is critical (extract immediately — function has multiple responsibilities). Each function should do ONE thing. If you need the word 'and' to describe what it does, it's doing too much.",
+      "example": "A 12-line function that validates form input — clear, focused, testable.",
+      "counterExample": "A 60-line function that fetches data, transforms it, validates it, and updates state — needs extraction.",
+      "tags": [
+        "components",
+        "clean-code",
+        "function-size"
+      ]
+    },
+    {
+      "id": "components-function-parameters",
+      "type": "rule",
+      "domain": "components",
+      "title": "Clean code: Function parameter limits",
+      "severity": "warning",
+      "description": "0-2 parameters is ideal — easy to read and call correctly. 3+ parameters should use an options object to improve readability and allow named arguments. Boolean flag parameters are a red flag — they indicate the function does two different things depending on the flag. Extract into two separate functions instead. Options objects also make future extensions backwards-compatible.",
+      "example": "function createUser({ name, email, role }: CreateUserOptions) — named, extensible.",
+      "counterExample": "function createUser(name, email, role, isAdmin, sendWelcome) — positional args are error-prone.",
+      "tags": [
+        "components",
+        "clean-code",
+        "function-design"
+      ]
+    },
+    {
+      "id": "components-file-size-limits",
+      "type": "rule",
+      "domain": "components",
+      "title": "Clean code: File size limits",
+      "severity": "warning",
+      "description": "File size thresholds by type: Component files max 300 lines (extract sub-components). Dialog/Modal files max 400 lines (extract content sections). Type definition files max 400 lines (move utilities to separate file). Utility files max 150 lines (split by domain). God File rule: any file >500 lines must be split immediately — it's accumulating too many responsibilities.",
+      "example": "A 250-line component with clean sub-components extracted into the same directory.",
+      "counterExample": "A 900-line component file that handles rendering, data fetching, validation, and state management.",
+      "tags": [
+        "components",
+        "clean-code",
+        "file-limits"
+      ]
+    },
+    {
+      "id": "components-error-handling-rules",
+      "type": "rule",
+      "domain": "components",
+      "title": "Clean code: Error handling rules",
+      "severity": "critical",
+      "description": "Never fail silently — every error must produce visible user feedback. Requirements: 1) Visible feedback for both success AND failure. 2) Structured return types (not thrown exceptions for expected errors). 3) Clear, actionable messages for users (not technical jargon). 4) Development-only console logs for debugging. Pattern: try-catch with showSuccessFeedback() in try and showUserFriendlyError() in catch.",
+      "example": "try { await save(); toast.success('Changes saved'); } catch (e) { toast.error('Could not save. Try again.'); }",
+      "counterExample": "try { await save(); } catch (e) { console.error(e); } — silent failure, user sees nothing.",
+      "tags": [
+        "components",
+        "clean-code",
+        "error-handling"
+      ]
+    },
+    {
+      "id": "components-solid-single-responsibility",
+      "type": "rule",
+      "domain": "components",
+      "title": "SOLID: Single Responsibility Principle",
+      "severity": "warning",
+      "description": "Every component and function should have one reason to change. Test: 'Can I describe this without using the word and?' If you say 'This component fetches data AND renders a table AND handles pagination', it has three responsibilities. Extract each into its own unit. Benefits: easier testing, clearer naming, independent evolution, simpler debugging.",
+      "example": "<UserTable data={users} /> + useUsers() hook + <Pagination /> — three focused units.",
+      "counterExample": "<UserDashboard /> that fetches users, renders the table, handles pagination, and manages filters — God Component.",
+      "tags": [
+        "components",
+        "clean-code",
+        "solid"
+      ]
+    },
+    {
+      "id": "components-solid-open-closed",
+      "type": "rule",
+      "domain": "components",
+      "title": "SOLID: Open/Closed Principle",
+      "severity": "suggestion",
+      "description": "Components should be open for extension but closed for modification. You should be able to add new features (variants, behaviors) without changing existing code. In component libraries: use variant systems (adding a new variant doesn't modify existing ones), composition (children/slots for extensibility), and render props or hooks for behavior injection.",
+      "example": "Adding variant='ghost' to the cva config — existing variants untouched, new capability added.",
+      "counterExample": "Modifying the Button component's render function every time a new use case appears — fragile and risky.",
+      "tags": [
+        "components",
+        "clean-code",
+        "solid"
+      ]
+    },
+    {
+      "id": "components-solid-liskov-substitution",
+      "type": "rule",
+      "domain": "components",
+      "title": "SOLID: Liskov Substitution Principle",
+      "severity": "suggestion",
+      "description": "Subtypes must be substitutable for their base types without breaking behavior. In component libraries: if a component extends HTMLButtonElement props, it must behave like a button (onClick, disabled, type). A specialized component should be usable anywhere the base component is expected. Violations: a 'Button' that doesn't support onClick, or a 'Link' that doesn't navigate.",
+      "example": "<IconButton /> accepts all ButtonProps and adds icon — drop-in replacement for <Button /> anywhere.",
+      "counterExample": "<SpecialButton /> that ignores the disabled prop or doesn't forward onClick — breaks consumer expectations.",
+      "tags": [
+        "components",
+        "clean-code",
+        "solid"
+      ]
+    },
+    {
+      "id": "components-solid-interface-segregation",
+      "type": "rule",
+      "domain": "components",
+      "title": "SOLID: Interface Segregation Principle",
+      "severity": "suggestion",
+      "description": "No client should depend on methods or props it doesn't use. In component libraries: split large prop interfaces into focused ones. A Table component shouldn't force consumers to handle pagination props when they want a simple static table. Use compound components or optional composition to keep each consumer's API surface minimal.",
+      "example": "<Table data={items} /> for simple use; <Table data={items}><TablePagination /></Table> when pagination needed.",
+      "counterExample": "<Table data={items} page={1} pageSize={10} onPageChange={fn} total={100} /> when you just want a static list.",
+      "tags": [
+        "components",
+        "clean-code",
+        "solid"
+      ]
+    },
+    {
+      "id": "components-solid-dependency-inversion",
+      "type": "rule",
+      "domain": "components",
+      "title": "SOLID: Dependency Inversion Principle",
+      "severity": "suggestion",
+      "description": "Depend on abstractions, not concretions. Components should accept interfaces (props, callbacks, render functions) rather than importing specific implementations. This makes components testable, reusable, and decoupled. A DataTable shouldn't import a specific API client — it should accept data and callbacks as props. The wiring happens at the composition layer, not inside the component.",
+      "example": "<DataTable data={users} onSort={handleSort} /> — component is pure, data source is injected.",
+      "counterExample": "A component that imports fetchUsers() directly — can't reuse it for different data, can't test without mocking.",
+      "tags": [
+        "components",
+        "clean-code",
+        "solid"
+      ]
+    },
+    {
+      "id": "components-documentation-rules",
+      "type": "rule",
+      "domain": "components",
+      "title": "Clean code: Documentation rules",
+      "severity": "suggestion",
+      "description": "Document WHY, not WHAT — the code itself shows what it does. DO document: public component/function purpose, design decisions and rationale, complex algorithms, deprecation warnings, non-obvious behavior. DON'T document: implementation details, what code does (read the code), simple getter/setter functions, obvious behavior. Use JSDoc for public APIs and inline comments for design notes only.",
+      "example": "/** Delays rendering until after first paint to avoid blocking LCP. */ — explains WHY.",
+      "counterExample": "// This function adds two numbers together\nfunction add(a, b) { return a + b; } — documents the obvious.",
+      "tags": [
+        "components",
+        "clean-code",
+        "documentation"
+      ]
+    },
+    {
+      "id": "components-migration-6-step-pattern",
+      "type": "pattern",
+      "domain": "components",
+      "title": "Stabilization: 6-step migration pattern",
+      "severity": "warning",
+      "description": "Safe migration pattern for component API changes: 1) Add new prop alongside old prop with sensible default. 2) Add @deprecated JSDoc annotation to old prop. 3) Add runtime console.warn in development mode when old prop is used. 4) Update internal usage to resolve new prop first: newProp ?? oldProp ?? defaultValue. 5) Update documentation with migration notes. 6) Remove old prop after minimum 2 major versions. This pattern ensures zero consumers break during the transition.",
+      "example": "interface Props { /** @deprecated Use 'isLoading' instead */ loading?: boolean; isLoading?: boolean; }",
+      "tags": [
+        "components",
+        "stabilization",
+        "migration",
+        "backwards-compatibility"
+      ]
+    },
+    {
+      "id": "components-deprecation-protocol",
+      "type": "rule",
+      "domain": "components",
+      "title": "Stabilization: Deprecation protocol",
+      "severity": "warning",
+      "description": "Deprecated APIs must be maintained for minimum 2 major versions before removal. Three-layer deprecation: 1) JSDoc: @deprecated Use 'newProp' instead. Will be removed in v3.0. 2) Runtime: console.warn('[ComponentName] prop \"oldProp\" is deprecated...') in development only. 3) Type annotation: /** @deprecated */ oldProp?: string. Never remove without the full deprecation cycle — consumers need time to migrate.",
+      "example": "/** @deprecated Use 'isLoading' instead. Will be removed in v4.0. */ loading?: boolean;",
+      "counterExample": "Silently removing a prop in a minor version — breaks all consumers who depend on it.",
+      "tags": [
+        "components",
+        "stabilization",
+        "deprecation"
+      ]
+    },
+    {
+      "id": "components-risk-assessment",
+      "type": "pattern",
+      "domain": "components",
+      "title": "Stabilization: Risk assessment framework",
+      "severity": "warning",
+      "description": "Classify every component change by risk: HIGH RISK (will break consumers) — removing anything, renaming props, changing types → requires deprecation cycle + migration guide + major version bump. MEDIUM RISK (may affect behavior) — changing defaults, changing visual output → document in changelog, consider feature flag. LOW RISK (safe for any version) — adding optional props with defaults, adding new variants, bug fixes, internal improvements → standard review + changelog.",
+      "tags": [
+        "components",
+        "stabilization",
+        "risk-assessment"
+      ]
+    },
+    {
+      "id": "components-stabilization-checklist",
+      "type": "pattern",
+      "domain": "components",
+      "title": "Stabilization: Component readiness checklist",
+      "severity": "warning",
+      "description": "Full stabilization checklist before marking a component as stable. Code quality: strict typing (no any), exported props interface, ref forwarding, declarative variant system (no ternary chains), design tokens only, complete ARIA. Testing: all-states story, dark mode coverage, interaction tests, visual regression baseline, accessibility audit passing. Documentation: component type annotation (atom/molecule/organism), test ID documentation, all props documented, usage examples.",
+      "tags": [
+        "components",
+        "stabilization",
+        "checklist"
+      ]
+    },
+    {
+      "id": "components-stabilization-priority-tiers",
+      "type": "pattern",
+      "domain": "components",
+      "title": "Stabilization: Priority tiers",
+      "severity": "suggestion",
+      "description": "Stabilize components in dependency order across four tiers: Tier 1 (Foundation) — Buttons, Inputs, Selects, Checkboxes, Radio buttons. Tier 2 (Layout) — Cards, Dialogs, Sheets, Tabs, Accordions. Tier 3 (Feedback) — Toasts, Alerts, Badges, Progress indicators, Skeletons. Tier 4 (Data) — Tables, Data grids, Lists, Pagination. Complete each tier before starting the next. One component per engineer at a time. Full checklist before marking stable.",
+      "tags": [
+        "components",
+        "stabilization",
+        "priority"
+      ]
+    },
+    {
+      "id": "components-composition-priority",
+      "type": "rule",
+      "domain": "components",
+      "title": "Component dev: Composition priority order",
+      "severity": "warning",
+      "description": "When designing component APIs, prefer composition approaches in this order: 1) Children — most flexible, standard React pattern (content projection). 2) Slots — named composition points (header, footer, actions). 3) Props — for behavior and configuration, not layout. 4) Config objects — last resort for complex structured data. Children and slots give consumers control over rendering; props and config objects take it away. The more rendering control consumers have, the more reusable the component.",
+      "example": "<Card><CardHeader>Title</CardHeader><CardContent>Body</CardContent></Card> — consumers control content completely.",
+      "counterExample": "<Card title='Title' body='Body' footer={<Button />} /> — rigid, can't compose freely.",
+      "tags": [
+        "components",
+        "composition",
+        "api-design"
+      ]
+    },
+    {
+      "id": "components-gotcha-svg-icon-colors",
+      "type": "pattern",
+      "domain": "components",
+      "title": "Component dev: SVG icon color gotcha",
+      "severity": "warning",
+      "description": "Never rely on currentColor for SVG icons in hover states. SVG elements create new stacking contexts where currentColor resolves at the SVG level, not the parent level. Explicitly set hover styles targeting the SVG element. Use the CSS descendant selector pattern: hover:[&_svg]:[stroke:white] to target SVG stroke color on hover.",
+      "example": "className='text-error hover:text-white hover:[&_svg]:[stroke:white]' — explicitly targets SVG on hover.",
+      "counterExample": "className='text-error hover:text-white' — text changes but SVG icon stays error-colored on hover.",
+      "tags": [
+        "components",
+        "gotcha",
+        "svg",
+        "icons"
+      ]
+    },
+    {
+      "id": "components-refactoring-checklist",
+      "type": "pattern",
+      "domain": "components",
+      "title": "Clean code: Refactoring checklist",
+      "severity": "suggestion",
+      "description": "Systematic refactoring checklist: 1) No dead code — search for unused imports and functions. 2) No magic numbers — grep for hardcoded values without named constants. 3) No silent errors — all catch blocks have user-visible feedback. 4) Functions <30 lines — extract helpers from long functions. 5) Files <300 lines — split God Files into focused modules. 6) Memoized expensive calculations — useMemo/useCallback where appropriate. 7) Named constants — all literals extracted with meaningful names. 8) Types separated — type definitions in dedicated files when >10 types.",
+      "tags": [
+        "components",
+        "clean-code",
+        "refactoring",
+        "checklist"
+      ]
+    },
+    {
+      "id": "components-three-questions",
+      "type": "pattern",
+      "domain": "components",
+      "title": "Clean code: Three decision questions",
+      "severity": "suggestion",
+      "description": "Three questions to ask before writing or reviewing any component code: 1) Can a junior developer understand this in 30 seconds? → If no: simplify naming, extract helpers, add comments for the WHY. 2) Am I solving today's problem or imaginary future ones? → If future: stop over-engineering, solve only what's needed now. 3) Would deleting this make the system simpler? → If yes: delete it. These questions prevent complexity creep and keep codebases maintainable.",
+      "tags": [
+        "components",
+        "clean-code",
+        "decision-making"
       ]
     }
   ]
