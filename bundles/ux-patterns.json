@@ -233,12 +233,14 @@
       "domain": "ux-patterns",
       "title": "Gestalt: Proximity",
       "severity": "suggestion",
-      "description": "Close elements are perceived as related",
-      "example": "gap-2 within group, gap-6 between groups",
+      "description": "Elements placed close together are perceived as a related group. In design systems, use tight spacing (gap-2) within component groups and wider spacing (gap-6, gap-8) between groups. Apply to form field + label pairs, icon + text combos, button groups, and card content sections. The spacing ratio between internal and external gaps should be at least 2:1 to create clear visual grouping.",
+      "example": "gap-2 within a button group, gap-6 between form sections, mb-1 between label and input.",
+      "counterExample": "Equal gap-4 everywhere — no visual grouping, users can't tell which elements are related.",
       "tags": [
         "ux-patterns",
         "gestalt",
-        "proximity"
+        "proximity",
+        "spacing"
       ]
     },
     {
@@ -247,12 +249,14 @@
       "domain": "ux-patterns",
       "title": "Gestalt: Similarity",
       "severity": "suggestion",
-      "description": "Similar elements are perceived as related",
-      "example": "Consistent styling for same type",
+      "description": "Visually similar elements are perceived as related and having the same function. In component libraries, maintain consistent styling within categories: all navigation links look the same, all action buttons share visual weight, all status indicators use the same size and shape. Breaking similarity intentionally signals a different purpose — use this for primary vs secondary action distinction.",
+      "example": "All secondary actions use variant='outline'; all destructive actions use variant='destructive'. Consistent visual language.",
+      "counterExample": "Some links are underlined, others are blue text, others are buttons — inconsistent treatment of the same interaction type.",
       "tags": [
         "ux-patterns",
         "gestalt",
-        "similarity"
+        "similarity",
+        "consistency"
       ]
     },
     {
@@ -261,12 +265,14 @@
       "domain": "ux-patterns",
       "title": "Gestalt: Common Region",
       "severity": "suggestion",
-      "description": "Bounded elements are grouped",
-      "example": "Cards, Borders, Background containers",
+      "description": "Elements enclosed within a visual boundary are perceived as a group. Use cards, bordered containers, and background-color regions to visually group related content. In design systems: Card for content groups, section with bg-muted for related settings, bordered fieldsets for form groups. Avoid excessive nesting of regions — more than 2-3 levels deep adds visual noise without aiding comprehension.",
+      "example": "Card wrapping user profile (avatar + name + role); bg-muted section grouping related settings toggles.",
+      "counterExample": "Card inside card inside card — excessive nesting creates visual clutter and confuses hierarchy.",
       "tags": [
         "ux-patterns",
         "gestalt",
-        "common region"
+        "common-region",
+        "layout"
       ]
     },
     {
@@ -275,12 +281,14 @@
       "domain": "ux-patterns",
       "title": "Gestalt: Prägnanz",
       "severity": "suggestion",
-      "description": "Simplicity is preferred",
-      "example": "Reduce visual noise, Clear hierarchy",
+      "description": "The human eye interprets ambiguous shapes in the simplest form possible (Law of Simplicity). In UI design, reduce visual complexity: use clean lines, consistent alignment, regular shapes, and ample whitespace. Eliminate decorative elements that don't serve a function. A minimal interface with clear hierarchy is perceived as more professional and more usable than a visually complex one.",
+      "example": "Clean card with consistent padding, single-level hierarchy, clear heading + content + action zones.",
+      "counterExample": "Gradients, shadows, borders, badges, and icons all competing for attention on the same card.",
       "tags": [
         "ux-patterns",
         "gestalt",
-        "prägnanz"
+        "prägnanz",
+        "simplicity"
       ]
     },
     {
@@ -812,7 +820,9 @@
       "domain": "ux-patterns",
       "title": "UX writing rule: We work for the users",
       "severity": "warning",
-      "description": "They don't work for us",
+      "description": "Design all copy from the user's perspective, not the system's. Use 'you' not 'we', focus on user benefits not features. Frame actions as what users accomplish, not what the system does. Users are the protagonist — the UI serves them, not the other way around.",
+      "example": "'Your project is ready' not 'We have created your project'. 'You have 3 new messages' not 'The system received 3 messages'.",
+      "counterExample": "'We need you to verify your email' — frames the system as the authority making demands.",
       "tags": [
         "ux-patterns",
         "ux-writing",
@@ -825,7 +835,9 @@
       "domain": "ux-patterns",
       "title": "UX writing rule: Stay consistent",
       "severity": "warning",
-      "description": "Use consistent terminology",
+      "description": "Use identical terminology for the same concept across the entire product. One concept = one word. If it's a 'project' in the sidebar, it must be a 'project' everywhere — not 'workspace' in settings and 'space' in search. Create a terminology glossary. Inconsistency forces users to question whether different words mean different things.",
+      "example": "'Delete project' everywhere, not 'Delete' in one place and 'Remove' in another.",
+      "counterExample": "Using 'workspace', 'project', and 'space' interchangeably for the same concept.",
       "tags": [
         "ux-patterns",
         "ux-writing",
@@ -838,7 +850,9 @@
       "domain": "ux-patterns",
       "title": "UX writing rule: Keep it stress-free",
       "severity": "warning",
-      "description": "Never manipulate or guilt users",
+      "description": "Never guilt-trip, pressure, or manipulate users with copy. Avoid dark patterns like 'Are you sure? You'll miss out!' or shame-based opt-outs. Unsubscribe flows should be respectful. Deletion confirmations should state facts about consequences, not emotional manipulation. Users should feel in control, never cornered.",
+      "example": "'Deleting this project will remove all tasks and files. This cannot be undone.' — factual, clear.",
+      "counterExample": "'Are you really sure you want to leave? Your team is counting on you!' — guilt-based manipulation.",
       "tags": [
         "ux-patterns",
         "ux-writing",
@@ -851,7 +865,9 @@
       "domain": "ux-patterns",
       "title": "UX writing rule: Gradual complexity",
       "severity": "warning",
-      "description": "Introduce features one step at a time",
+      "description": "Don't overwhelm new users with advanced features upfront. Use progressive disclosure in copy: start with essentials, reveal advanced options as users grow comfortable. Onboarding should introduce one concept at a time. Tooltips and contextual help bridge the gap between basic and advanced usage. Copy should match the user's current skill level.",
+      "example": "Step 1: 'Name your project'. Step 2: 'Invite your team'. Step 3: 'Set up integrations' — one concept per step.",
+      "counterExample": "A single onboarding screen explaining projects, teams, integrations, permissions, and billing at once.",
       "tags": [
         "ux-patterns",
         "ux-writing",
@@ -864,7 +880,9 @@
       "domain": "ux-patterns",
       "title": "UX writing rule: Kind over clever",
       "severity": "warning",
-      "description": "Never use passive-aggressive language",
+      "description": "Prioritize clarity and helpfulness over witty or clever copy. Humor can be alienating, culturally insensitive, or confusing in stressful moments (e.g., error states). Never use sarcasm or passive-aggressive phrasing. Clever copy entertains once; kind copy helps every time. Save personality for success moments, not error states.",
+      "example": "'Something went wrong. Please try again.' — simple, empathetic, actionable.",
+      "counterExample": "'Oops! Looks like you broke something!' or 'Well, that didn't work. Maybe try harder?' — blame-shifting humor.",
       "tags": [
         "ux-patterns",
         "ux-writing",
@@ -877,7 +895,9 @@
       "domain": "ux-patterns",
       "title": "UX writing rule: Write for all readers",
       "severity": "warning",
-      "description": "Clear language without jargon",
+      "description": "Use plain language at an 8th-grade reading level. Avoid jargon, acronyms, and technical terms unless your audience is specifically technical. Prefer common words: 'use' over 'utilize', 'start' over 'initiate', 'help' over 'facilitate'. Use inclusive, gender-neutral terms. Avoid idioms that don't translate across cultures.",
+      "example": "'Start your free trial' not 'Initiate your complimentary evaluation period'.",
+      "counterExample": "'Leverage our synergistic platform to optimize your workflow paradigm' — jargon soup.",
       "tags": [
         "ux-patterns",
         "ux-writing",
@@ -941,8 +961,10 @@
       "type": "pattern",
       "domain": "ux-patterns",
       "title": "Error handling: errorBoundary",
-      "severity": "suggestion",
-      "description": "Use: Catch component crashes. ",
+      "severity": "warning",
+      "description": "Wrap component trees with Error Boundaries to catch rendering crashes gracefully. Display a user-friendly fallback UI instead of a white screen. Include a retry action and optional error details for debugging. Place boundaries at logical isolation points: route-level (catches page crashes), feature-level (isolates widget failures), and widget-level (granular recovery).",
+      "example": "<ErrorBoundary fallback={<ErrorFallback onRetry={reset} />}><FeatureWidget /></ErrorBoundary>",
+      "counterExample": "No error boundaries — a single component crash takes down the entire page.",
       "tags": [
         "ux-patterns",
         "error-handling",
@@ -954,12 +976,15 @@
       "type": "pattern",
       "domain": "ux-patterns",
       "title": "Error handling: loadingStates",
-      "severity": "suggestion",
-      "description": "Use: Show during async operations. >400ms show loading (Doherty Threshold)",
+      "severity": "warning",
+      "description": "Show loading feedback calibrated to response time thresholds: <100ms no feedback needed, 100-400ms disable controls subtly, >400ms show skeleton or spinner (Doherty Threshold), >1s show progress indicator with percentage, >10s add cancel button and status messages. Use Skeleton components that match the shape of expected content to reduce perceived load time.",
+      "example": "Skeleton loaders matching card layout shape; Spinner with 'Loading your dashboard...' text for >400ms waits.",
+      "counterExample": "Blank screen during 2-second API call; generic 'Loading...' with no skeleton hint.",
       "tags": [
         "ux-patterns",
         "error-handling",
-        "loadingStates"
+        "loadingStates",
+        "performance"
       ]
     },
     {
@@ -967,8 +992,10 @@
       "type": "pattern",
       "domain": "ux-patterns",
       "title": "Error handling: emptyStates",
-      "severity": "suggestion",
-      "description": "Use: No data scenarios. ",
+      "severity": "warning",
+      "description": "Design empty states that guide users to action rather than showing blank voids. Include three elements: an illustration or icon, a brief explanation of what will appear here, and a primary CTA to create the first item. Empty states are onboarding opportunities — they teach users what a feature does and how to start using it.",
+      "example": "Icon + 'No projects yet. Create your first one to get started.' + [Create Project] button.",
+      "counterExample": "A blank white area, or just 'No data' with no guidance on what to do next.",
       "tags": [
         "ux-patterns",
         "error-handling",
@@ -980,8 +1007,10 @@
       "type": "pattern",
       "domain": "ux-patterns",
       "title": "Error handling: errorStates",
-      "severity": "suggestion",
-      "description": "Use: Operation failed. ",
+      "severity": "warning",
+      "description": "Display meaningful error messages when operations fail. Include three elements: what went wrong (plain language), a suggested action (retry, go back, contact support), and a visual error indicator (icon + color). Never show raw error codes or stack traces to users. Use toast notifications for transient errors and inline messages for field-level validation failures.",
+      "example": "Red alert icon + 'We couldn't save your changes. Please try again.' + [Retry] button.",
+      "counterExample": "'Error 500: Internal Server Error' or 'TypeError: Cannot read property of undefined'.",
       "tags": [
         "ux-patterns",
         "error-handling",
@@ -1051,6 +1080,315 @@
         "ux-patterns",
         "performance",
         "response-time"
+      ]
+    },
+    {
+      "id": "ux-patterns-bundle-size-limits",
+      "type": "rule",
+      "domain": "ux-patterns",
+      "title": "Performance: Bundle size limits",
+      "severity": "critical",
+      "description": "Every kilobyte counts — enforce strict bundle budgets. JavaScript: <200KB gzipped. CSS: <50KB gzipped. Total initial bundle: <1MB uncompressed. Core Web Vitals targets: TTI <3.5s on 4G, FCP <1.5s, LCP <2.5s. Run bundle analyzer before major releases. Set up performance budgets in CI and track Core Web Vitals in production.",
+      "example": "JS: 180KB gzip ✓ | CSS: 42KB gzip ✓ | TTI: 2.8s ✓",
+      "counterExample": "JS: 450KB gzip (no code splitting), CSS: 120KB (importing entire framework).",
+      "tags": [
+        "ux-patterns",
+        "performance",
+        "bundle-size",
+        "core-web-vitals"
+      ]
+    },
+    {
+      "id": "ux-patterns-code-splitting-strategies",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "Performance: Code splitting strategies",
+      "severity": "warning",
+      "description": "Split bundles in priority order: 1) Route-based — split by route/page for biggest impact. 2) Component-based — lazy-load components not immediately visible (modals, dialogs, charts, rich text editors, large data tables). 3) Vendor-based — separate third-party code into its own chunk. Always wrap lazy-loaded components in Suspense with a Skeleton fallback.",
+      "example": "const LazyModal = lazy(() => import('./Modal')); <Suspense fallback={<Skeleton />}><LazyModal /></Suspense>",
+      "counterExample": "Single monolithic bundle with all routes, components, and vendor code bundled together.",
+      "tags": [
+        "ux-patterns",
+        "performance",
+        "code-splitting",
+        "lazy-loading"
+      ]
+    },
+    {
+      "id": "ux-patterns-code-splitting-violations",
+      "type": "anti-pattern",
+      "domain": "ux-patterns",
+      "title": "Performance: Code splitting violations",
+      "severity": "warning",
+      "description": "Common code splitting mistakes that hurt performance: 1) No code splitting at all (single bundle). 2) Missing Suspense boundaries around lazy components. 3) Lazy loading critical above-the-fold content (delays first render). 4) No loading states during chunk downloads — users see blank space while JS loads.",
+      "tags": [
+        "ux-patterns",
+        "performance",
+        "code-splitting",
+        "anti-pattern"
+      ]
+    },
+    {
+      "id": "ux-patterns-animation-safe-properties",
+      "type": "rule",
+      "domain": "ux-patterns",
+      "title": "Performance: Animation-safe CSS properties",
+      "severity": "critical",
+      "description": "Only animate GPU-accelerated properties that skip layout and paint: transform (translateX, scale, rotate) and opacity. NEVER animate width, height, top, left, right, bottom, margin, or padding — these trigger expensive layout recalculation on every frame. Target 60fps (16.67ms per frame budget). Use will-change sparingly and remove it after animation completes.",
+      "example": "transform: translateX(100px); opacity: 0.5; transition: transform 200ms ease-out;",
+      "counterExample": "transition: width 300ms; animation that changes margin-left; animating height for accordion.",
+      "tags": [
+        "ux-patterns",
+        "performance",
+        "animation",
+        "gpu"
+      ]
+    },
+    {
+      "id": "ux-patterns-animation-duration-limits",
+      "type": "rule",
+      "domain": "ux-patterns",
+      "title": "Performance: Animation duration limits",
+      "severity": "warning",
+      "description": "Animation durations must match interaction type: UI feedback (button clicks, hover states, micro-interactions) max 300ms. Transitions (page transitions, modal open/close) max 500ms. Complex multi-step animations max 1000ms. Anything longer than these thresholds feels sluggish and hinders productivity. Anything under 70ms is imperceptible and wasted.",
+      "example": "Button hover: 100ms. Modal open: 250ms. Page transition: 400ms.",
+      "counterExample": "Button hover: 800ms (sluggish). Modal open: 50ms (imperceptible). Page transition: 2s (frustrating).",
+      "tags": [
+        "ux-patterns",
+        "performance",
+        "animation",
+        "duration"
+      ]
+    },
+    {
+      "id": "ux-patterns-reduced-motion",
+      "type": "rule",
+      "domain": "ux-patterns",
+      "title": "Accessibility: Reduced motion support",
+      "severity": "critical",
+      "description": "Honor the prefers-reduced-motion media query. When enabled: disable non-essential animations, replace complex animations with simple opacity fades, provide instant state changes instead of transitions. Exceptions — never fully remove: loading indicators (simplify but keep), progress bars (essential feedback), focus indicators (accessibility requirement). Test with reduced motion enabled in OS settings.",
+      "example": "@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }",
+      "counterExample": "Ignoring prefers-reduced-motion entirely; or removing ALL animations including loading spinners and focus rings.",
+      "tags": [
+        "ux-patterns",
+        "accessibility",
+        "animation",
+        "reduced-motion"
+      ]
+    },
+    {
+      "id": "ux-patterns-image-optimization",
+      "type": "rule",
+      "domain": "ux-patterns",
+      "title": "Performance: Image optimization",
+      "severity": "warning",
+      "description": "Images are often the heaviest assets — optimize aggressively. Format: prefer WebP (JPEG fallback for photos, PNG for transparency). Loading: lazy for below-fold, eager for above-fold critical images. Quality: 75-85% (beyond 85%, file size increases dramatically with minimal visual improvement). Responsive: provide srcset with breakpoints (320w, 640w, 1024w, 1920w) and appropriate sizes attribute.",
+      "example": "<img srcset=\"img-320.webp 320w, img-640.webp 640w, img-1024.webp 1024w\" sizes=\"(max-width: 640px) 100vw, 50vw\" loading=\"lazy\" alt=\"Description\" />",
+      "counterExample": "Serving a single 4000px PNG at 100% quality for all screen sizes with loading='eager'.",
+      "tags": [
+        "ux-patterns",
+        "performance",
+        "images",
+        "optimization"
+      ]
+    },
+    {
+      "id": "ux-patterns-pre-release-perf-checklist",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "Performance: Pre-release checklist",
+      "severity": "warning",
+      "description": "7-item performance checklist before every release: 1) Bundle size within limits (JS <200KB, CSS <50KB gzip). 2) Code splitting implemented for routes and heavy components. 3) Images optimized (WebP, lazy loading, srcset). 4) Animations use only transform/opacity. 5) Reduced motion supported via prefers-reduced-motion. 6) Loading states for all async operations (skeleton/spinner >400ms). 7) Core Web Vitals passing (TTI <3.5s, FCP <1.5s, LCP <2.5s).",
+      "tags": [
+        "ux-patterns",
+        "performance",
+        "checklist",
+        "release"
+      ]
+    },
+    {
+      "id": "ux-patterns-validation-helper-enum",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "Defensive design: Enum validation helper",
+      "severity": "suggestion",
+      "description": "Validate enum values at domain component boundaries to prevent invalid data from rendering. Pattern: isValidEnumValue(value, validValues) checks typeof value === 'string' && validValues.includes(value). Catches: invalid enum values, wrong types passed as props. Display invalid values inline with a warning indicator rather than crashing.",
+      "example": "function isValidEnumValue(value: unknown, validValues: string[]): boolean { return typeof value === 'string' && validValues.includes(value); }",
+      "counterExample": "Directly rendering status={value} without checking if value is in the allowed enum — renders broken UI or crashes.",
+      "tags": [
+        "ux-patterns",
+        "defensive-design",
+        "validation",
+        "enum"
+      ]
+    },
+    {
+      "id": "ux-patterns-validation-helper-string",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "Defensive design: String validation helper",
+      "severity": "suggestion",
+      "description": "Validate string props at domain boundaries to catch serialization errors. Pattern: isValidString(value) checks typeof value === 'string' && !value.includes('[object'). The [object Object] check catches the common bug where an object is accidentally passed where a string is expected and gets coerced via toString().",
+      "example": "function isValidString(value: unknown): boolean { return typeof value === 'string' && !value.includes('[object'); }",
+      "counterExample": "Rendering user.name directly when the API returns an object — displays '[object Object]' in the UI.",
+      "tags": [
+        "ux-patterns",
+        "defensive-design",
+        "validation",
+        "string"
+      ]
+    },
+    {
+      "id": "ux-patterns-validation-helper-number",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "Defensive design: Number validation helper",
+      "severity": "suggestion",
+      "description": "Validate numeric props at domain boundaries to catch NaN and Infinity. Pattern: isValidNumber(value) checks typeof value === 'number' && !Number.isNaN(value) && Number.isFinite(value). Catches: NaN from failed parsing, Infinity from division by zero, type mismatches from string/object props. Invalid numbers should sort last in table sort callbacks.",
+      "example": "function isValidNumber(value: unknown): boolean { return typeof value === 'number' && !Number.isNaN(value) && Number.isFinite(value); }",
+      "counterExample": "Displaying parseInt(undefined) in a table cell — shows 'NaN'. Sorting a column with NaN values crashes the comparator.",
+      "tags": [
+        "ux-patterns",
+        "defensive-design",
+        "validation",
+        "number"
+      ]
+    },
+    {
+      "id": "ux-patterns-validation-helper-date",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "Defensive design: Date validation helper",
+      "severity": "suggestion",
+      "description": "Validate date values at domain boundaries to catch Invalid Date objects and unparseable strings. Pattern: isValidDate(value) checks Date instances via !Number.isNaN(value.getTime()) and strings via !Number.isNaN(Date.parse(value)). Catches: Invalid Date objects from bad constructors, unparseable date strings from external APIs.",
+      "example": "function isValidDate(value: unknown): boolean { if (value instanceof Date) return !Number.isNaN(value.getTime()); if (typeof value === 'string') return !Number.isNaN(Date.parse(value)); return false; }",
+      "counterExample": "new Date('not-a-date').toLocaleDateString() — displays 'Invalid Date' in the UI.",
+      "tags": [
+        "ux-patterns",
+        "defensive-design",
+        "validation",
+        "date"
+      ]
+    },
+    {
+      "id": "ux-patterns-data-error-display",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "Defensive design: Data error display",
+      "severity": "warning",
+      "description": "When validation catches invalid data, display inline error indicators rather than crashing. Design requirements: 1) Container with visual distinction (border-error + bg-error-tint). 2) Pulse animation to draw attention. 3) Tooltip explaining what went wrong and where to fix it. Show: what field has invalid data, what value was received, where to fix it (hint: 'Check your data source'). Graceful degradation levels: single field → show inline error, non-critical → fallback value with warning, multiple fields → error row, critical → error boundary.",
+      "example": "Invalid status: 'OPENN' shown with border-error, bg-error-tint, animate-pulse, tooltip: 'Check your data adapter'.",
+      "counterExample": "'Error', 'Invalid data', or 'Something went wrong' — too vague to be actionable.",
+      "tags": [
+        "ux-patterns",
+        "defensive-design",
+        "error-display",
+        "data-quality"
+      ]
+    },
+    {
+      "id": "ux-patterns-defensive-design-checklist",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "Defensive design: Implementation checklist",
+      "severity": "warning",
+      "description": "10-item defensive design checklist for domain/boundary components: 1) All external data fields have validation. 2) Invalid data shows error indicators, not crashes. 3) Sort/filter callbacks handle invalid values (invalid sorts last). 4) Tooltips explain 'Check your data source'. 5) Mobile views also validate data. 6) Tests include malformed data scenarios. 7) Error states are accessible (ARIA labels). 8) Error styling uses semantic tokens (border-error, bg-error-tint, text-error). 9) Validation logic is centralized in reusable helpers. 10) Error boundaries catch unexpected failures.",
+      "tags": [
+        "ux-patterns",
+        "defensive-design",
+        "checklist"
+      ]
+    },
+    {
+      "id": "ux-patterns-motion-productive-vs-expressive",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "Motion: Productive vs Expressive",
+      "severity": "suggestion",
+      "description": "Two categories of motion serve different purposes. Productive motion (functional): short 70ms for micro-interactions and hover states, medium 100ms for toggles and checkboxes, long 150ms for tooltips and small transitions. Used for user-initiated actions. Expressive motion (delightful): short 250ms for cards, modals, and medium elements, long 400ms for page transitions and hero animations. Used for system-initiated reveals. Match motion type to trigger: user action = productive, system event = expressive.",
+      "example": "Button hover: productive-short (70ms). Modal open: expressive-short (250ms). Toggle: productive-medium (100ms).",
+      "counterExample": "Using 400ms expressive animation for a button hover (sluggish) or 70ms productive for a page transition (too fast to notice).",
+      "tags": [
+        "ux-patterns",
+        "motion",
+        "animation",
+        "duration"
+      ]
+    },
+    {
+      "id": "ux-patterns-motion-easing-curves",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "Motion: Easing curve system",
+      "severity": "suggestion",
+      "description": "Four semantic easing curves for different motion directions: 1) Enter — cubic-bezier(0, 0, 0.35, 1) — elements appearing, fast start with gentle settle. 2) Exit — cubic-bezier(0.4, 0, 1, 1) — elements leaving, slow start then quick departure. 3) Transition — cubic-bezier(0.4, 0, 0.2, 1) — on-screen state changes, smooth and balanced. 4) Emphasize — cubic-bezier(0, 0, 0.2, 1.4) — attention/bounce with subtle overshoot, use sparingly or it loses impact.",
+      "example": "Modal appear: enter curve. Modal dismiss: exit curve. Tab switch: transition curve. Toast notification: emphasize curve.",
+      "counterExample": "Using generic 'ease' or 'linear' for everything — misses the directional intent that semantic curves communicate.",
+      "tags": [
+        "ux-patterns",
+        "motion",
+        "easing",
+        "animation"
+      ]
+    },
+    {
+      "id": "ux-patterns-motion-common-patterns",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "Motion: 10 common animation patterns",
+      "severity": "suggestion",
+      "description": "Standard animation patterns with duration and easing: 1) Hover effect — productive-short (70ms), transition easing. 2) Focus ring — productive-short (70ms), transition. 3) Toggle — productive-medium (100ms), transition. 4) Tooltip show — productive-long (150ms), enter. 5) Tooltip hide — productive-short (70ms), exit. 6) Modal open — expressive-short (250ms), enter. 7) Modal close — expressive-short (250ms), exit. 8) Card expand (accordion) — expressive-short (250ms), transition. 9) Page load/route transition — expressive-long (400ms), enter. 10) Notification/toast — expressive-short (250ms), emphasize.",
+      "tags": [
+        "ux-patterns",
+        "motion",
+        "animation",
+        "patterns"
+      ]
+    },
+    {
+      "id": "ux-patterns-motion-forbidden",
+      "type": "anti-pattern",
+      "domain": "ux-patterns",
+      "title": "Motion: Forbidden animation patterns",
+      "severity": "warning",
+      "description": "Animation anti-patterns to avoid: 1) Using generic 'ease' or 'linear' — use semantic curves (enter/exit/transition/emphasize). 2) Durations <70ms — imperceptible, wasted computation. 3) Durations >500ms for functional UI — feels sluggish and blocks interaction. 4) Mixing enter/exit easings incorrectly (enter curve for disappearing elements). 5) Overusing the emphasize curve — loses impact if everything bounces. 6) No animation on state changes — feels broken, users miss that something changed.",
+      "tags": [
+        "ux-patterns",
+        "motion",
+        "animation",
+        "anti-pattern"
+      ]
+    },
+    {
+      "id": "ux-patterns-responsive-breakpoints",
+      "type": "rule",
+      "domain": "ux-patterns",
+      "title": "Responsive: Breakpoint system",
+      "severity": "warning",
+      "description": "Mobile-first breakpoint system using min-width: sm: 640px (small tablets), md: 768px (tablets), lg: 1024px (desktop), xl: 1280px (large desktop), 2xl: 1536px (extra large). Design mobile layout first, then enhance progressively with sm:, md:, lg: prefixes. Touch targets must be minimum 44x44px on mobile (min-h-11), can reduce to 36px on desktop (md:min-h-9). Always test on actual devices, not just browser resize.",
+      "example": "className='flex flex-col md:flex-row' — stacks on mobile, rows on tablet+.",
+      "counterExample": "Designing desktop-first and hiding elements on mobile — leads to bloated mobile bundles and poor UX.",
+      "tags": [
+        "ux-patterns",
+        "responsive",
+        "breakpoints",
+        "mobile-first"
+      ]
+    },
+    {
+      "id": "ux-patterns-responsive-patterns",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "Responsive: Common layout patterns",
+      "severity": "suggestion",
+      "description": "Four essential responsive patterns: 1) Stack-to-row — flex-col on mobile, md:flex-row on tablet+ (use for form layouts, feature cards). 2) Hidden-mobile — hidden on mobile, md:block on desktop (use for secondary navigation, filters). 3) Full-to-auto — w-full on mobile, md:w-auto on desktop (use for buttons, inputs). 4) Text-scaling — text-sm on mobile, md:text-base lg:text-lg on desktop (use for headings that need to scale). Start with mobile layout, add breakpoints progressively.",
+      "example": "className='w-full md:w-auto' on buttons; className='hidden md:block' for desktop-only sidebar.",
+      "counterExample": "Fixed pixel widths that don't adapt; using desktop layout with overflow:scroll on mobile.",
+      "tags": [
+        "ux-patterns",
+        "responsive",
+        "layout",
+        "mobile-first"
       ]
     }
   ]
