@@ -73,7 +73,9 @@
       "domain": "storybook",
       "title": "Storybook forbidden: Inline decorators: (Story) => <div>...</div>",
       "severity": "critical",
-      "description": "Inline decorators: (Story) => <div>...</div>",
+      "description": "Never wrap stories with ad-hoc inline decorators like (Story) => <div style={{...}}>...</div>. These create inconsistent styling, bypass the design system, and make stories unreproducible. Use shared infrastructure decorators (e.g., withStoryContainer, withDarkBackground) that are maintained in one place and applied consistently across all stories.",
+      "example": "decorators: [withStoryContainer] — uses shared, maintained decorator.",
+      "counterExample": "(Story) => <div style={{padding: '24px', background: '#f5f5f5'}}><Story /></div> — ad-hoc, inconsistent.",
       "tags": [
         "storybook",
         "forbidden"
@@ -85,7 +87,9 @@
       "domain": "storybook",
       "title": "Storybook forbidden: Hardcoded colors or spacing",
       "severity": "critical",
-      "description": "Hardcoded colors or spacing",
+      "description": "Stories must use design system tokens for all colors and spacing, never hardcoded hex values or pixel amounts. Stories are documentation — if they use hardcoded values, developers will copy those patterns into production code. Use semantic tokens (bg-surface, text-primary) and spacing utilities (p-4, gap-2) to ensure stories demonstrate correct token usage.",
+      "example": "className='bg-surface p-4 text-primary' — uses design tokens throughout.",
+      "counterExample": "style={{background: '#f5f5f5', padding: '16px', color: '#333'}} — hardcoded values bypass the design system.",
       "tags": [
         "storybook",
         "forbidden"
@@ -97,7 +101,9 @@
       "domain": "storybook",
       "title": "Storybook forbidden: Custom wrapper functions",
       "severity": "critical",
-      "description": "Custom wrapper functions",
+      "description": "Never create custom wrapper functions that modify component behavior in stories. If a story needs a wrapper to work correctly, the component itself needs enhancement. Stories must use components exactly as consumers would — through props and composition. Custom wrappers hide the real API and create false documentation.",
+      "example": "Render component directly: <Button variant='primary'>Click me</Button>",
+      "counterExample": "const WrappedButton = ({children}) => <div onClick={...}><Button>{children}</Button></div> — hides real behavior.",
       "tags": [
         "storybook",
         "forbidden"
@@ -109,7 +115,9 @@
       "domain": "storybook",
       "title": "Storybook forbidden: Emojis in code",
       "severity": "critical",
-      "description": "Emojis in code",
+      "description": "Never use emojis in story code or component implementations. Emojis render inconsistently across platforms and operating systems, cause accessibility issues with screen readers, and are unprofessional in code that serves as documentation. Use icon components from the design system icon library instead.",
+      "example": "Use <AlertTriangle /> icon component from the icon library.",
+      "counterExample": "Using emoji in labels like '⚠️ Warning' or section headers like '🎨 Colors'.",
       "tags": [
         "storybook",
         "forbidden"
@@ -165,10 +173,10 @@
       "domain": "storybook",
       "title": "Master stories: use API hooks, never inline mocks",
       "severity": "critical",
-      "description": "Components MUST use API hooks, never inline mock data",
-      "why": "API hooks define the contract between frontend and backend",
-      "example": "import { useApiStore } from '@/api/store'; import { useTenants } from '@/api/hooks/useTenants'; const { data, isLoading } = useQuery({ queryKey: ['tenants'] })",
-      "counterExample": "const mockData = [{ id: 1, name: 'Test' }]; args: { data: [...] }; Inline objects passed directly to components",
+      "description": "Prototype master stories must use API hooks and data stores, never inline mock data. API hooks define the contract between frontend and backend — if stories bypass hooks, the contract is untested. Components should consume data through hooks (useQuery, custom hooks) backed by mock stores during development. This ensures the data flow matches production exactly.",
+      "why": "API hooks define the contract between frontend and backend. Integration issues are discovered during development, not after deployment.",
+      "example": "import { useTenants } from './hooks/useTenants'; const { data, isLoading } = useQuery({ queryKey: ['tenants'] }) — uses real data layer.",
+      "counterExample": "const mockData = [{ id: 1, name: 'Test' }]; args: { data: [...] } — bypasses the entire data layer, hides contract bugs.",
       "tags": [
         "storybook",
         "master",
@@ -182,7 +190,8 @@
       "domain": "storybook",
       "title": "Must have data-testid: Form inputs (input, select, checkbox)",
       "severity": "warning",
-      "description": "Elements that must have data-testid attributes: Form inputs (input, select, checkbox)",
+      "description": "Every form input (text input, select, checkbox, radio, textarea) must have a data-testid attribute. Without them, interaction tests cannot reliably target form fields — CSS selectors and text matching are fragile. Use the naming format {step}-{field} (e.g., 'company-name-input', 'billing-address-input'). This enables reliable form-filling in play() functions and end-to-end tests.",
+      "example": "data-testid='signup-email-input', data-testid='settings-theme-select'",
       "tags": [
         "storybook",
         "testing",
@@ -195,7 +204,8 @@
       "domain": "storybook",
       "title": "Must have data-testid: Buttons (submit, cancel, navigation)",
       "severity": "warning",
-      "description": "Elements that must have data-testid attributes: Buttons (submit, cancel, navigation)",
+      "description": "Every action button (submit, cancel, save, delete, navigation) must have a data-testid attribute. Buttons are the primary interaction targets in tests — without stable selectors, tests break when button text or styling changes. Use the format {scope}-nav-{action} for navigation buttons (e.g., 'wizard-nav-next') and {feature}-{action}-btn for action buttons.",
+      "example": "data-testid='wizard-nav-next', data-testid='profile-save-btn', data-testid='modal-nav-close'",
       "tags": [
         "storybook",
         "testing",
@@ -208,7 +218,8 @@
       "domain": "storybook",
       "title": "Must have data-testid: Interactive elements (clickable cards, tabs)",
       "severity": "warning",
-      "description": "Elements that must have data-testid attributes: Interactive elements (clickable cards, tabs)",
+      "description": "All interactive non-button elements need data-testid attributes: clickable cards, tabs, accordion triggers, toggles, expandable rows. These elements lack semantic HTML roles that tests can rely on, making data-testid the only stable selector. Use {feature}-{element}-${id} format for dynamic items (e.g., 'user-card-${user.id}').",
+      "example": "data-testid='pricing-plan-card-${plan.id}', data-testid='settings-tab-general'",
       "tags": [
         "storybook",
         "testing",
@@ -221,7 +232,8 @@
       "domain": "storybook",
       "title": "Must have data-testid: Container sections (for scoping)",
       "severity": "warning",
-      "description": "Elements that must have data-testid attributes: Container sections (for scoping)",
+      "description": "Major page sections (sidebar, header, main content, modal body) need data-testid for scoping test queries. Use within(getByTestId('sidebar')) to scope queries to specific sections, avoiding false matches from duplicate elements across sections. Format: {page}-{section} (e.g., 'dashboard-sidebar', 'settings-main').",
+      "example": "const sidebar = within(getByTestId('dashboard-sidebar')); const link = sidebar.getByText('Users');",
       "tags": [
         "storybook",
         "testing",
@@ -234,7 +246,8 @@
       "domain": "storybook",
       "title": "Must have data-testid: Dynamic items (cards, rows with IDs)",
       "severity": "warning",
-      "description": "Elements that must have data-testid attributes: Dynamic items (cards, rows with IDs)",
+      "description": "Dynamic list items (table rows, cards, list items) must include the entity ID in their data-testid to enable targeting specific items in tests. Format: {feature}-{element}-${entity.id}. Without entity IDs, tests resort to fragile index-based selectors that break when item order changes or items are added/removed.",
+      "example": "data-testid={`user-row-${user.id}`}, data-testid={`project-card-${project.id}`}",
       "tags": [
         "storybook",
         "testing",
@@ -247,7 +260,7 @@
       "domain": "storybook",
       "title": "Test ID anti-pattern: Generic IDs: data-testid=\"button\"",
       "severity": "warning",
-      "description": "Generic IDs: data-testid=\"button\"",
+      "description": "Generic test IDs like 'button', 'input', or 'card' collide across components and pages. When two components both use data-testid='button', tests that query by this ID get unpredictable results. Always include context: {feature}-{element}-{identifier} (e.g., 'checkout-submit-btn', not 'button').",
       "tags": [
         "storybook",
         "testing",
@@ -261,7 +274,7 @@
       "domain": "storybook",
       "title": "Test ID anti-pattern: Index-only: data-testid=\"item-0\"",
       "severity": "warning",
-      "description": "Index-only: data-testid=\"item-0\"",
+      "description": "Index-based test IDs like 'item-0', 'row-1' are fragile — they break when items are reordered, filtered, or when new items are inserted. Use entity IDs instead: data-testid={`user-row-${user.id}`}. Entity IDs are stable regardless of sort order, filtering, or pagination changes.",
       "tags": [
         "storybook",
         "testing",
@@ -275,7 +288,7 @@
       "domain": "storybook",
       "title": "Test ID anti-pattern: CamelCase: data-testid=\"submitButton\"",
       "severity": "warning",
-      "description": "CamelCase: data-testid=\"submitButton\"",
+      "description": "Test IDs must use kebab-case (e.g., 'submit-button'), never camelCase ('submitButton') or PascalCase ('SubmitButton'). HTML attributes are case-insensitive in some contexts, and kebab-case is the web platform convention for data attributes. Consistent casing prevents test selector mismatches and improves readability.",
       "tags": [
         "storybook",
         "testing",
@@ -289,7 +302,7 @@
       "domain": "storybook",
       "title": "Test ID anti-pattern: Skipping form inputs or action buttons",
       "severity": "warning",
-      "description": "Skipping form inputs or action buttons",
+      "description": "Every form input and action button must have a data-testid — no exceptions. Skipping these creates untestable UI. Interaction tests need to fill forms and click buttons; visual regression tests need stable selectors for state screenshots. Missing test IDs are discovered too late during test writing, requiring component changes and re-reviews.",
       "tags": [
         "storybook",
         "testing",
@@ -369,6 +382,226 @@
         "testing",
         "data-testid",
         "navigation"
+      ]
+    },
+    {
+      "id": "storybook-reflect-reality-rule",
+      "type": "rule",
+      "domain": "storybook",
+      "title": "Stories must reflect reality",
+      "severity": "critical",
+      "description": "Stories are living documentation — they must show real component usage, not overridden or modified behavior. Use component props as designed. If a story needs a workaround to look correct, the component needs an enhancement, not the story. Stories that don't reflect reality create false documentation that misleads consumers.",
+      "example": "Render <Button variant='primary' disabled>Save</Button> — exactly as a consumer would.",
+      "counterExample": "Adding custom CSS, wrapper divs, or behavior-modifying HOCs to make a story 'look right'.",
+      "tags": [
+        "storybook",
+        "rule",
+        "documentation"
+      ]
+    },
+    {
+      "id": "storybook-reflect-no-important",
+      "type": "anti-pattern",
+      "domain": "storybook",
+      "title": "Stories forbidden: !important overrides",
+      "severity": "critical",
+      "description": "Never use !important in story code. If you need !important to make a story display correctly, the underlying component has a specificity problem that should be fixed at the source. Stories with !important mask CSS architecture issues and create documentation that doesn't match real-world usage.",
+      "counterExample": "style={{ color: 'red !important' }} or className with !important utilities.",
+      "tags": [
+        "storybook",
+        "forbidden",
+        "css"
+      ]
+    },
+    {
+      "id": "storybook-reflect-no-custom-wrappers",
+      "type": "anti-pattern",
+      "domain": "storybook",
+      "title": "Stories forbidden: Behavior-modifying wrappers",
+      "severity": "critical",
+      "description": "Never add wrapper components that modify the component's behavior (intercepting clicks, overriding state, injecting styles). Stories must use composition only — assemble components through their public API (props and children). Wrappers that change behavior create stories that don't match how the component works in production.",
+      "example": "Use the component directly with its props and children — no intermediary wrappers.",
+      "counterExample": "const EnhancedDialog = () => { const [open, setOpen] = useState(true); return <Dialog open={open} />; } — hides real open/close behavior.",
+      "tags": [
+        "storybook",
+        "forbidden",
+        "composition"
+      ]
+    },
+    {
+      "id": "storybook-modal-sheet-desktop",
+      "type": "pattern",
+      "domain": "storybook",
+      "title": "Modal/Sheet: Desktop pattern",
+      "severity": "warning",
+      "description": "On desktop (breakpoint >=lg/1024px), use Dialog component for modal interactions. Button alignment: flex justify-end gap-2 (right-aligned, primary action on the right). Desktop dialogs should have a maximum width, centered positioning, and overlay backdrop. Standard button order: Cancel (outline) then Primary action (filled).",
+      "example": "<DialogFooter className='flex justify-end gap-2'><Button variant='outline'>Cancel</Button><Button>Save</Button></DialogFooter>",
+      "tags": [
+        "storybook",
+        "modal",
+        "desktop",
+        "dialog"
+      ]
+    },
+    {
+      "id": "storybook-modal-sheet-mobile",
+      "type": "pattern",
+      "domain": "storybook",
+      "title": "Modal/Sheet: Mobile pattern",
+      "severity": "warning",
+      "description": "On mobile (breakpoint <lg), replace Dialog with Sheet component. Button alignment: flex-col-reverse gap-2 (stacked, primary action on top for thumb reach). Always show a drag handle indicator at the top of the sheet. Use SheetClose for proper close animations. Sheets slide up from the bottom and are dismissible by swiping down.",
+      "example": "<SheetFooter className='flex flex-col-reverse gap-2'><Button>Save</Button><SheetClose asChild><Button variant='outline'>Cancel</Button></SheetClose></SheetFooter>",
+      "tags": [
+        "storybook",
+        "modal",
+        "mobile",
+        "sheet"
+      ]
+    },
+    {
+      "id": "storybook-allstates-structure",
+      "type": "pattern",
+      "domain": "storybook",
+      "title": "AllStates story structure",
+      "severity": "warning",
+      "description": "AllStates stories must be organized systematically: group by variant first, then show all states within each variant (default, hover, focus, disabled, loading, error). Use grid layout for visual comparison across variants. Include all sizes if applicable. This story is the primary visual regression target — any visual change will be caught by snapshot comparison.",
+      "example": "Variant: Primary → [default, hover, focus, disabled, loading]. Variant: Outline → [default, hover, focus, disabled, loading]. Organized in a grid.",
+      "tags": [
+        "storybook",
+        "allstates",
+        "visual-regression"
+      ]
+    },
+    {
+      "id": "storybook-testing-ownership-model",
+      "type": "pattern",
+      "domain": "storybook",
+      "title": "Testing ownership model",
+      "severity": "suggestion",
+      "description": "Clear test responsibility split across four layers: 1) Unit tests — pure functions, data transformations, utilities (owned by component author). 2) Interaction tests — Storybook play() functions for user flow testing (owned by component author). 3) Visual regression — Chromatic/snapshot comparison for visual consistency (automated from AllStates stories). 4) Integration tests — consumer responsibility, tested in the consuming application context (owned by product team).",
+      "tags": [
+        "storybook",
+        "testing",
+        "ownership"
+      ]
+    },
+    {
+      "id": "storybook-interaction-test-pattern",
+      "type": "pattern",
+      "domain": "storybook",
+      "title": "Interaction test: play() function pattern",
+      "severity": "warning",
+      "description": "Write interaction tests using Storybook's play() function. Pattern: get canvas via within(canvasElement), use findByTestId for async elements (not getByTestId), trigger user interactions via userEvent.click/type, assert results with expect. Import from '@storybook/test': expect, within, userEvent, fn. Always use async/await for userEvent calls and findBy queries.",
+      "example": "play: async ({ canvasElement }) => { const canvas = within(canvasElement); const btn = await canvas.findByTestId('submit-btn'); await userEvent.click(btn); await expect(canvas.getByText('Success')).toBeVisible(); }",
+      "tags": [
+        "storybook",
+        "testing",
+        "interaction",
+        "play-function"
+      ]
+    },
+    {
+      "id": "storybook-test-naming-format",
+      "type": "rule",
+      "domain": "storybook",
+      "title": "Test ID naming format",
+      "severity": "warning",
+      "description": "All data-testid values must follow the format: {context}-{component}-{identifier}. Context is the feature or page area. Component is the element type. Identifier is the specific instance (entity ID or purpose). Always use kebab-case. Examples: tenant-wizard-company-input, pricing-step-package-selector, view-template-close-${template.id}.",
+      "example": "data-testid='tenant-wizard-company-input', data-testid='pricing-plan-card-${plan.id}'",
+      "counterExample": "data-testid='input1', data-testid='submitButton', data-testid='item-0'",
+      "tags": [
+        "storybook",
+        "testing",
+        "data-testid",
+        "naming"
+      ]
+    },
+    {
+      "id": "storybook-ipad-device-frames",
+      "type": "pattern",
+      "domain": "storybook",
+      "title": "iPad device frames for story testing",
+      "severity": "suggestion",
+      "description": "iPad device frames for tablet-specific story testing. iPad Pro 11\": 834x1194, iPad Pro 12.9\": 1024x1366, iPad Air: 820x1180, iPad Mini: 768x1024. These frames are critical for testing the lg breakpoint (1024px) where Dialog/Sheet switching occurs. Use scale={1} in device frame decorators. iPad Pro 12.9\" exceeds the lg breakpoint — test desktop layout here.",
+      "tags": [
+        "storybook",
+        "tablet",
+        "responsive",
+        "testing",
+        "device-frames"
+      ]
+    },
+    {
+      "id": "storybook-composition-fidelity",
+      "type": "rule",
+      "domain": "storybook",
+      "title": "Master stories: Composition fidelity",
+      "severity": "critical",
+      "description": "Prototype master stories must reflect the REAL page layout as it will appear in production. Include: correct component hierarchy, real navigation structure, actual sidebar/header placement, responsive breakpoint behavior. Stories that approximate layout with simplified wrappers hide integration issues that surface only in production. The story IS the specification.",
+      "tags": [
+        "storybook",
+        "master",
+        "composition",
+        "fidelity"
+      ]
+    },
+    {
+      "id": "storybook-flow-testability",
+      "type": "rule",
+      "domain": "storybook",
+      "title": "Master stories: Flow testability",
+      "severity": "warning",
+      "description": "User journeys in master stories must be completable end-to-end. A wizard story must support navigating all steps from start to finish. A CRUD story must support create → read → update → delete. If a flow is broken in the story, the underlying components have integration issues. Flows to test: Login → Dashboard → Create Item → View Item, Browse → Filter → Select → Edit → Save, Wizard Step 1 → Step 2 → ... → Submit.",
+      "tags": [
+        "storybook",
+        "master",
+        "flow",
+        "e2e"
+      ]
+    },
+    {
+      "id": "storybook-jsdoc-testid-pattern",
+      "type": "pattern",
+      "domain": "storybook",
+      "title": "JSDoc: Component type and test ID annotations",
+      "severity": "suggestion",
+      "description": "Annotate every component with JSDoc using @component for atomic type (ATOM, MOLECULE, ORGANISM, PAGE) and @testId for all generated test IDs. This enables automated test ID discovery and documentation generation. Atoms note that consumers provide IDs. Molecules and organisms list all auto-generated test IDs with their format patterns.",
+      "example": "/** @component MOLECULE\\n * @testId\\n * - wizard-nav-back\\n * - wizard-nav-next\\n * - {step-name}-step\\n */",
+      "tags": [
+        "storybook",
+        "documentation",
+        "jsdoc",
+        "test-ids"
+      ]
+    },
+    {
+      "id": "storybook-story-id-format",
+      "type": "rule",
+      "domain": "storybook",
+      "title": "Story ID format: kebab-case",
+      "severity": "suggestion",
+      "description": "All Storybook story IDs must use kebab-case format for consistency with web conventions and URL-friendliness. Story IDs appear in URLs, file names, and test selectors. Kebab-case is the standard across the Storybook ecosystem. Examples: button-primary, form-field-validation, modal-sheet-mobile.",
+      "example": "button-primary, form-field-validation, modal-sheet-mobile",
+      "counterExample": "buttonPrimary, FormFieldValidation, MODAL_SHEET_MOBILE",
+      "tags": [
+        "storybook",
+        "naming",
+        "story-id"
+      ]
+    },
+    {
+      "id": "storybook-modal-sheet-accessibility",
+      "type": "rule",
+      "domain": "storybook",
+      "title": "Modal/Sheet: Accessibility requirements",
+      "severity": "critical",
+      "description": "All modal and sheet components must implement three accessibility requirements: 1) Focus trap — keyboard focus must be contained within the modal/sheet, preventing interaction with background content. 2) Escape key — pressing Escape must close the modal/sheet. 3) Return focus — when closed, focus must return to the element that triggered the modal/sheet. Use a headless UI primitive library to handle these behaviors reliably.",
+      "tags": [
+        "storybook",
+        "modal",
+        "sheet",
+        "accessibility",
+        "focus-management"
       ]
     }
   ]
