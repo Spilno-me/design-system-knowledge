@@ -196,7 +196,8 @@
       "domain": "design-tokens",
       "title": "Prefer Tailwind classes over inline styles",
       "severity": "warning",
-      "description": "Tailwind classes over inline styles",
+      "description": "Always prefer Tailwind utility classes over inline styles or CSS modules. Tailwind classes are theme-aware (dark: variants work automatically), responsive (md:, lg: prefixes), stateful (hover:, focus: variants), and produce smaller bundles via PurgeCSS. Inline styles bypass all of this — they can't be themed, don't respond to breakpoints, and increase specificity unpredictably. The only valid exceptions are truly dynamic computed values (tooltip positioning, animated transforms) where the value comes from JavaScript at runtime.",
+      "example": "Good: className='bg-primary-500 hover:bg-primary-600 text-white'. Bad: style={{ backgroundColor: '#3B82F6', color: 'white' }}",
       "context": "Avoid !important: Fix specificity at source instead",
       "tags": [
         "tokens",
@@ -210,7 +211,7 @@
       "domain": "design-tokens",
       "title": "Token replacement recommendations",
       "severity": "suggestion",
-      "description": "Common color-to-token mappings: bg-blue-500 → bg-primary-500, bg-red-500 → bg-error-500, bg-green-500 → bg-success-500, #DC0000 → bg-primary-500, #000000 → bg-neutral-900, #FFFFFF → bg-white",
+      "description": "Comprehensive color-to-token migration map. Backgrounds: bg-blue-* → bg-primary-*, bg-red-* → bg-error-*, bg-green-* → bg-success-*, bg-yellow-* → bg-warning-*, bg-gray-* → bg-neutral-*, bg-slate-* → bg-neutral-*, bg-zinc-* → bg-neutral-*. Text: text-blue-* → text-primary-*, text-red-* → text-error-*, text-green-* → text-success-*, text-gray-* → text-neutral-*, text-slate-* → text-neutral-*. Borders: border-blue-* → border-primary-*, border-red-* → border-error-*, border-gray-* → border-neutral-*. Hex values: #DC0000 → bg-primary-500, #000000 → bg-neutral-900, #FFFFFF → bg-white, #F3F4F6 → bg-neutral-100, #1F2937 → text-neutral-800. Ring: ring-blue-* → ring-primary-*, ring-red-* → ring-error-*.",
       "tags": [
         "tokens",
         "migration",
@@ -498,6 +499,76 @@
         "tokens",
         "guidance",
         "badge"
+      ]
+    },
+    {
+      "id": "design-tokens-styling-troubleshooting",
+      "type": "pattern",
+      "domain": "design-tokens",
+      "title": "Styling troubleshooting: 3 common token problems and fixes",
+      "severity": "suggestion",
+      "description": "Three common design token problems and their fixes. (1) Color not applying: Check that the token exists in tailwind.config.ts theme.extend.colors — custom tokens like bg-primary-500 need explicit configuration. Verify you're using the correct prefix (bg-, text-, border-). (2) Dark mode not switching: Ensure the token has a dark: variant defined or uses CSS custom properties that switch per theme. Check that the dark mode strategy (class or media) matches your setup. (3) Token looks wrong in one component: Check for CSS specificity conflicts — a parent's background-color may be overriding via inheritance. Use browser DevTools to inspect computed styles and find the winning rule.",
+      "tags": [
+        "tokens",
+        "troubleshooting",
+        "debugging"
+      ]
+    },
+    {
+      "id": "design-tokens-styling-exceptions",
+      "type": "rule",
+      "domain": "design-tokens",
+      "title": "When inline styles or raw CSS are acceptable exceptions",
+      "severity": "suggestion",
+      "description": "Token-based styling has legitimate exceptions. (1) MDX documentation: inline styles in .mdx files for documentation examples are acceptable since they demonstrate concepts, not ship as UI. (2) Third-party library overrides: when a library doesn't expose className props and only accepts style objects, use inline styles as a last resort. (3) Dynamic computed values: tooltip/popover positioning (top, left from JS calculations), animation keyframe values, or canvas/SVG coordinates that change at runtime. (4) Print stylesheets: @media print rules often need specific overrides. In all cases, add a comment explaining why the exception exists.",
+      "tags": [
+        "tokens",
+        "styling",
+        "exceptions",
+        "inline-styles"
+      ]
+    },
+    {
+      "id": "design-tokens-when-primitive-ok",
+      "type": "rule",
+      "domain": "design-tokens",
+      "title": "When primitive color values are acceptable",
+      "severity": "suggestion",
+      "description": "Primitive tokens (bg-primary-500, text-neutral-700) are the lowest priority but valid in specific cases. (1) Decorative elements: borders, dividers, and background accents where no semantic meaning exists (a gradient decoration, a subtle separator). (2) Brand illustrations and custom graphics: SVG fills, canvas colors, and marketing hero elements that intentionally use specific brand shades. (3) One-off effects: a specific hover highlight, a custom focus ring color, or a loading skeleton shimmer that doesn't map to any semantic concept. (4) Data visualization: chart colors that need a specific palette. Always check semantic tokens first — if text-warning or bg-error fits, use those instead.",
+      "tags": [
+        "tokens",
+        "primitive",
+        "exceptions",
+        "acceptable-use"
+      ]
+    },
+    {
+      "id": "design-tokens-migration-autofix-patterns",
+      "type": "pattern",
+      "domain": "design-tokens",
+      "title": "Token migration: consolidated auto-fix regex patterns",
+      "severity": "suggestion",
+      "description": "Regex patterns for automated token migration in codebases. Background colors: bg-(blue|indigo)(-(\\d+))? → bg-primary-$3, bg-(red|rose)(-(\\d+))? → bg-error-$3, bg-(green|emerald)(-(\\d+))? → bg-success-$3, bg-(yellow|amber)(-(\\d+))? → bg-warning-$3, bg-(gray|slate|zinc)(-(\\d+))? → bg-neutral-$3. Text colors: text-(blue|indigo)(-(\\d+))? → text-primary-$3, text-(red|rose)(-(\\d+))? → text-error-$3, text-(green|emerald)(-(\\d+))? → text-success-$3, text-(gray|slate|zinc)(-(\\d+))? → text-neutral-$3. Borders: border-(blue|indigo)(-(\\d+))? → border-primary-$3, border-(gray|slate)(-(\\d+))? → border-neutral-$3. Run these patterns with manual review — some blue colors may be accent, not primary.",
+      "tags": [
+        "tokens",
+        "migration",
+        "autofix",
+        "regex"
+      ]
+    },
+    {
+      "id": "design-tokens-avoid-important",
+      "type": "rule",
+      "domain": "design-tokens",
+      "title": "Never use !important — fix specificity at the source",
+      "severity": "critical",
+      "description": "!important is almost always a band-aid for a specificity problem that should be fixed at the source. Common root causes and fixes: (1) Third-party CSS overriding Tailwind: use @layer to control cascade order — Tailwind's @layer utilities ensures utility classes win. (2) Component styles leaking: scope styles properly or use CSS modules. (3) Global resets too aggressive: narrow the selector. (4) Inline styles: convert to Tailwind classes. The only valid use of !important is in Tailwind's ! prefix for genuinely irreconcilable third-party conflicts where the library cannot be configured and no other workaround exists.",
+      "counterExample": "Bad: className='!bg-primary-500' or style={{ backgroundColor: '#3B82F6 !important' }}. Fix: identify why the base style is winning and fix that.",
+      "tags": [
+        "tokens",
+        "styling",
+        "important",
+        "specificity"
       ]
     }
   ]
