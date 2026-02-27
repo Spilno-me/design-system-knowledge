@@ -92,7 +92,9 @@
       "domain": "typography",
       "title": "Typography rule: Max 3-4 sizes per view",
       "severity": "warning",
-      "description": "Max 3-4 sizes per view",
+      "description": "Using more than 3-4 type sizes in a single view creates visual noise and weakens hierarchy. Pick sizes from the type scale that map to clear roles: one for page title, one for section headings, one for body, and optionally one for captions. If you need more visual distinction, vary weight (font-medium vs font-semibold) or color (text-primary vs text-muted) instead of introducing another size.",
+      "example": "Dashboard view: text-2xl (page title) + text-lg (section) + text-sm (body) + text-xs (metadata) = 4 sizes",
+      "counterExample": "Using text-3xl, text-2xl, text-xl, text-lg, text-base, text-sm all in one card",
       "tags": [
         "typography",
         "golden-rules"
@@ -104,7 +106,9 @@
       "domain": "typography",
       "title": "Typography rule: Use weight for emphasis, not size",
       "severity": "warning",
-      "description": "Use weight for emphasis, not size",
+      "description": "When you need to emphasize text within the same hierarchy level, increase font-weight rather than font-size. Bumping from font-normal (400) to font-medium (500) or font-semibold (600) adds emphasis without disrupting the size-based hierarchy. Changing size creates a new hierarchy level, which confuses the visual structure. Reserve size changes for actual hierarchy shifts (heading → subheading → body).",
+      "example": "Label-value pair: <span class='font-medium'>Status:</span> <span>Active</span> — same size, weight creates emphasis",
+      "counterExample": "Making a label text-base when surrounding text is text-sm just for emphasis",
       "tags": [
         "typography",
         "golden-rules"
@@ -116,7 +120,9 @@
       "domain": "typography",
       "title": "Typography rule: Line length: 45-75 characters optimal",
       "severity": "warning",
-      "description": "Line length: 45-75 characters optimal",
+      "description": "Reading comfort depends on line length. Below 45 characters, the eye returns too frequently and reading feels choppy. Above 75 characters, tracking to the next line becomes difficult and readers lose their place. The sweet spot is 55-65 characters. Use max-w-prose (65ch) for long-form text, max-w-lg or max-w-xl for cards. Don't let text run full-width on large screens — always constrain content width.",
+      "example": "Article: <div class='max-w-prose mx-auto'>...</div>. Card description: max-w-lg",
+      "counterExample": "Full-width paragraphs on 1920px screens (120+ characters per line)",
       "tags": [
         "typography",
         "golden-rules"
@@ -128,7 +134,8 @@
       "domain": "typography",
       "title": "Typography rule: Important = Larger + Bolder",
       "severity": "warning",
-      "description": "Important = Larger + Bolder",
+      "description": "Visual importance must correlate with both size and weight to establish clear hierarchy. Page titles are the largest and boldest (text-2xl font-semibold). Section titles are smaller but still bold (text-lg font-semibold). Body text is normal size and weight (text-sm font-normal). If something looks important but is small, or looks unimportant but is large, the hierarchy sends mixed signals. The combination of size + weight creates unambiguous ranking.",
+      "example": "Hierarchy: text-2xl font-semibold > text-lg font-semibold > text-sm font-medium > text-sm font-normal > text-xs text-muted",
       "tags": [
         "typography",
         "golden-rules"
@@ -140,7 +147,7 @@
       "domain": "typography",
       "title": "Typography forbidden: font-serif",
       "severity": "critical",
-      "description": "font-serif",
+      "description": "Serif fonts (Times New Roman, Georgia) conflict with modern UI design conventions. Application interfaces use sans-serif for readability at small sizes and consistency across platforms. Serif introduces visual friction when mixed with sans-serif UI chrome. If a serif is needed for editorial/marketing content, it must be an explicit design system decision with defined usage contexts.",
       "tags": [
         "typography",
         "forbidden"
@@ -152,7 +159,7 @@
       "domain": "typography",
       "title": "Typography forbidden: font-display",
       "severity": "critical",
-      "description": "font-display",
+      "description": "Display/decorative fonts are designed for large headings and marketing materials, not for UI components. They have poor legibility at body text sizes, inconsistent rendering across browsers, and add unnecessary font file weight. Use the design system's designated font families (sans for UI, mono for code) instead.",
       "tags": [
         "typography",
         "forbidden"
@@ -164,7 +171,8 @@
       "domain": "typography",
       "title": "Typography forbidden: Arbitrary text sizes (text-[17px])",
       "severity": "critical",
-      "description": "Arbitrary text sizes (text-[17px])",
+      "description": "Arbitrary text sizes like text-[17px] or text-[13px] bypass the type scale and create inconsistency. They don't respond to design system theme changes, make responsive scaling harder, and indicate the designer is eyeballing rather than using the established hierarchy. Always use the type scale: text-xs (12px), text-sm (14px), text-base (16px), text-lg (18px), text-xl (20px), text-2xl (24px).",
+      "counterExample": "text-[15px], text-[17px], font-size: 13px — all bypass the type scale",
       "tags": [
         "typography",
         "forbidden"
@@ -176,7 +184,7 @@
       "domain": "typography",
       "title": "Typography forbidden: More than 4 sizes in one view",
       "severity": "critical",
-      "description": "More than 4 sizes in one view",
+      "description": "Using 5+ type sizes in a single view destroys hierarchy and overwhelms users. Each additional size competes for attention and makes it harder to scan content. Audit the view — if more than 4 sizes exist, consolidate by using weight or color for differentiation instead of adding sizes. Common violations: unique sizes for every card section, different sizes for each metadata field.",
       "tags": [
         "typography",
         "forbidden"
@@ -285,6 +293,77 @@
         "iconography",
         "forbidden",
         "emojis"
+      ]
+    },
+    {
+      "id": "typography-line-height-tight",
+      "type": "pattern",
+      "domain": "typography",
+      "title": "Line height: Tight (leading-tight) for headings",
+      "severity": "suggestion",
+      "description": "Use leading-tight (1.25) for headings and large text (text-xl and above). Tighter line-height keeps multi-line headings compact and visually cohesive. Large text has more whitespace between lines at normal leading, which makes headings feel disconnected. Tight leading also helps headings take up less vertical space, leaving more room for content.",
+      "example": "Tailwind: <h1 class='text-2xl font-semibold leading-tight'>Dashboard Overview</h1>",
+      "tags": [
+        "typography",
+        "line-height",
+        "headings"
+      ]
+    },
+    {
+      "id": "typography-line-height-normal",
+      "type": "pattern",
+      "domain": "typography",
+      "title": "Line height: Normal (leading-normal) for body text",
+      "severity": "suggestion",
+      "description": "Use leading-normal (1.5) for body text (text-sm, text-base). This is the standard for comfortable reading of paragraphs, descriptions, and form labels. 1.5x line-height provides enough space for the eye to track back to the next line without losing its place. This is the default Tailwind line-height and should be used for most UI text.",
+      "example": "Tailwind: <p class='text-sm leading-normal'>Enter your email to receive notifications.</p>",
+      "tags": [
+        "typography",
+        "line-height",
+        "body"
+      ]
+    },
+    {
+      "id": "typography-line-height-relaxed",
+      "type": "pattern",
+      "domain": "typography",
+      "title": "Line height: Relaxed (leading-relaxed) for long-form content",
+      "severity": "suggestion",
+      "description": "Use leading-relaxed (1.625) for long-form reading content: documentation, blog posts, help articles, and multi-paragraph descriptions. The extra vertical space reduces fatigue in extended reading sessions and improves accessibility for users with dyslexia or visual impairments. Do not use for short UI text (labels, buttons) where it adds unnecessary vertical bulk.",
+      "example": "Tailwind: <article class='max-w-prose leading-relaxed'>Long documentation content...</article>",
+      "tags": [
+        "typography",
+        "line-height",
+        "long-form"
+      ]
+    },
+    {
+      "id": "typography-weight-usage-guide",
+      "type": "rule",
+      "domain": "typography",
+      "title": "Font weight usage: 400 body, 500 labels, 600 headings, 700 emphasis only",
+      "severity": "warning",
+      "description": "Map font weights to specific roles for consistency across the application. 400 (font-normal): body text, descriptions, paragraphs — the default reading weight. 500 (font-medium): interactive labels, table headers, form labels, nav items — slightly elevated without shouting. 600 (font-semibold): headings, titles, important callouts — clear hierarchy without heaviness. 700 (font-bold): sparingly for maximum emphasis — alerts, key metrics, critical warnings. Never use 100-300 (too light for screens) or 800-900 (too heavy, reduces readability).",
+      "example": "Page title: font-semibold. Form label: font-medium. Body: font-normal. Alert metric: font-bold.",
+      "counterExample": "Using font-bold for all headings, mixing font-light with font-black, no weight differentiation",
+      "tags": [
+        "typography",
+        "font-weight",
+        "hierarchy"
+      ]
+    },
+    {
+      "id": "typography-font-faces",
+      "type": "pattern",
+      "domain": "typography",
+      "title": "Font family roles: sans for UI, mono for code, with fallback stacks",
+      "severity": "suggestion",
+      "description": "Define three font family roles in the design system. Sans (font-sans): UI text, headings, body — the primary font. Common choices: Inter, system-ui. Mono (font-mono): code blocks, terminal output, data tables with alignment needs. Common choices: JetBrains Mono, Fira Code. Always include a fallback stack: font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif. Font loading: use font-display: swap to prevent invisible text during load. Preload the primary font weight (400) for fastest paint.",
+      "example": "tailwind.config: fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'], mono: ['JetBrains Mono', 'ui-monospace', 'monospace'] }",
+      "tags": [
+        "typography",
+        "font-family",
+        "configuration"
       ]
     }
   ]
