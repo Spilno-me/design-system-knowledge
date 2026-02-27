@@ -164,7 +164,8 @@
       "domain": "spacing",
       "title": "Spacing forbidden: Arbitrary values: m-[32px]",
       "severity": "critical",
-      "description": "Arbitrary values: m-[32px]",
+      "description": "Tailwind arbitrary values like m-[32px], p-[18px], gap-[22px] bypass the spacing scale and create one-off values that drift from the design system. They are not constrained to the 4px grid, cannot be updated via theme changes, and introduce visual inconsistency. Always use the nearest token: m-[32px] → gap-8, p-[18px] → p-5 (20px) or p-4 (16px). If no token fits, reconsider the design rather than inventing a custom value.",
+      "counterExample": "m-[32px] → gap-8, p-[18px] → p-5, gap-[22px] → gap-6 (24px)",
       "tags": [
         "spacing",
         "forbidden"
@@ -176,7 +177,8 @@
       "domain": "spacing",
       "title": "Spacing forbidden: Inline styles: style={{ margin: '32px' }}",
       "severity": "critical",
-      "description": "Inline styles: style={{ margin: '32px' }}",
+      "description": "Inline styles for spacing (style={{ margin: '32px', padding: '16px' }}) bypass Tailwind's utility system entirely. They cannot be themed, don't respond to breakpoints, are invisible to design system tooling, and increase CSS specificity unpredictably. Convert to Tailwind classes: style={{ margin: '32px' }} → m-8, style={{ padding: '16px 24px' }} → px-6 py-4. The only exception is truly dynamic values computed at runtime (e.g., positioning a tooltip).",
+      "counterExample": "style={{ margin: '32px' }} → m-8, style={{ gap: '12px' }} → gap-3",
       "tags": [
         "spacing",
         "forbidden"
@@ -188,7 +190,8 @@
       "domain": "spacing",
       "title": "Spacing forbidden: Breaking 4px grid",
       "severity": "critical",
-      "description": "Breaking 4px grid",
+      "description": "All spacing values must be multiples of 4px (the precision layer). Values like 5px, 7px, 10px, 13px, or 18px break visual alignment and create subpixel rendering artifacts on non-retina displays. The 4px grid ensures consistent alignment across all components. Valid values: 4, 8, 12, 16, 20, 24, 32, 40, 48, 64, 96px. If a design spec shows a non-4px value, round to the nearest 4px multiple.",
+      "counterExample": "5px → 4px (gap-1), 10px → 8px (gap-2) or 12px (gap-3), 18px → 16px (gap-4) or 20px (gap-5)",
       "tags": [
         "spacing",
         "forbidden"
@@ -570,6 +573,82 @@
         "border-radius",
         "nested",
         "formula"
+      ]
+    },
+    {
+      "id": "spacing-responsive-scaling",
+      "type": "pattern",
+      "domain": "spacing",
+      "title": "Responsive spacing: reduce on mobile, increase on desktop",
+      "severity": "warning",
+      "description": "Spacing should scale down on smaller screens to preserve content density and up on larger screens for breathing room. Use responsive Tailwind classes: section padding p-4 md:p-6 lg:p-8, card padding p-3 md:p-4 lg:p-6, grid gaps gap-4 md:gap-6 lg:gap-8, page margins px-4 md:px-8 lg:px-16. Reduce section spacing by one token level on mobile (gap-12 → gap-8). Never use the same large spacing values across all breakpoints.",
+      "example": "<section class='p-4 md:p-6 lg:p-8 space-y-4 md:space-y-6'>. Grid: gap-4 md:gap-6 lg:gap-8",
+      "counterExample": "Using p-8 at all breakpoints — wastes mobile screen real estate",
+      "tags": [
+        "spacing",
+        "responsive",
+        "mobile",
+        "scaling"
+      ]
+    },
+    {
+      "id": "spacing-component-patterns",
+      "type": "pattern",
+      "domain": "spacing",
+      "title": "Standard spacing per component type",
+      "severity": "suggestion",
+      "description": "Consistent internal spacing by component type: Cards: p-6 (24px padding), space-y-4 between content sections. Forms: space-y-4 between fields, gap-2 between label and input, gap-6 between form sections. Button groups: gap-2 (8px) for compact, gap-3 (12px) for standard. Tables: px-4 py-3 for cells, px-4 py-2 for header cells. Lists: space-y-2 for tight lists, space-y-3 for standard, divide-y for visual separation. Modals: p-6 for content, p-4 for footer with actions.",
+      "example": "Card: <div class='p-6 space-y-4'>. Form: <form class='space-y-4'>. Buttons: <div class='flex gap-3'>",
+      "tags": [
+        "spacing",
+        "components",
+        "patterns",
+        "internal"
+      ]
+    },
+    {
+      "id": "spacing-relationship-map",
+      "type": "pattern",
+      "domain": "spacing",
+      "title": "Spacing relationships: common element pairs",
+      "severity": "suggestion",
+      "description": "Standard spacing between commonly paired elements. Icon ↔ text: gap-1 to gap-2 (4-8px). Label ↔ input: mb-2 (8px) or gap-2. Input ↔ helper text: mt-1 (4px). Input ↔ error message: mt-1 (4px). Section heading ↔ content: mb-4 (16px). Card ↔ card: gap-4 to gap-6 (16-24px). Section ↔ section: py-12 to py-16 (48-64px). Page header ↔ content: mb-6 to mb-8 (24-32px). Button ↔ button: gap-2 to gap-3 (8-12px). Avatar ↔ name: gap-2 to gap-3 (8-12px).",
+      "example": "Icon+text: <span class='flex items-center gap-2'>. Label+input: <div class='space-y-2'>. Sections: <div class='space-y-12'>",
+      "tags": [
+        "spacing",
+        "relationships",
+        "pairs",
+        "reference"
+      ]
+    },
+    {
+      "id": "spacing-decision-guide",
+      "type": "rule",
+      "domain": "spacing",
+      "title": "Spacing decision guide: directly related → same group → separate → section",
+      "severity": "suggestion",
+      "description": "Use this decision guide to pick the right spacing token. Directly related elements (icon + text, label + input): 4-8px (gap-1 to gap-2). Same logical group (fields in a form, items in a list): 12-16px (gap-3 to gap-4). Separate groups within a section (form sections, card groups): 24-32px (gap-6 to gap-8). Major page sections (hero → features → pricing): 48-64px (py-12 to py-16). The ratio between levels should be roughly 2:1 — if within-group is 16px, between-groups should be 32px.",
+      "example": "Form: label-input gap-2 (8px) → fields space-y-4 (16px) → sections space-y-8 (32px) → page sections py-16 (64px)",
+      "tags": [
+        "spacing",
+        "decision-guide",
+        "hierarchy",
+        "ratios"
+      ]
+    },
+    {
+      "id": "spacing-container-wizard",
+      "type": "pattern",
+      "domain": "spacing",
+      "title": "Wizard/stepper spacing: step padding and navigation layout",
+      "severity": "suggestion",
+      "description": "Multi-step wizards and steppers have specific spacing needs. Step indicator bar: py-4 with gap-2 between step dots/numbers, horizontal on desktop, simplified on mobile. Step content area: p-6 md:p-8 with consistent padding across all steps. Navigation buttons: pt-6 border-t with flex justify-between (Back on left, Next/Submit on right). Between steps: use smooth transitions, not abrupt layout shifts. Progress bar: mb-6 below step indicators, above content. Keep the wizard within max-w-2xl for focused attention.",
+      "example": "<div class='max-w-2xl mx-auto'><nav class='py-4 flex gap-2'>steps</nav><div class='p-6 md:p-8'>content</div><div class='pt-6 border-t flex justify-between'>buttons</div></div>",
+      "tags": [
+        "spacing",
+        "wizard",
+        "stepper",
+        "navigation"
       ]
     }
   ]
