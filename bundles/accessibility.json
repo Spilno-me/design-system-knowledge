@@ -293,7 +293,7 @@
       "domain": "accessibility",
       "title": "Keyboard: All interactive components must be keyboard accessible",
       "severity": "critical",
-      "description": "All interactive components must be keyboard accessible",
+      "description": "Every interactive element (buttons, links, form controls, tabs, menus) must be operable via keyboard alone. Use native HTML elements (<button>, <a>, <input>) which provide keyboard behavior for free. For custom widgets, add tabIndex={0} for focusability, role for semantics, and onKeyDown for keyboard interaction. Test by navigating the entire UI using only Tab, Enter, Space, Arrow keys, and Escape.",
       "tags": [
         "accessibility",
         "keyboard",
@@ -306,7 +306,7 @@
       "domain": "accessibility",
       "title": "Keyboard: Support Tab, Enter, Space, Arrow keys, Escape",
       "severity": "critical",
-      "description": "Support Tab, Enter, Space, Arrow keys, Escape",
+      "description": "Five keyboard interactions every component must support: Tab moves focus between interactive elements in DOM order. Enter activates links and buttons. Space activates buttons and toggles checkboxes. Arrow keys navigate within composite widgets (tabs, menus, radio groups, listboxes). Escape closes overlays (modals, dropdowns, tooltips) and returns focus to the trigger element.",
       "tags": [
         "accessibility",
         "keyboard",
@@ -319,7 +319,8 @@
       "domain": "accessibility",
       "title": "Keyboard: Provide visible focus indicators",
       "severity": "critical",
-      "description": "Provide visible focus indicators",
+      "description": "Every focusable element must have a clearly visible focus indicator. Use focus-visible:ring-2 focus-visible:ring-primary-500 for a consistent ring that appears only on keyboard navigation (not mouse clicks). Never use outline-none or outline-0 without providing an alternative focus style. Focus indicators must have sufficient contrast (3:1 minimum against adjacent colors per WCAG 2.4.7).",
+      "example": "className='focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2'",
       "tags": [
         "accessibility",
         "keyboard",
@@ -332,7 +333,7 @@
       "domain": "accessibility",
       "title": "Keyboard: Implement proper focus management in overlays",
       "severity": "critical",
-      "description": "Implement proper focus management in overlays",
+      "description": "Overlays (modals, sheets, dialogs, dropdowns) must implement three focus behaviors: 1) Focus trap — Tab cycles only within the overlay, preventing interaction with background content. 2) Initial focus — move focus to the first focusable element or the close button when the overlay opens. 3) Focus restoration — return focus to the trigger element when the overlay closes. Use a headless UI primitive library to handle these reliably.",
       "tags": [
         "accessibility",
         "keyboard",
@@ -345,7 +346,8 @@
       "domain": "accessibility",
       "title": "Screen reader: Use semantic HTML elements",
       "severity": "critical",
-      "description": "Use semantic HTML elements",
+      "description": "Use semantic HTML elements that convey meaning to assistive technology: <nav> for navigation regions, <main> for primary content, <section> with aria-label for distinct page sections, <aside> for complementary content, <header>/<footer> for page/section landmarks. Screen readers use these landmarks for quick navigation. A <div> with onClick is invisible to screen readers — use <button> instead.",
+      "example": "<nav aria-label='Main navigation'>...</nav> <main>...</main> <aside aria-label='Filters'>...</aside>",
       "tags": [
         "accessibility",
         "screen-reader",
@@ -358,7 +360,8 @@
       "domain": "accessibility",
       "title": "Screen reader: Provide ARIA labels for icon-only controls",
       "severity": "critical",
-      "description": "Provide ARIA labels for icon-only controls",
+      "description": "Icon-only buttons and controls have no visible text for screen readers to announce. Add aria-label='description' to provide an accessible name. For icons that are purely decorative (next to visible text), use aria-hidden='true' on the icon SVG so screen readers skip it. Every interactive element must have an accessible name — either visible text, aria-label, or aria-labelledby.",
+      "example": "<button aria-label='Close dialog'><XIcon aria-hidden='true' /></button>",
       "tags": [
         "accessibility",
         "screen-reader",
@@ -371,7 +374,8 @@
       "domain": "accessibility",
       "title": "Screen reader: Announce state changes (loading, errors, success)",
       "severity": "critical",
-      "description": "Announce state changes (loading, errors, success)",
+      "description": "Dynamic state changes must be announced to screen readers. Use role='status' for non-urgent updates (success messages, progress), role='alert' for urgent interruptions (errors, warnings), and aria-busy='true' on containers during loading to indicate content is being updated. Without these announcements, screen reader users won't know that a form submission succeeded or failed.",
+      "example": "<div role='status' aria-live='polite'>Changes saved successfully.</div> or <div role='alert'>Email is required.</div>",
       "tags": [
         "accessibility",
         "screen-reader",
@@ -384,7 +388,8 @@
       "domain": "accessibility",
       "title": "Screen reader: Use ARIA live regions for dynamic content",
       "severity": "critical",
-      "description": "Use ARIA live regions for dynamic content",
+      "description": "ARIA live regions announce content changes to screen readers without moving focus. Use aria-live='polite' for non-urgent updates (toast notifications, status messages, search results count) — announced after current speech finishes. Use aria-live='assertive' for urgent updates (error alerts, session expiry warnings) — interrupts immediately. Place the live region in the DOM before the content changes, not at the same time.",
+      "example": "<div aria-live='polite'>Showing {count} results</div> — updates are announced as count changes.",
       "tags": [
         "accessibility",
         "screen-reader",
@@ -397,7 +402,7 @@
       "domain": "accessibility",
       "title": "Color contrast: Meet WCAG AA contrast ratios (4.5:1 text, 3:1 UI)",
       "severity": "critical",
-      "description": "Meet WCAG AA contrast ratios (4.5:1 text, 3:1 UI)",
+      "description": "WCAG AA requires 4.5:1 contrast ratio for normal text, 3:1 for large text (18px+ or 14px+ bold), and 3:1 for UI components and graphical objects (borders, icons, focus indicators). Always verify contrast ratios before applying color pairs. Same color family requires 400+ shade difference (e.g., PRIMARY[100] on PRIMARY[900] is safe, PRIMARY[300] on PRIMARY[500] is not). Test in both light and dark mode.",
       "tags": [
         "accessibility",
         "color",
@@ -411,7 +416,9 @@
       "domain": "accessibility",
       "title": "Color contrast: Don't rely on color alone for information",
       "severity": "critical",
-      "description": "Don't rely on color alone for information",
+      "description": "Color-blind users (8% of males) cannot distinguish red/green or other color pairs. Always pair color with a secondary indicator: icons (checkmark for success, X for error), text labels, patterns, or underlines. Form validation must not rely only on red borders — add an error icon and descriptive text. Status badges should include an icon or text prefix, not just a colored dot.",
+      "example": "Error state: red border + error icon + 'Email is required' text. Status: green dot + 'Active' label.",
+      "counterExample": "Red border only on invalid fields, colored dots without labels, charts using only color differentiation",
       "tags": [
         "accessibility",
         "color",
@@ -425,7 +432,8 @@
       "domain": "accessibility",
       "title": "Color contrast: Provide patterns/icons alongside color coding",
       "severity": "critical",
-      "description": "Provide patterns/icons alongside color coding",
+      "description": "Charts, graphs, and data visualizations must use patterns (stripes, dots, hatching), different shapes, or direct labels in addition to color. Status indicators should combine color with icons (CheckCircle, AlertTriangle, XCircle). Progress indicators should include percentage text, not just a colored bar. This ensures information is accessible to color-blind users and remains distinguishable in grayscale printing.",
+      "example": "Chart: blue-solid line + red-dashed line + labels. Status: green CheckCircle + 'Complete' vs red XCircle + 'Failed'.",
       "tags": [
         "accessibility",
         "color",
@@ -461,6 +469,163 @@
         "accessibility",
         "cognitive-load",
         "usability"
+      ]
+    },
+    {
+      "id": "accessibility-keyboard-tab-navigation",
+      "type": "rule",
+      "domain": "accessibility",
+      "title": "Keyboard: Tab navigation order must follow visual layout",
+      "severity": "critical",
+      "description": "Tab order must follow the visual reading order (left-to-right, top-to-bottom in LTR layouts). Never use positive tabindex values (tabindex='2', tabindex='5') as they create unpredictable jump sequences. Use tabindex='0' to make non-interactive elements focusable when needed, and tabindex='-1' for programmatic focus only (e.g., focusing a heading after navigation). Test tab order by pressing Tab through the entire page — the focus should move logically through the content.",
+      "example": "Natural order: Logo → Nav links → Main content → Sidebar → Footer. Use tabindex='0' on custom widgets, tabindex='-1' on skip-link targets.",
+      "counterExample": "tabindex='3' on a button, CSS reordering (order, flex-direction: row-reverse) that breaks tab sequence",
+      "tags": [
+        "accessibility",
+        "keyboard",
+        "navigation",
+        "tab-order"
+      ]
+    },
+    {
+      "id": "accessibility-keyboard-enter-space",
+      "type": "rule",
+      "domain": "accessibility",
+      "title": "Keyboard: Enter and Space must activate interactive elements",
+      "severity": "critical",
+      "description": "Enter activates links and buttons. Space activates buttons and toggles checkboxes/switches. Native HTML elements (<button>, <a>, <input>) handle this automatically. Custom interactive elements built with <div> or <span> must add role='button', tabindex='0', and onKeyDown handlers for both Enter and Space (preventDefault on Space to prevent page scrolling). Radio buttons and switches should toggle with Space, not Enter.",
+      "example": "onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleClick(); } }}",
+      "counterExample": "onClick-only <div> elements with no keyboard handler, role='button' without onKeyDown",
+      "tags": [
+        "accessibility",
+        "keyboard",
+        "interaction"
+      ]
+    },
+    {
+      "id": "accessibility-keyboard-arrow-keys",
+      "type": "rule",
+      "domain": "accessibility",
+      "title": "Keyboard: Arrow keys for composite widget navigation",
+      "severity": "critical",
+      "description": "Composite widgets (tabs, menus, radio groups, tree views) use arrow keys for internal navigation while Tab moves to the next widget. This is the roving tabindex pattern: one item has tabindex='0' (the active item), others have tabindex='-1'. Arrow keys move the active tabindex. Left/Right for horizontal layouts (tabs, menu bars), Up/Down for vertical layouts (dropdown menus, tree views). Wrap around from last to first optionally. Home/End jump to first/last item.",
+      "example": "Tab list: Tab moves focus to the tab group, Left/Right arrows switch between tabs, Tab again moves to tab panel content.",
+      "tags": [
+        "accessibility",
+        "keyboard",
+        "composite-widget",
+        "navigation"
+      ]
+    },
+    {
+      "id": "accessibility-keyboard-escape",
+      "type": "rule",
+      "domain": "accessibility",
+      "title": "Keyboard: Escape must close overlays and return focus",
+      "severity": "critical",
+      "description": "Escape key must close the topmost overlay (modal, dropdown, popover, tooltip, sheet) and return focus to the element that triggered it. This is critical for keyboard users who would otherwise be trapped. Implement a focus return stack: store the trigger element reference before opening, restore focus on close. For nested overlays (modal containing a dropdown), Escape closes only the innermost layer. Never close the entire page or navigate away on Escape.",
+      "example": "const triggerRef = useRef(document.activeElement); onClose={() => { close(); triggerRef.current?.focus(); }",
+      "counterExample": "Modal closes but focus moves to document body, Escape closes all nested overlays at once",
+      "tags": [
+        "accessibility",
+        "keyboard",
+        "overlay",
+        "focus-management"
+      ]
+    },
+    {
+      "id": "accessibility-screenreader-semantic-html",
+      "type": "pattern",
+      "domain": "accessibility",
+      "title": "Screen reader: Use semantic HTML landmarks for page structure",
+      "severity": "critical",
+      "description": "Semantic HTML landmarks allow screen reader users to jump between page sections. Use <nav> for navigation (add aria-label when multiple navs exist), <main> for primary content (one per page), <aside> for complementary content (sidebars, filters), <header>/<footer> for page or section chrome, and <section> with aria-label for distinct content regions. Screen readers list all landmarks — users can jump directly to 'Main navigation' or 'Search results'.",
+      "example": "<header>Logo + nav</header><nav aria-label='Main'>...</nav><main>...</main><aside aria-label='Filters'>...</aside><footer>...</footer>",
+      "counterExample": "<div class='nav'>, <div class='main'>, <div class='sidebar'> — invisible to screen reader landmark navigation",
+      "tags": [
+        "accessibility",
+        "screen-reader",
+        "semantic-html",
+        "landmarks"
+      ]
+    },
+    {
+      "id": "accessibility-screenreader-aria-live",
+      "type": "pattern",
+      "domain": "accessibility",
+      "title": "Screen reader: ARIA live region strategy (polite vs assertive)",
+      "severity": "critical",
+      "description": "aria-live='polite' announces after current speech finishes — use for search result counts, form progress, toast notifications, loading completion. aria-live='assertive' interrupts immediately — use for error alerts, session expiry, data loss warnings. The live region element must exist in the DOM before content changes (mount the container on page load, update its content later). role='status' implies aria-live='polite'. role='alert' implies aria-live='assertive'. Avoid adding/removing the live region itself — only change its contents.",
+      "example": "Mount: <div role='status' aria-live='polite'></div> on load. Update inner text to 'Showing 42 results' on search.",
+      "counterExample": "Dynamically inserting <div aria-live='assertive'> with content — screen reader may miss it",
+      "tags": [
+        "accessibility",
+        "screen-reader",
+        "aria-live",
+        "dynamic-content"
+      ]
+    },
+    {
+      "id": "accessibility-screenreader-state-announcements",
+      "type": "pattern",
+      "domain": "accessibility",
+      "title": "Screen reader: Announce loading, error, and success states",
+      "severity": "critical",
+      "description": "Dynamic state transitions must be communicated to screen readers. Loading: use aria-busy='true' on the container being updated, remove when done. Errors: use role='alert' for form validation errors (auto-announces), pair with aria-invalid='true' and aria-describedby pointing to the error message. Success: use role='status' for confirmation messages. Progress: use <progress> element or role='progressbar' with aria-valuenow, aria-valuemin, aria-valuemax.",
+      "example": "Loading: <div aria-busy='true'>Loading...</div>. Error: <input aria-invalid='true' aria-describedby='email-error' /><p id='email-error' role='alert'>Invalid email</p>",
+      "tags": [
+        "accessibility",
+        "screen-reader",
+        "state-changes",
+        "aria"
+      ]
+    },
+    {
+      "id": "accessibility-responsive-touch-targets",
+      "type": "rule",
+      "domain": "accessibility",
+      "title": "Touch targets: 44x44px minimum on mobile, 36px on desktop",
+      "severity": "critical",
+      "description": "WCAG 2.5.8 requires touch targets of at least 44x44px on mobile (min-h-11 min-w-11) and 36x36px on desktop (min-h-9 min-w-9). Spacing between adjacent targets should be at least 8px to prevent accidental taps. For inline links within text, the line-height provides vertical target size. Icon buttons in toolbars are common violators — always apply minimum size even if the icon is visually smaller. Use padding to increase hit area without changing visual size.",
+      "example": "<button class='min-h-11 min-w-11 p-2 md:min-h-9 md:min-w-9'><Icon size={20} /></button>",
+      "counterExample": "24x24px icon buttons on mobile, adjacent actions with no spacing gap",
+      "tags": [
+        "accessibility",
+        "touch-target",
+        "mobile",
+        "responsive"
+      ]
+    },
+    {
+      "id": "accessibility-focus-visible-indicator",
+      "type": "rule",
+      "domain": "accessibility",
+      "title": "Focus indicator: visible ring on keyboard focus, hidden on mouse",
+      "severity": "critical",
+      "description": "Keyboard users need a visible focus indicator to know which element is active. Use :focus-visible (not :focus) to show the ring only on keyboard navigation, not on mouse clicks. Standard pattern: focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2. Never use outline-none or outline-0 without providing an alternative focus indicator. The focus ring must have at least 3:1 contrast against the surrounding background. For dark backgrounds, use a lighter ring color.",
+      "example": "className='focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 focus-visible:outline-none'",
+      "counterExample": "outline: none without replacement, :focus instead of :focus-visible (shows ring on mouse click too)",
+      "tags": [
+        "accessibility",
+        "focus",
+        "keyboard",
+        "visual-indicator"
+      ]
+    },
+    {
+      "id": "accessibility-error-state-accessible",
+      "type": "pattern",
+      "domain": "accessibility",
+      "title": "Form errors: aria-invalid + aria-describedby + role='alert'",
+      "severity": "critical",
+      "description": "Accessible form errors require three connected pieces: (1) aria-invalid='true' on the input to announce it as invalid, (2) aria-describedby pointing to the error message ID so the screen reader reads it when the input is focused, (3) role='alert' on the error message container for immediate announcement when the error appears. Error messages should be specific ('Email must include @') not generic ('Invalid input'). On submit with errors, move focus to the first invalid field.",
+      "example": "<input aria-invalid='true' aria-describedby='email-err' /><p id='email-err' role='alert'>Email must include @ symbol</p>",
+      "counterExample": "Red border only with no aria attributes, generic 'Error' text with no link to the field, error displayed but not announced",
+      "tags": [
+        "accessibility",
+        "forms",
+        "error-handling",
+        "aria"
       ]
     }
   ]
