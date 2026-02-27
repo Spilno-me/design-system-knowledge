@@ -1,13 +1,15 @@
 # Design System Knowledge
 
-Give your AI agent design system expertise — instantly.
+Structured design system intelligence for AI agents and developer tooling.
 
-385 curated intelligence entries covering design tokens, components, accessibility, color, spacing, typography, UX patterns, and Storybook. Each entry is a structured JSON object with severity, examples, and counter-examples. Drop them into any [Agent Forge](https://github.com/Spilno-me/agent-forge) agent's knowledge directory and it knows what you know.
+385 curated entries covering design tokens, components, accessibility, color systems, spacing, typography, UX patterns, and Storybook. Each entry is a structured JSON object with severity, examples, and counter-examples — ready to drop into any AI agent, linter, or code review tool that works with component-driven development and design systems.
+
+Built for teams using **Tailwind CSS**, **shadcn/ui**, and **Storybook** with a token-based design system.
 
 ## What's inside
 
-| Bundle | Entries | What your agent learns |
-|--------|---------|----------------------|
+| Bundle | Entries | What it covers |
+|--------|---------|---------------|
 | **design-tokens** | 36 | Token selection priority, forbidden raw values, styling rules |
 | **components** | 125 | Variant philosophy, API constraints, atomic architecture, shadcn/ui catalog |
 | **storybook** | 27 | Required and optional stories, testing patterns, device frames |
@@ -19,26 +21,33 @@ Give your AI agent design system expertise — instantly.
 
 ## Quick start
 
-### Install into an Agent Forge agent
+### Option 1: Copy the bundles
 
-Copy the bundles into your agent's intelligence directory:
-
-```bash
-cp bundles/*.json /path/to/your-agent/src/intelligence/data/
-```
-
-Then rebuild your agent:
+The bundles are plain JSON files — no dependencies, no build step. Copy them wherever you need them:
 
 ```bash
-cd your-agent
-npm run build
+# Clone and copy
+git clone https://github.com/Spilno-me/design-system-knowledge.git
+cp design-system-knowledge/bundles/*.json /path/to/your/project/knowledge/
 ```
 
-Your agent now has design system knowledge available through its vault search and pattern matching.
+### Option 2: Use as a git submodule
 
-### Use standalone
+```bash
+git submodule add https://github.com/Spilno-me/design-system-knowledge.git knowledge/design-system
+```
 
-The bundles are plain JSON — no dependencies, no build step. Use them however you like:
+### Option 3: Fetch individual bundles
+
+```bash
+# Grab just what you need
+curl -O https://raw.githubusercontent.com/Spilno-me/design-system-knowledge/main/bundles/components.json
+curl -O https://raw.githubusercontent.com/Spilno-me/design-system-knowledge/main/bundles/accessibility.json
+```
+
+## Working with the data
+
+Each bundle is a JSON file you can query, filter, and integrate however you like:
 
 ```bash
 # Count entries in a bundle
@@ -50,29 +59,49 @@ cat bundles/color-system.json | jq '.entries[] | select(.severity == "critical")
 
 # Search by tag
 cat bundles/accessibility.json | jq '.entries[] | select(.tags | index("contrast")) | .title'
+
+# Get all anti-patterns across bundles
+cat bundles/*.json | jq '.entries[] | select(.type == "anti-pattern") | {id, title, severity}'
+```
+
+### Use in code
+
+```typescript
+import tokens from './knowledge/design-tokens.json';
+import components from './knowledge/components.json';
+
+// Find critical rules for a specific domain
+const criticalRules = components.entries.filter(
+  e => e.severity === 'critical' && e.type === 'rule'
+);
+
+// Search by tag
+const a11yContrast = tokens.entries.filter(
+  e => e.tags.includes('contrast')
+);
 ```
 
 ## Entry format
 
-Every entry follows the same structure. Required fields are always present. Optional fields appear when the entry has relevant examples or context.
+Every entry follows a consistent structure. Required fields are always present. Optional fields appear when the entry has relevant examples or context.
 
 ```typescript
 interface IntelligenceEntry {
   // Always present
-  id: string;                                      // Unique across all bundles
-  type: 'pattern' | 'anti-pattern' | 'rule';       // What kind of knowledge
-  domain: string;                                   // Which bundle it belongs to
-  title: string;                                    // Human-readable name
-  severity: 'critical' | 'warning' | 'suggestion';  // How important
-  description: string;                              // The actual guidance
-  tags: string[];                                   // For search and filtering
+  id: string;                                       // Unique across all bundles
+  type: 'pattern' | 'anti-pattern' | 'rule';        // What kind of knowledge
+  domain: string;                                    // Which bundle it belongs to
+  title: string;                                     // Human-readable name
+  severity: 'critical' | 'warning' | 'suggestion';   // How important
+  description: string;                               // The actual guidance
+  tags: string[];                                    // For search and filtering
 
   // Present when applicable
-  context?: string;       // When or where this applies
-  example?: string;       // The right way to do it
+  context?: string;        // When or where this applies
+  example?: string;        // The right way to do it
   counterExample?: string; // The wrong way (and why)
-  why?: string;           // Rationale behind the rule
-  appliesTo?: string[];   // Specific components or contexts
+  why?: string;            // Rationale behind the rule
+  appliesTo?: string[];    // Specific components or contexts
 }
 ```
 
@@ -92,53 +121,39 @@ interface IntelligenceEntry {
 | `warning` | Should follow. Ignoring this leads to UX debt or maintenance problems |
 | `suggestion` | Good to follow. Improves quality but won't break anything if skipped |
 
-## What the bundles cover
+## Bundle details
 
 ### design-tokens (36 entries)
 
-Token selection priority, forbidden patterns (raw hex, standard Tailwind colors), styling rules, and component-level guidance for applying the right token in the right context.
+Token selection priority (semantic → contextual → primitive), forbidden patterns (raw hex, standard Tailwind colors, inline styles), auto-fix recommendations for common violations, and component-level token guidance for buttons, cards, inputs, and badges.
 
 ### components (125 entries)
 
-The largest bundle. Covers variant philosophy (semantic vs. cosmetic), API constraints (prop limits, composition rules), atomic architecture levels, the full shadcn/ui component catalog (59 components with accepted variants), stabilization patterns, and clean code rules.
+The largest bundle. Variant philosophy (semantic vs. cosmetic naming), the 3-3-3 rule for component APIs, pre-build gates, composition rules (forbidden nesting patterns), atomic architecture levels (atom → molecule → organism → template), the full **shadcn/ui component catalog** with accepted variants and installation commands, stabilization patterns (safe vs. breaking changes), and clean code constraints (function size, file limits).
 
 ### storybook (27 entries)
 
-Required story types, optional enhancements, forbidden patterns, device frames for mobile testing, the master story protocol, and data-testid conventions by architectural layer.
+Required story types per component, optional enhancements, forbidden patterns, the master story protocol for API simulation, device frames for mobile testing, and `data-testid` conventions by architectural layer.
 
 ### accessibility (32 entries)
 
-WCAG AA compliance rules, common violations, keyboard navigation requirements, screen reader patterns, color contrast rules, and touch target sizing from Fitts's Law.
+WCAG AA compliance rules, common violations (missing labels, poor focus management), keyboard navigation requirements, screen reader patterns (ARIA roles, live regions), color contrast rules, and touch target sizing based on Fitts's Law.
 
 ### typography (22 entries)
 
-Type scale definitions, golden rules for typography, font format and weight requirements, and iconography sizing with forbidden patterns (no emoji as icons).
+Type scale definitions, golden rules for typography (hierarchy, readability, consistency), font format and weight requirements, and iconography sizing with forbidden patterns.
 
 ### spacing (41 entries)
 
-The two-layer spacing system (component-internal and layout-external), all spacing tokens, six named layout anti-patterns, border radius tokens, and the nested component formula.
+The two-layer spacing system (component-internal padding and layout-external margins), all spacing tokens, six named layout anti-patterns, border radius tokens, and the nested component spacing formula.
 
 ### color-system (27 entries)
 
-Six color contexts (page, card, surface, button, input, badge), three harmony principles, forbidden color usage, five depth layers with anti-patterns, and the dark mode formula with semantic token mappings.
+Six color contexts (page, card, surface, button, input, badge), three harmony principles (WCAG contrast, same-family shade gaps, semantic consistency), forbidden color usage, five depth layers with anti-patterns, and the dark mode formula with semantic token mappings.
 
 ### ux-patterns (75 entries)
 
-15 core UX laws (Fitts, Hick, Miller, Doherty, and more), gestalt principles, button color semantics, action overflow rules, validation layer architecture, graceful degradation, dialog/container selection by complexity, UX writing patterns, and response time thresholds.
-
-## Building from source
-
-If you have access to the Salvador intelligence source data and want to regenerate the bundles:
-
-```bash
-npm install
-SALVADOR_DATA=/path/to/salvador/intelligence/data npm run build
-npm run validate
-```
-
-The build reads 20+ source JSON files, extracts and normalizes entries, deduplicates IDs across all bundles, and writes the output to `bundles/`.
-
-Validation checks every entry for required fields, valid enums, non-empty values, and unique IDs both within and across bundles.
+15 core UX laws (Fitts's, Hick's, Miller's, Doherty threshold, and more), four gestalt principles, button color semantics, action overflow rules, validation layer architecture, graceful degradation levels, dialog and container selection by field complexity, UX writing patterns (buttons, errors, empty states, forms, loading, warnings), and response time thresholds.
 
 ## License
 

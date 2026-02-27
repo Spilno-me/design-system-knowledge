@@ -87,7 +87,7 @@
       "title": "Color harmony: Text on backgrounds must meet WCAG AA (4.5:1) minimum",
       "severity": "critical",
       "description": "Text on backgrounds must meet WCAG AA (4.5:1) minimum",
-      "example": "Always check contrast-matrix.json before applying colors",
+      "example": "Always verify contrast ratios before applying color pairs",
       "tags": [
         "color-system",
         "harmony",
@@ -169,7 +169,7 @@
       "title": "Depth layer: Elevated (depth 1)",
       "severity": "suggestion",
       "description": "Use: Modals, dropdowns, highest elevation. Token: bg-elevated",
-      "example": "Shadow: shadow-lg. Light: IVORY[50]",
+      "example": "Shadow: shadow-lg. Light: neutral-50 or white",
       "tags": [
         "color-system",
         "depth",
@@ -183,7 +183,7 @@
       "title": "Depth layer: Card (depth 2)",
       "severity": "suggestion",
       "description": "Use: Primary cards, content containers. Token: bg-elevated",
-      "example": "Shadow: shadow-md. Light: IVORY[50]",
+      "example": "Shadow: shadow-md. Light: neutral-50 or white",
       "tags": [
         "color-system",
         "depth",
@@ -197,7 +197,7 @@
       "title": "Depth layer: Surface (depth 3)",
       "severity": "suggestion",
       "description": "Use: Nested containers, sections. Token: bg-surface",
-      "example": "Shadow: shadow-sm. Light: IVORY[100]",
+      "example": "Shadow: shadow-sm. Light: neutral-100",
       "tags": [
         "color-system",
         "depth",
@@ -211,7 +211,7 @@
       "title": "Depth layer: SurfaceHover (depth 4)",
       "severity": "suggestion",
       "description": "Use: Hover states on surface. Token: bg-surfaceHover",
-      "example": "Shadow: none. Light: IVORY[300]",
+      "example": "Shadow: none. Light: neutral-200",
       "tags": [
         "color-system",
         "depth",
@@ -225,7 +225,7 @@
       "title": "Depth layer: Page (depth 5)",
       "severity": "suggestion",
       "description": "Use: Page background. Token: bg-page",
-      "example": "Shadow: none. Light: IVORY[400]",
+      "example": "Shadow: none. Light: neutral-300",
       "tags": [
         "color-system",
         "depth",
