@@ -355,11 +355,84 @@
       "domain": "color-system",
       "title": "Dark mode anti-pattern: Hardcoded isDark ternaries - use CSS variables instead",
       "severity": "critical",
-      "description": "Hardcoded isDark ternaries - use CSS variables instead",
+      "description": "Hardcoding theme conditionals like `isDark ? 'bg-gray-900' : 'bg-white'` throughout components creates maintenance nightmares and misses the point of a token system. Every conditional is a place where dark mode can break. Instead, use CSS custom properties or Tailwind's dark: variant with semantic tokens (bg-page, bg-surface, text-primary) that automatically resolve to the correct value per theme. The component code should be theme-unaware — it uses tokens, and the theme layer handles the mapping.",
+      "example": "Good: className='bg-page text-primary' — tokens resolve per theme. Or dark:bg-primary-900 dark:text-neutral-100 with Tailwind.",
+      "counterExample": "Bad: className={isDark ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'} — duplicates logic in every component",
       "tags": [
         "color-system",
         "dark-mode",
         "anti-pattern"
+      ]
+    },
+    {
+      "id": "color-system-validation-workflow",
+      "type": "rule",
+      "domain": "color-system",
+      "title": "Color validation workflow: 5-step check before applying colors",
+      "severity": "warning",
+      "description": "Before applying any color, follow this 5-step workflow: (1) Identify context — what element type? page, card, surface, button, badge, input. (2) Look up the context pattern — find the token mappings for that context. (3) Use semantic tokens — pick bg-page, text-primary, etc., not raw shades. (4) Verify contrast — text on background must meet WCAG AA (4.5:1 for normal text, 3:1 for large text). Same color family needs 400+ shade gap. (5) Check forbidden list — no raw hex, no standard Tailwind colors (bg-blue-500), no same-family-on-itself without gap. This workflow prevents 90% of color errors.",
+      "tags": [
+        "color-system",
+        "validation",
+        "workflow",
+        "checklist"
+      ]
+    },
+    {
+      "id": "color-system-quick-ref-light",
+      "type": "pattern",
+      "domain": "color-system",
+      "title": "Quick reference: recommended color pairs on light backgrounds",
+      "severity": "suggestion",
+      "description": "Light mode color pair guide. Page background (white/cream): text-primary (PRIMARY[500]), text-secondary (NEUTRAL[500]), text-muted (NEUTRAL[400]). Card background (white): same as page, border-default (NEUTRAL[300]). Surface background (NEUTRAL[50]): text-primary, border-subtle (PRIMARY[100]). Buttons: primary bg-PRIMARY[500] text-white, secondary bg-NEUTRAL[100] text-NEUTRAL[700], destructive bg-error text-white. Badges: default bg-NEUTRAL[100] text-NEUTRAL[700], success bg-success-50 text-success-700, error bg-error-50 text-error-700.",
+      "tags": [
+        "color-system",
+        "quick-reference",
+        "light-mode",
+        "pairs"
+      ]
+    },
+    {
+      "id": "color-system-quick-ref-dark",
+      "type": "pattern",
+      "domain": "color-system",
+      "title": "Quick reference: recommended color pairs on dark backgrounds",
+      "severity": "suggestion",
+      "description": "Dark mode color pair guide. Page background (PRIMARY[900]): text-primary (NEUTRAL[100]), text-secondary (NEUTRAL[300]), text-muted (NEUTRAL[500]). Card background (PRIMARY[800]): same as page, border-default (NEUTRAL[600]). Surface background (NEUTRAL[900]): text-primary (NEUTRAL[100]), border-subtle (PRIMARY[800]). Buttons: primary bg-PRIMARY[400] text-PRIMARY[900], secondary bg-NEUTRAL[800] text-NEUTRAL[200], destructive bg-error-400 text-white. Badges: default bg-NEUTRAL[800] text-NEUTRAL[200], success bg-success-900 text-success-200.",
+      "tags": [
+        "color-system",
+        "quick-reference",
+        "dark-mode",
+        "pairs"
+      ]
+    },
+    {
+      "id": "color-system-status-dark-mode-exception",
+      "type": "rule",
+      "domain": "color-system",
+      "title": "Status colors in dark mode: shift 1 step lighter, don't invert",
+      "severity": "warning",
+      "description": "Status/semantic colors (success, warning, error, info) follow a different dark mode rule than background/text colors. Instead of the standard 950-minus inversion formula, status colors shift just 1 shade step lighter in dark mode. This preserves the color's semantic meaning — green still looks like 'success', red still looks like 'error'. Full inversion would make success green look teal and error red look pink, breaking recognition. Example: success-500 in light → success-400 in dark, error-600 in light → error-500 in dark.",
+      "example": "Light: bg-success-50 text-success-700. Dark: bg-success-900 text-success-300 (shifted, not inverted)",
+      "tags": [
+        "color-system",
+        "dark-mode",
+        "status-colors",
+        "exception"
+      ]
+    },
+    {
+      "id": "color-system-dark-mode-decision-guide",
+      "type": "rule",
+      "domain": "color-system",
+      "title": "Dark mode decision guide: backgrounds invert, text shifts, status shifts",
+      "severity": "warning",
+      "description": "Three rules for dark mode color mapping: (1) Backgrounds fully invert using the 950-minus formula: light 50 → dark 900, light 100 → dark 800, light white → dark PRIMARY[900]. (2) Text colors shift but don't fully invert: primary text stays high contrast (light PRIMARY[500] → dark NEUTRAL[100]), secondary text shifts proportionally (light NEUTRAL[500] → dark NEUTRAL[300]). (3) Status colors shift 1 step lighter to preserve semantic recognition (success-500 → success-400). Never apply the same rule to all three categories — each has different perceptual requirements.",
+      "tags": [
+        "color-system",
+        "dark-mode",
+        "decision-guide",
+        "mapping"
       ]
     }
   ]
