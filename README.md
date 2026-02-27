@@ -2,7 +2,7 @@
 
 Structured design system intelligence for AI agents and developer tooling.
 
-385 curated entries covering design tokens, components, accessibility, color systems, spacing, typography, UX patterns, and Storybook. Each entry is a structured JSON object with severity, examples, and counter-examples — ready to drop into any AI agent, linter, or code review tool that works with component-driven development and design systems.
+470 curated entries covering design tokens, components, accessibility, color systems, spacing, typography, UX patterns, and Storybook. Each entry is a structured JSON object with severity, examples, and counter-examples — ready to drop into any AI agent, linter, or code review tool that works with component-driven development and design systems.
 
 Built for teams using **Tailwind CSS**, **shadcn/ui**, and **Storybook** with a token-based design system.
 
@@ -10,18 +10,37 @@ Built for teams using **Tailwind CSS**, **shadcn/ui**, and **Storybook** with a 
 
 | Bundle | Entries | What it covers |
 |--------|---------|---------------|
-| **design-tokens** | 36 | Token selection priority, forbidden raw values, styling rules |
-| **components** | 125 | Variant philosophy, API constraints, atomic architecture, shadcn/ui catalog |
-| **storybook** | 27 | Required and optional stories, testing patterns, device frames |
-| **accessibility** | 32 | WCAG violations, keyboard navigation, screen readers, color contrast, touch targets |
-| **typography** | 22 | Type scale, font requirements, iconography, golden rules |
-| **spacing** | 41 | Two-layer spacing system, layout anti-patterns, border radius tokens |
-| **color-system** | 27 | Context-aware colors, harmony principles, depth layering, dark mode |
-| **ux-patterns** | 75 | 15 UX laws, gestalt principles, defensive design, dialog patterns, UX writing |
+| **design-tokens** | 41 | Token selection priority, forbidden raw values, styling rules |
+| **components** | 145 | Variant philosophy, API constraints, atomic architecture, shadcn/ui catalog |
+| **storybook** | 42 | Required and optional stories, testing patterns, device frames |
+| **accessibility** | 42 | WCAG violations, keyboard navigation, screen readers, color contrast, touch targets |
+| **typography** | 27 | Type scale, font requirements, iconography, golden rules |
+| **spacing** | 46 | Two-layer spacing system, layout anti-patterns, border radius tokens |
+| **color-system** | 32 | Context-aware colors, harmony principles, depth layering, dark mode |
+| **ux-patterns** | 95 | 15 UX laws, gestalt principles, defensive design, dialog patterns, UX writing |
 
 ## Quick start
 
-### Option 1: Copy the bundles
+### Install into an Agent Forge agent
+
+If you have [Agent Forge](https://github.com/Spilno-me/agent-forge) registered as an MCP server, one command installs all 470 entries into an existing agent — validates bundles, copies data files, generates domain facades, patches source files, and rebuilds:
+
+```
+forge op:install_knowledge params:{
+  agentPath: "/path/to/your-agent",
+  bundlePath: "/path/to/design-system-knowledge/bundles"
+}
+```
+
+This requires Agent Forge to be registered with Claude Code:
+
+```bash
+claude mcp add --scope user agent-forge -- node /path/to/agent-forge/dist/index.js
+```
+
+After installing and restarting Claude Code, your agent will have 8 new domain facades and a vault seeded with all the knowledge.
+
+### Copy the bundles manually
 
 The bundles are plain JSON files — no dependencies, no build step. Copy them wherever you need them:
 
@@ -31,13 +50,13 @@ git clone https://github.com/Spilno-me/design-system-knowledge.git
 cp design-system-knowledge/bundles/*.json /path/to/your/project/knowledge/
 ```
 
-### Option 2: Use as a git submodule
+### Use as a git submodule
 
 ```bash
 git submodule add https://github.com/Spilno-me/design-system-knowledge.git knowledge/design-system
 ```
 
-### Option 3: Fetch individual bundles
+### Fetch individual bundles
 
 ```bash
 # Grab just what you need
@@ -123,35 +142,35 @@ interface IntelligenceEntry {
 
 ## Bundle details
 
-### design-tokens (36 entries)
+### design-tokens (41 entries)
 
 Token selection priority (semantic → contextual → primitive), forbidden patterns (raw hex, standard Tailwind colors, inline styles), auto-fix recommendations for common violations, and component-level token guidance for buttons, cards, inputs, and badges.
 
-### components (125 entries)
+### components (145 entries)
 
 The largest bundle. Variant philosophy (semantic vs. cosmetic naming), the 3-3-3 rule for component APIs, pre-build gates, composition rules (forbidden nesting patterns), atomic architecture levels (atom → molecule → organism → template), the full **shadcn/ui component catalog** with accepted variants and installation commands, stabilization patterns (safe vs. breaking changes), and clean code constraints (function size, file limits).
 
-### storybook (27 entries)
+### storybook (42 entries)
 
 Required story types per component, optional enhancements, forbidden patterns, the master story protocol for API simulation, device frames for mobile testing, and `data-testid` conventions by architectural layer.
 
-### accessibility (32 entries)
+### accessibility (42 entries)
 
 WCAG AA compliance rules, common violations (missing labels, poor focus management), keyboard navigation requirements, screen reader patterns (ARIA roles, live regions), color contrast rules, and touch target sizing based on Fitts's Law.
 
-### typography (22 entries)
+### typography (27 entries)
 
 Type scale definitions, golden rules for typography (hierarchy, readability, consistency), font format and weight requirements, and iconography sizing with forbidden patterns.
 
-### spacing (41 entries)
+### spacing (46 entries)
 
 The two-layer spacing system (component-internal padding and layout-external margins), all spacing tokens, six named layout anti-patterns, border radius tokens, and the nested component spacing formula.
 
-### color-system (27 entries)
+### color-system (32 entries)
 
 Six color contexts (page, card, surface, button, input, badge), three harmony principles (WCAG contrast, same-family shade gaps, semantic consistency), forbidden color usage, five depth layers with anti-patterns, and the dark mode formula with semantic token mappings.
 
-### ux-patterns (75 entries)
+### ux-patterns (95 entries)
 
 15 core UX laws (Fitts's, Hick's, Miller's, Doherty threshold, and more), four gestalt principles, button color semantics, action overflow rules, validation layer architecture, graceful degradation levels, dialog and container selection by field complexity, UX writing patterns (buttons, errors, empty states, forms, loading, warnings), and response time thresholds.
 
