@@ -1,0 +1,2307 @@
+{
+  "domain": "components",
+  "version": "1.0.0",
+  "entries": [
+    {
+      "id": "components-variant-reject-color-in-name",
+      "type": "anti-pattern",
+      "domain": "components",
+      "title": "Variant rejection: Color in name",
+      "severity": "warning",
+      "description": "Use semantic name like 'primary'",
+      "example": "Bad: variant='blue'",
+      "tags": [
+        "components",
+        "variants",
+        "anti-pattern"
+      ]
+    },
+    {
+      "id": "components-variant-reject-shape-in-name",
+      "type": "anti-pattern",
+      "domain": "components",
+      "title": "Variant rejection: Shape in name",
+      "severity": "warning",
+      "description": "Use prop like `radius`",
+      "example": "Bad: variant='rounded'",
+      "tags": [
+        "components",
+        "variants",
+        "anti-pattern"
+      ]
+    },
+    {
+      "id": "components-variant-reject-combination-name",
+      "type": "anti-pattern",
+      "domain": "components",
+      "title": "Variant rejection: Combination name",
+      "severity": "warning",
+      "description": "Compose: `variant='primary' size='lg'`",
+      "example": "Bad: variant='primaryLarge'",
+      "tags": [
+        "components",
+        "variants",
+        "anti-pattern"
+      ]
+    },
+    {
+      "id": "components-variant-reject-single-use-case",
+      "type": "anti-pattern",
+      "domain": "components",
+      "title": "Variant rejection: Single use case",
+      "severity": "warning",
+      "description": "Create specialized component instead",
+      "example": "Bad: variant='specialHeaderButton'",
+      "tags": [
+        "components",
+        "variants",
+        "anti-pattern"
+      ]
+    },
+    {
+      "id": "components-variant-reject-not-in-design-system",
+      "type": "anti-pattern",
+      "domain": "components",
+      "title": "Variant rejection: Not in design system",
+      "severity": "warning",
+      "description": "Variants must come from design",
+      "example": "Bad: Exists in code only",
+      "tags": [
+        "components",
+        "variants",
+        "anti-pattern"
+      ]
+    },
+    {
+      "id": "components-semantic-status-variants",
+      "type": "pattern",
+      "domain": "components",
+      "title": "Semantic status variants",
+      "severity": "critical",
+      "description": "Represent system or data states - always semantic. success: Operation completed, positive outcome; error: Operation failed, requires attention; warning: Caution needed, potential issue; info: Neutral information, no action required; pending: In progress, awaiting completion; active: Currently selected or in use; disabled: Unavailable for interaction",
+      "tags": [
+        "components",
+        "variants",
+        "semantic"
+      ]
+    },
+    {
+      "id": "components-semantic-action-variants",
+      "type": "pattern",
+      "domain": "components",
+      "title": "Semantic action variants",
+      "severity": "critical",
+      "description": "Represent visual hierarchy and user intent. primary: Main action, ONE per view; secondary: Supporting action, complements primary; default: Standard action, no emphasis; ghost: Low emphasis, minimal visual weight; outline: Medium emphasis, bordered style; destructive: Dangerous action, requires confirmation; link: Navigation, text-style button",
+      "tags": [
+        "components",
+        "variants",
+        "semantic",
+        "actions"
+      ]
+    },
+    {
+      "id": "components-variant-antipattern-color-in-name",
+      "type": "anti-pattern",
+      "domain": "components",
+      "title": "Variant anti-pattern: Color in name",
+      "severity": "warning",
+      "description": "Use `variant='destructive'`",
+      "example": "Bad: variant='redOutline'",
+      "tags": [
+        "components",
+        "variants",
+        "anti-pattern"
+      ]
+    },
+    {
+      "id": "components-variant-antipattern-7-variants",
+      "type": "anti-pattern",
+      "domain": "components",
+      "title": "Variant anti-pattern: 7+ variants",
+      "severity": "warning",
+      "description": "Split into multiple props",
+      "example": "Bad: 10 variant options",
+      "tags": [
+        "components",
+        "variants",
+        "anti-pattern"
+      ]
+    },
+    {
+      "id": "components-variant-antipattern-single-use-variant",
+      "type": "anti-pattern",
+      "domain": "components",
+      "title": "Variant anti-pattern: Single-use variant",
+      "severity": "warning",
+      "description": "Use props or new component",
+      "example": "Bad: variant='specialHeaderButton'",
+      "tags": [
+        "components",
+        "variants",
+        "anti-pattern"
+      ]
+    },
+    {
+      "id": "components-variant-antipattern-duplicates-props",
+      "type": "anti-pattern",
+      "domain": "components",
+      "title": "Variant anti-pattern: Duplicates props",
+      "severity": "warning",
+      "description": "`variant='primary' size='lg'`",
+      "example": "Bad: variant='primaryLarge'",
+      "tags": [
+        "components",
+        "variants",
+        "anti-pattern"
+      ]
+    },
+    {
+      "id": "components-variant-antipattern-boolean-flags",
+      "type": "anti-pattern",
+      "domain": "components",
+      "title": "Variant anti-pattern: Boolean flags",
+      "severity": "warning",
+      "description": "Single `variant` prop",
+      "example": "Bad: isPrimary, isDestructive",
+      "tags": [
+        "components",
+        "variants",
+        "anti-pattern"
+      ]
+    },
+    {
+      "id": "components-variant-antipattern-changes-behavior",
+      "type": "anti-pattern",
+      "domain": "components",
+      "title": "Variant anti-pattern: Changes behavior",
+      "severity": "warning",
+      "description": "Behavior = props, not variants",
+      "example": "Bad: variant='async' adds logic",
+      "tags": [
+        "components",
+        "variants",
+        "anti-pattern"
+      ]
+    },
+    {
+      "id": "components-prebuild-does-an-existing-component-solve-this",
+      "type": "rule",
+      "domain": "components",
+      "title": "Pre-build gate: Does an existing component solve this?",
+      "severity": "critical",
+      "description": "If yes: Use it. Stop.. If no: Continue",
+      "tags": [
+        "components",
+        "pre-build",
+        "gate"
+      ]
+    },
+    {
+      "id": "components-prebuild-is-there-a-real-use-case-design-ticket",
+      "type": "rule",
+      "domain": "components",
+      "title": "Pre-build gate: Is there a real use case (design/ticket)?",
+      "severity": "critical",
+      "description": "If yes: Continue. If no: Don't build",
+      "tags": [
+        "components",
+        "pre-build",
+        "gate"
+      ]
+    },
+    {
+      "id": "components-prebuild-will-this-break-existing-consumers",
+      "type": "rule",
+      "domain": "components",
+      "title": "Pre-build gate: Will this break existing consumers?",
+      "severity": "critical",
+      "description": "If yes: STOP. Deprecate instead.. If no: Continue",
+      "tags": [
+        "components",
+        "pre-build",
+        "gate"
+      ]
+    },
+    {
+      "id": "components-prebuild-am-i-adding-more-than-3-props",
+      "type": "rule",
+      "domain": "components",
+      "title": "Pre-build gate: Am I adding more than 3 props?",
+      "severity": "critical",
+      "description": "If yes: Step back. Simplify.. If no: Continue",
+      "tags": [
+        "components",
+        "pre-build",
+        "gate"
+      ]
+    },
+    {
+      "id": "components-redflag-adding-5-props-at-once",
+      "type": "anti-pattern",
+      "domain": "components",
+      "title": "Red flag: Adding 5+ props at once",
+      "severity": "warning",
+      "description": "Split into multiple components",
+      "tags": [
+        "components",
+        "red-flags"
+      ]
+    },
+    {
+      "id": "components-redflag-complex-conditional-rendering",
+      "type": "anti-pattern",
+      "domain": "components",
+      "title": "Red flag: Complex conditional rendering",
+      "severity": "warning",
+      "description": "Extract sub-components",
+      "tags": [
+        "components",
+        "red-flags"
+      ]
+    },
+    {
+      "id": "components-redflag-inline-styles-appearing",
+      "type": "anti-pattern",
+      "domain": "components",
+      "title": "Red flag: Inline styles appearing",
+      "severity": "warning",
+      "description": "Use design tokens",
+      "tags": [
+        "components",
+        "red-flags"
+      ]
+    },
+    {
+      "id": "components-redflag-copy-pasting-from-another-component",
+      "type": "anti-pattern",
+      "domain": "components",
+      "title": "Red flag: Copy-pasting from another component",
+      "severity": "warning",
+      "description": "Extract shared primitive",
+      "tags": [
+        "components",
+        "red-flags"
+      ]
+    },
+    {
+      "id": "components-redflag-just-in-case-additions",
+      "type": "anti-pattern",
+      "domain": "components",
+      "title": "Red flag: \"Just in case\" additions",
+      "severity": "warning",
+      "description": "Remove. Add when actually needed.",
+      "tags": [
+        "components",
+        "red-flags"
+      ]
+    },
+    {
+      "id": "components-redflag-fighting-the-type-system",
+      "type": "anti-pattern",
+      "domain": "components",
+      "title": "Red flag: Fighting the type system",
+      "severity": "warning",
+      "description": "Design is wrong. Rethink approach.",
+      "tags": [
+        "components",
+        "red-flags"
+      ]
+    },
+    {
+      "id": "components-api-333-rule",
+      "type": "pattern",
+      "domain": "components",
+      "title": "The 3-3-3 Rule for component APIs",
+      "severity": "critical",
+      "description": "3 sizes max: sm, md, lg. 3-5 variants: Only what designs require. 3 props or less: Per feature addition",
+      "tags": [
+        "components",
+        "api-design",
+        "rule"
+      ]
+    },
+    {
+      "id": "components-composition-forbidden-dialog-inside-dialog",
+      "type": "anti-pattern",
+      "domain": "components",
+      "title": "Forbidden composition: Dialog inside Dialog",
+      "severity": "critical",
+      "description": "Creates confusing focus management",
+      "counterExample": "Use multi-step pattern",
+      "tags": [
+        "components",
+        "composition",
+        "forbidden"
+      ]
+    },
+    {
+      "id": "components-composition-forbidden-sheet-inside-sheet",
+      "type": "anti-pattern",
+      "domain": "components",
+      "title": "Forbidden composition: Sheet inside Sheet",
+      "severity": "critical",
+      "description": "Overlapping layers are disorienting",
+      "counterExample": "Use single Sheet with tabs/sections",
+      "tags": [
+        "components",
+        "composition",
+        "forbidden"
+      ]
+    },
+    {
+      "id": "components-composition-forbidden-tooltip-inside-tooltip",
+      "type": "anti-pattern",
+      "domain": "components",
+      "title": "Forbidden composition: Tooltip inside Tooltip",
+      "severity": "critical",
+      "description": "Nested hover states are inaccessible",
+      "counterExample": "Combine into single tooltip",
+      "tags": [
+        "components",
+        "composition",
+        "forbidden"
+      ]
+    },
+    {
+      "id": "components-api-constraint-maximum-props",
+      "type": "rule",
+      "domain": "components",
+      "title": "API constraint: Maximum Props (limit: 7)",
+      "severity": "critical",
+      "description": "Miller's Law - humans can hold 7±2 items in working memory. Action: If more than 7 props needed, split into multiple components or use composition",
+      "tags": [
+        "components",
+        "api-constraints",
+        "props"
+      ]
+    },
+    {
+      "id": "components-api-constraint-maximum-booleans",
+      "type": "rule",
+      "domain": "components",
+      "title": "API constraint: Maximum Booleans (limit: 2)",
+      "severity": "critical",
+      "description": "Boolean props create exponential variant combinations (2^n). Action: Replace boolean combinations with variant enum prop",
+      "tags": [
+        "components",
+        "api-constraints",
+        "props"
+      ]
+    },
+    {
+      "id": "components-api-antipattern-kitchen-sink-component",
+      "type": "anti-pattern",
+      "domain": "components",
+      "title": "API anti-pattern: Kitchen Sink Component",
+      "severity": "warning",
+      "description": "Issue: Does everything, 15+ props. Fix: Split into focused components",
+      "tags": [
+        "components",
+        "api-constraints",
+        "anti-pattern"
+      ]
+    },
+    {
+      "id": "components-api-antipattern-boolean-explosion",
+      "type": "anti-pattern",
+      "domain": "components",
+      "title": "API anti-pattern: Boolean Explosion",
+      "severity": "warning",
+      "description": "Issue: isX, isY, isZ creating 8+ variants. Fix: Single variant enum",
+      "tags": [
+        "components",
+        "api-constraints",
+        "anti-pattern"
+      ]
+    },
+    {
+      "id": "components-api-antipattern-prop-drilling-icons",
+      "type": "anti-pattern",
+      "domain": "components",
+      "title": "API anti-pattern: Prop Drilling Icons",
+      "severity": "warning",
+      "description": "Issue: leftIcon, rightIcon, icon props. Fix: Composition with children",
+      "tags": [
+        "components",
+        "api-constraints",
+        "anti-pattern"
+      ]
+    },
+    {
+      "id": "components-api-antipattern-flat-feature-display",
+      "type": "anti-pattern",
+      "domain": "components",
+      "title": "API anti-pattern: Flat Feature Display",
+      "severity": "warning",
+      "description": "Issue: All 50 options visible at once. Fix: Progressive disclosure",
+      "tags": [
+        "components",
+        "api-constraints",
+        "anti-pattern"
+      ]
+    },
+    {
+      "id": "components-api-antipattern-deep-navigation",
+      "type": "anti-pattern",
+      "domain": "components",
+      "title": "API anti-pattern: Deep Navigation",
+      "severity": "warning",
+      "description": "Issue: 5+ clicks to reach feature. Fix: Flatten hierarchy, add shortcuts",
+      "tags": [
+        "components",
+        "api-constraints",
+        "anti-pattern"
+      ]
+    },
+    {
+      "id": "components-api-antipattern-just-in-case-props",
+      "type": "anti-pattern",
+      "domain": "components",
+      "title": "API anti-pattern: Just In Case Props",
+      "severity": "warning",
+      "description": "Issue: Props added for hypothetical needs. Fix: YAGNI - add when actually needed",
+      "tags": [
+        "components",
+        "api-constraints",
+        "anti-pattern"
+      ]
+    },
+    {
+      "id": "components-atomic-atom",
+      "type": "pattern",
+      "domain": "components",
+      "title": "Atomic level: ATOM — Single element",
+      "severity": "suggestion",
+      "description": "No composition, standalone UI elements. The most basic building blocks.",
+      "example": "Examples: Button, Input, Badge, Avatar, Icon",
+      "context": "State: Local state (useState, useReducer, signals)",
+      "tags": [
+        "components",
+        "architecture",
+        "atomic-design",
+        "atom"
+      ]
+    },
+    {
+      "id": "components-atomic-molecule",
+      "type": "pattern",
+      "domain": "components",
+      "title": "Atomic level: MOLECULE — Atom group",
+      "severity": "suggestion",
+      "description": "Simple groups of atoms working together. Fixed sub-parts with defined structure.",
+      "example": "Examples: Dialog, Tabs, Select, Dropdown, SearchInput",
+      "context": "State: Local state (useState, useReducer, signals)",
+      "tags": [
+        "components",
+        "architecture",
+        "atomic-design",
+        "molecule"
+      ]
+    },
+    {
+      "id": "components-atomic-organism",
+      "type": "pattern",
+      "domain": "components",
+      "title": "Atomic level: ORGANISM — UI section",
+      "severity": "suggestion",
+      "description": "Complex sections with business logic. Self-contained interface components.",
+      "example": "Examples: Header, DataTable, Sidebar, EntityCard",
+      "context": "State: Context or prop drilling",
+      "tags": [
+        "components",
+        "architecture",
+        "atomic-design",
+        "organism"
+      ]
+    },
+    {
+      "id": "components-atomic-template",
+      "type": "pattern",
+      "domain": "components",
+      "title": "Atomic level: TEMPLATE — Page layout",
+      "severity": "suggestion",
+      "description": "Page structure without content. Defines the wireframe and layout grid.",
+      "example": "Examples: PageLayout, TwoColumnLayout, DashboardGrid",
+      "context": "State: State management library (Redux, Zustand, etc.)",
+      "tags": [
+        "components",
+        "architecture",
+        "atomic-design",
+        "template"
+      ]
+    },
+    {
+      "id": "components-atomic-page",
+      "type": "pattern",
+      "domain": "components",
+      "title": "Atomic level: PAGE — Real content",
+      "severity": "suggestion",
+      "description": "Template filled with actual data. Complete user-facing screens.",
+      "example": "Examples: DashboardPage, ListPage, DetailsPage",
+      "context": "State: State management library (Redux, Zustand, etc.)",
+      "tags": [
+        "components",
+        "architecture",
+        "atomic-design",
+        "page"
+      ]
+    },
+    {
+      "id": "components-arch-antipattern-god-component",
+      "type": "anti-pattern",
+      "domain": "components",
+      "title": "Architecture anti-pattern: God Component",
+      "severity": "warning",
+      "description": "Problem: Organism that tries to do everything. Fix: Break into smaller, focused components",
+      "tags": [
+        "components",
+        "architecture",
+        "anti-pattern"
+      ]
+    },
+    {
+      "id": "components-arch-antipattern-leaky-abstraction",
+      "type": "anti-pattern",
+      "domain": "components",
+      "title": "Architecture anti-pattern: Leaky Abstraction",
+      "severity": "warning",
+      "description": "Problem: Exposing internal implementation details. Fix: Keep public APIs clean and stable",
+      "tags": [
+        "components",
+        "architecture",
+        "anti-pattern"
+      ]
+    },
+    {
+      "id": "components-arch-antipattern-wrong-domain",
+      "type": "anti-pattern",
+      "domain": "components",
+      "title": "Architecture anti-pattern: Wrong Domain",
+      "severity": "warning",
+      "description": "Problem: Product-specific logic in Shared or Core. Fix: Keep boundaries clear, move to Products/",
+      "tags": [
+        "components",
+        "architecture",
+        "anti-pattern"
+      ]
+    },
+    {
+      "id": "components-arch-antipattern-missing-type",
+      "type": "anti-pattern",
+      "domain": "components",
+      "title": "Architecture anti-pattern: Missing Type",
+      "severity": "warning",
+      "description": "Problem: Skipping atomic type label. Fix: Essential for understanding complexity",
+      "tags": [
+        "components",
+        "architecture",
+        "anti-pattern"
+      ]
+    },
+    {
+      "id": "components-arch-antipattern-circular-dependency",
+      "type": "anti-pattern",
+      "domain": "components",
+      "title": "Architecture anti-pattern: Circular Dependency",
+      "severity": "warning",
+      "description": "Problem: Import cycles between components. Fix: Always flow dependencies downward",
+      "tags": [
+        "components",
+        "architecture",
+        "anti-pattern"
+      ]
+    },
+    {
+      "id": "components-arch-antipattern-undocumented-component",
+      "type": "anti-pattern",
+      "domain": "components",
+      "title": "Architecture anti-pattern: Undocumented Component",
+      "severity": "warning",
+      "description": "Problem: Missing stories and documentation. Fix: Future maintainers need context",
+      "tags": [
+        "components",
+        "architecture",
+        "anti-pattern"
+      ]
+    },
+    {
+      "id": "components-shadcn-accordion",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Accordion",
+      "severity": "suggestion",
+      "description": "A vertically stacked set of interactive headings that reveal content sections",
+      "example": "npx shadcn@latest add accordion",
+      "context": "Radix primitive: @radix-ui/react-accordion",
+      "tags": [
+        "components",
+        "shadcn",
+        "data-display",
+        "Collapsible sections",
+        "Single or multiple open",
+        "Keyboard navigation"
+      ],
+      "appliesTo": [
+        "AccordionItem",
+        "AccordionTrigger",
+        "AccordionContent"
+      ]
+    },
+    {
+      "id": "components-shadcn-alert",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Alert",
+      "severity": "suggestion",
+      "description": "Displays a callout for user attention with contextual feedback",
+      "example": "npx shadcn@latest add alert",
+      "tags": [
+        "components",
+        "shadcn",
+        "feedback",
+        "Variant styles",
+        "Icon support",
+        "Dismissible option"
+      ],
+      "appliesTo": [
+        "Alert",
+        "AlertTitle",
+        "AlertDescription"
+      ]
+    },
+    {
+      "id": "components-shadcn-alert-dialog",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Alert Dialog",
+      "severity": "suggestion",
+      "description": "A modal dialog that interrupts the user with important content and expects a response",
+      "example": "npx shadcn@latest add alert-dialog",
+      "context": "Radix primitive: @radix-ui/react-alert-dialog",
+      "tags": [
+        "components",
+        "shadcn",
+        "overlay",
+        "Focus trap",
+        "Escape to close",
+        "Accessible"
+      ],
+      "appliesTo": [
+        "AlertDialog",
+        "AlertDialogTrigger",
+        "AlertDialogContent",
+        "AlertDialogHeader",
+        "AlertDialogFooter",
+        "AlertDialogTitle",
+        "AlertDialogDescription",
+        "AlertDialogAction",
+        "AlertDialogCancel"
+      ]
+    },
+    {
+      "id": "components-shadcn-aspect-ratio",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Aspect Ratio",
+      "severity": "suggestion",
+      "description": "Displays content within a desired ratio",
+      "example": "npx shadcn@latest add aspect-ratio",
+      "context": "Radix primitive: @radix-ui/react-aspect-ratio",
+      "tags": [
+        "components",
+        "shadcn",
+        "layout",
+        "Responsive images",
+        "Video embeds",
+        "Custom ratios"
+      ],
+      "appliesTo": [
+        "AspectRatio"
+      ]
+    },
+    {
+      "id": "components-shadcn-avatar",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Avatar",
+      "severity": "suggestion",
+      "description": "An image element with a fallback for representing the user",
+      "example": "npx shadcn@latest add avatar",
+      "context": "Radix primitive: @radix-ui/react-avatar",
+      "tags": [
+        "components",
+        "shadcn",
+        "data-display",
+        "Image fallback",
+        "Initials display",
+        "Size variants"
+      ],
+      "appliesTo": [
+        "Avatar",
+        "AvatarImage",
+        "AvatarFallback"
+      ]
+    },
+    {
+      "id": "components-shadcn-badge",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Badge",
+      "severity": "suggestion",
+      "description": "Displays a badge or a component that looks like a badge",
+      "example": "npx shadcn@latest add badge",
+      "tags": [
+        "components",
+        "shadcn",
+        "data-display",
+        "Multiple variants",
+        "Outline style",
+        "Destructive state"
+      ],
+      "appliesTo": [
+        "Badge"
+      ]
+    },
+    {
+      "id": "components-shadcn-breadcrumb",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Breadcrumb",
+      "severity": "suggestion",
+      "description": "Displays the path to the current resource using a hierarchy of links",
+      "example": "npx shadcn@latest add breadcrumb",
+      "tags": [
+        "components",
+        "shadcn",
+        "navigation",
+        "Custom separators",
+        "Responsive collapse",
+        "Accessible navigation"
+      ],
+      "appliesTo": [
+        "Breadcrumb",
+        "BreadcrumbList",
+        "BreadcrumbItem",
+        "BreadcrumbLink",
+        "BreadcrumbPage",
+        "BreadcrumbSeparator",
+        "BreadcrumbEllipsis"
+      ]
+    },
+    {
+      "id": "components-shadcn-button",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Button",
+      "severity": "suggestion",
+      "description": "Displays a button or a component that looks like a button",
+      "example": "npx shadcn@latest add button",
+      "tags": [
+        "components",
+        "shadcn",
+        "forms",
+        "Multiple variants",
+        "Size options",
+        "Icon support",
+        "Loading state",
+        "As child pattern"
+      ],
+      "appliesTo": [
+        "Button"
+      ]
+    },
+    {
+      "id": "components-shadcn-button-group",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Button Group",
+      "severity": "suggestion",
+      "description": "Groups related buttons together",
+      "example": "npx shadcn@latest add button-group",
+      "tags": [
+        "components",
+        "shadcn",
+        "forms",
+        "Horizontal layout",
+        "Connected appearance"
+      ],
+      "appliesTo": [
+        "ButtonGroup"
+      ]
+    },
+    {
+      "id": "components-shadcn-calendar",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Calendar",
+      "severity": "suggestion",
+      "description": "A date field component that allows users to enter and edit date",
+      "example": "npx shadcn@latest add calendar",
+      "tags": [
+        "components",
+        "shadcn",
+        "forms",
+        "Date selection",
+        "Range selection",
+        "Disabled dates",
+        "react-day-picker"
+      ],
+      "appliesTo": [
+        "Calendar"
+      ]
+    },
+    {
+      "id": "components-shadcn-card",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Card",
+      "severity": "suggestion",
+      "description": "Displays a card with header, content, and footer",
+      "example": "npx shadcn@latest add card",
+      "tags": [
+        "components",
+        "shadcn",
+        "data-display",
+        "Flexible layout",
+        "Header/footer sections",
+        "Content container"
+      ],
+      "appliesTo": [
+        "Card",
+        "CardHeader",
+        "CardFooter",
+        "CardTitle",
+        "CardDescription",
+        "CardContent"
+      ]
+    },
+    {
+      "id": "components-shadcn-carousel",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Carousel",
+      "severity": "suggestion",
+      "description": "A carousel with motion and swipe built using Embla",
+      "example": "npx shadcn@latest add carousel",
+      "tags": [
+        "components",
+        "shadcn",
+        "data-display",
+        "Swipe gestures",
+        "Autoplay",
+        "Embla Carousel"
+      ],
+      "appliesTo": [
+        "Carousel",
+        "CarouselContent",
+        "CarouselItem",
+        "CarouselPrevious",
+        "CarouselNext"
+      ]
+    },
+    {
+      "id": "components-shadcn-chart",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Chart",
+      "severity": "suggestion",
+      "description": "Beautiful charts built using Recharts",
+      "example": "npx shadcn@latest add chart",
+      "tags": [
+        "components",
+        "shadcn",
+        "data-display",
+        "Area charts",
+        "Bar charts",
+        "Line charts",
+        "Pie charts",
+        "Recharts integration"
+      ],
+      "appliesTo": [
+        "ChartContainer",
+        "ChartTooltip",
+        "ChartTooltipContent",
+        "ChartLegend",
+        "ChartLegendContent"
+      ]
+    },
+    {
+      "id": "components-shadcn-checkbox",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Checkbox",
+      "severity": "suggestion",
+      "description": "A control that allows the user to toggle between checked and not checked",
+      "example": "npx shadcn@latest add checkbox",
+      "context": "Radix primitive: @radix-ui/react-checkbox",
+      "tags": [
+        "components",
+        "shadcn",
+        "forms",
+        "Indeterminate state",
+        "Disabled state",
+        "Form integration"
+      ],
+      "appliesTo": [
+        "Checkbox"
+      ]
+    },
+    {
+      "id": "components-shadcn-collapsible",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Collapsible",
+      "severity": "suggestion",
+      "description": "An interactive component which expands/collapses a panel",
+      "example": "npx shadcn@latest add collapsible",
+      "context": "Radix primitive: @radix-ui/react-collapsible",
+      "tags": [
+        "components",
+        "shadcn",
+        "data-display",
+        "Animated expand/collapse",
+        "Controlled state"
+      ],
+      "appliesTo": [
+        "Collapsible",
+        "CollapsibleTrigger",
+        "CollapsibleContent"
+      ]
+    },
+    {
+      "id": "components-shadcn-combobox",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Combobox",
+      "severity": "suggestion",
+      "description": "Autocomplete input and command palette with a list of suggestions",
+      "example": "npx shadcn@latest add combobox",
+      "tags": [
+        "components",
+        "shadcn",
+        "forms",
+        "Search filtering",
+        "Keyboard navigation",
+        "Custom rendering"
+      ]
+    },
+    {
+      "id": "components-shadcn-command",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Command",
+      "severity": "suggestion",
+      "description": "Fast, composable, unstyled command menu for React",
+      "example": "npx shadcn@latest add command",
+      "tags": [
+        "components",
+        "shadcn",
+        "navigation",
+        "Search filtering",
+        "Keyboard shortcuts",
+        "cmdk library"
+      ],
+      "appliesTo": [
+        "Command",
+        "CommandDialog",
+        "CommandInput",
+        "CommandList",
+        "CommandEmpty",
+        "CommandGroup",
+        "CommandItem",
+        "CommandShortcut",
+        "CommandSeparator"
+      ]
+    },
+    {
+      "id": "components-shadcn-context-menu",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Context Menu",
+      "severity": "suggestion",
+      "description": "Displays a menu to the user triggered by right-click",
+      "example": "npx shadcn@latest add context-menu",
+      "context": "Radix primitive: @radix-ui/react-context-menu",
+      "tags": [
+        "components",
+        "shadcn",
+        "navigation",
+        "Nested menus",
+        "Checkbox items",
+        "Radio groups",
+        "Keyboard navigation"
+      ],
+      "appliesTo": [
+        "ContextMenu",
+        "ContextMenuTrigger",
+        "ContextMenuContent",
+        "ContextMenuItem",
+        "ContextMenuCheckboxItem",
+        "ContextMenuRadioItem",
+        "ContextMenuLabel",
+        "ContextMenuSeparator",
+        "ContextMenuShortcut",
+        "ContextMenuGroup",
+        "ContextMenuSub",
+        "ContextMenuSubContent",
+        "ContextMenuSubTrigger",
+        "ContextMenuRadioGroup"
+      ]
+    },
+    {
+      "id": "components-shadcn-data-table",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Data Table",
+      "severity": "suggestion",
+      "description": "Powerful table and datagrids built using TanStack Table",
+      "example": "npx shadcn@latest add table",
+      "tags": [
+        "components",
+        "shadcn",
+        "data-display",
+        "Sorting",
+        "Filtering",
+        "Pagination",
+        "Row selection",
+        "TanStack Table"
+      ]
+    },
+    {
+      "id": "components-shadcn-date-picker",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Date Picker",
+      "severity": "suggestion",
+      "description": "A date picker component with range and presets",
+      "example": "npx shadcn@latest add date-picker",
+      "tags": [
+        "components",
+        "shadcn",
+        "forms",
+        "Single date",
+        "Date range",
+        "Presets"
+      ]
+    },
+    {
+      "id": "components-shadcn-dialog",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Dialog",
+      "severity": "suggestion",
+      "description": "A window overlaid on the primary window, rendering content",
+      "example": "npx shadcn@latest add dialog",
+      "context": "Radix primitive: @radix-ui/react-dialog",
+      "tags": [
+        "components",
+        "shadcn",
+        "overlay",
+        "Focus trap",
+        "Escape to close",
+        "Backdrop click",
+        "Accessible"
+      ],
+      "appliesTo": [
+        "Dialog",
+        "DialogPortal",
+        "DialogOverlay",
+        "DialogTrigger",
+        "DialogClose",
+        "DialogContent",
+        "DialogHeader",
+        "DialogFooter",
+        "DialogTitle",
+        "DialogDescription"
+      ]
+    },
+    {
+      "id": "components-shadcn-drawer",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Drawer",
+      "severity": "suggestion",
+      "description": "A drawer component for React built on top of Vaul",
+      "example": "npx shadcn@latest add drawer",
+      "tags": [
+        "components",
+        "shadcn",
+        "overlay",
+        "Swipe to dismiss",
+        "Snap points",
+        "Vaul library"
+      ],
+      "appliesTo": [
+        "Drawer",
+        "DrawerPortal",
+        "DrawerOverlay",
+        "DrawerTrigger",
+        "DrawerClose",
+        "DrawerContent",
+        "DrawerHeader",
+        "DrawerFooter",
+        "DrawerTitle",
+        "DrawerDescription"
+      ]
+    },
+    {
+      "id": "components-shadcn-dropdown-menu",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Dropdown Menu",
+      "severity": "suggestion",
+      "description": "Displays a menu to the user triggered by a button",
+      "example": "npx shadcn@latest add dropdown-menu",
+      "context": "Radix primitive: @radix-ui/react-dropdown-menu",
+      "tags": [
+        "components",
+        "shadcn",
+        "navigation",
+        "Nested menus",
+        "Checkbox items",
+        "Radio groups",
+        "Keyboard navigation"
+      ],
+      "appliesTo": [
+        "DropdownMenu",
+        "DropdownMenuTrigger",
+        "DropdownMenuContent",
+        "DropdownMenuItem",
+        "DropdownMenuCheckboxItem",
+        "DropdownMenuRadioItem",
+        "DropdownMenuLabel",
+        "DropdownMenuSeparator",
+        "DropdownMenuShortcut",
+        "DropdownMenuGroup",
+        "DropdownMenuPortal",
+        "DropdownMenuSub",
+        "DropdownMenuSubContent",
+        "DropdownMenuSubTrigger",
+        "DropdownMenuRadioGroup"
+      ]
+    },
+    {
+      "id": "components-shadcn-empty",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Empty",
+      "severity": "suggestion",
+      "description": "Empty state placeholder for when there is no data",
+      "example": "npx shadcn@latest add empty",
+      "tags": [
+        "components",
+        "shadcn",
+        "feedback",
+        "Icon placeholder",
+        "Call to action",
+        "Customizable"
+      ],
+      "appliesTo": [
+        "Empty",
+        "EmptyIcon",
+        "EmptyTitle",
+        "EmptyDescription",
+        "EmptyActions"
+      ]
+    },
+    {
+      "id": "components-shadcn-field",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Field",
+      "severity": "suggestion",
+      "description": "Form field wrapper with label, description, and error message",
+      "example": "npx shadcn@latest add field",
+      "tags": [
+        "components",
+        "shadcn",
+        "forms",
+        "Label association",
+        "Error messages",
+        "Description text"
+      ],
+      "appliesTo": [
+        "Field",
+        "FieldLabel",
+        "FieldDescription",
+        "FieldMessage"
+      ]
+    },
+    {
+      "id": "components-shadcn-form",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Form",
+      "severity": "suggestion",
+      "description": "Building forms with React Hook Form and Zod",
+      "example": "npx shadcn@latest add form",
+      "tags": [
+        "components",
+        "shadcn",
+        "forms",
+        "React Hook Form",
+        "Zod validation",
+        "Accessible errors"
+      ],
+      "appliesTo": [
+        "Form",
+        "FormField",
+        "FormItem",
+        "FormLabel",
+        "FormControl",
+        "FormDescription",
+        "FormMessage",
+        "useFormField"
+      ]
+    },
+    {
+      "id": "components-shadcn-hover-card",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Hover Card",
+      "severity": "suggestion",
+      "description": "For sighted users to preview content available behind a link",
+      "example": "npx shadcn@latest add hover-card",
+      "context": "Radix primitive: @radix-ui/react-hover-card",
+      "tags": [
+        "components",
+        "shadcn",
+        "overlay",
+        "Delay open/close",
+        "Side positioning",
+        "Arrow indicator"
+      ],
+      "appliesTo": [
+        "HoverCard",
+        "HoverCardTrigger",
+        "HoverCardContent"
+      ]
+    },
+    {
+      "id": "components-shadcn-input",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Input",
+      "severity": "suggestion",
+      "description": "Displays a form input field or a component that looks like an input",
+      "example": "npx shadcn@latest add input",
+      "tags": [
+        "components",
+        "shadcn",
+        "forms",
+        "Multiple types",
+        "Disabled state",
+        "File input"
+      ],
+      "appliesTo": [
+        "Input"
+      ]
+    },
+    {
+      "id": "components-shadcn-input-group",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Input Group",
+      "severity": "suggestion",
+      "description": "Groups input with addons like icons or buttons",
+      "example": "npx shadcn@latest add input-group",
+      "tags": [
+        "components",
+        "shadcn",
+        "forms",
+        "Prefix/suffix addons",
+        "Icon support"
+      ],
+      "appliesTo": [
+        "InputGroup",
+        "InputGroupAddon"
+      ]
+    },
+    {
+      "id": "components-shadcn-input-otp",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Input OTP",
+      "severity": "suggestion",
+      "description": "Accessible one-time password component with copy paste functionality",
+      "example": "npx shadcn@latest add input-otp",
+      "tags": [
+        "components",
+        "shadcn",
+        "forms",
+        "Auto-advance",
+        "Paste support",
+        "input-otp library"
+      ],
+      "appliesTo": [
+        "InputOTP",
+        "InputOTPGroup",
+        "InputOTPSlot",
+        "InputOTPSeparator"
+      ]
+    },
+    {
+      "id": "components-shadcn-item",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Item",
+      "severity": "suggestion",
+      "description": "A versatile list item component",
+      "example": "npx shadcn@latest add item",
+      "tags": [
+        "components",
+        "shadcn",
+        "data-display",
+        "Icon slot",
+        "Title and description",
+        "Interactive"
+      ],
+      "appliesTo": [
+        "Item",
+        "ItemIcon",
+        "ItemContent",
+        "ItemTitle",
+        "ItemDescription"
+      ]
+    },
+    {
+      "id": "components-shadcn-kbd",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Kbd",
+      "severity": "suggestion",
+      "description": "Displays keyboard shortcut styling",
+      "example": "npx shadcn@latest add kbd",
+      "tags": [
+        "components",
+        "shadcn",
+        "typography",
+        "Keyboard key styling",
+        "Shortcut display"
+      ],
+      "appliesTo": [
+        "Kbd"
+      ]
+    },
+    {
+      "id": "components-shadcn-label",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Label",
+      "severity": "suggestion",
+      "description": "Renders an accessible label associated with controls",
+      "example": "npx shadcn@latest add label",
+      "context": "Radix primitive: @radix-ui/react-label",
+      "tags": [
+        "components",
+        "shadcn",
+        "forms",
+        "Form association",
+        "Required indicator",
+        "Accessible"
+      ],
+      "appliesTo": [
+        "Label"
+      ]
+    },
+    {
+      "id": "components-shadcn-menubar",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Menubar",
+      "severity": "suggestion",
+      "description": "A visually persistent menu common in desktop applications",
+      "example": "npx shadcn@latest add menubar",
+      "context": "Radix primitive: @radix-ui/react-menubar",
+      "tags": [
+        "components",
+        "shadcn",
+        "navigation",
+        "Multiple menus",
+        "Keyboard navigation",
+        "Nested submenus"
+      ],
+      "appliesTo": [
+        "Menubar",
+        "MenubarMenu",
+        "MenubarTrigger",
+        "MenubarContent",
+        "MenubarItem",
+        "MenubarSeparator",
+        "MenubarLabel",
+        "MenubarCheckboxItem",
+        "MenubarRadioGroup",
+        "MenubarRadioItem",
+        "MenubarPortal",
+        "MenubarSubContent",
+        "MenubarSubTrigger",
+        "MenubarGroup",
+        "MenubarSub",
+        "MenubarShortcut"
+      ]
+    },
+    {
+      "id": "components-shadcn-native-select",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Native Select",
+      "severity": "suggestion",
+      "description": "Native HTML select with consistent styling",
+      "example": "npx shadcn@latest add native-select",
+      "tags": [
+        "components",
+        "shadcn",
+        "forms",
+        "Native behavior",
+        "Mobile optimized"
+      ],
+      "appliesTo": [
+        "NativeSelect"
+      ]
+    },
+    {
+      "id": "components-shadcn-navigation-menu",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Navigation Menu",
+      "severity": "suggestion",
+      "description": "A collection of links for navigating websites",
+      "example": "npx shadcn@latest add navigation-menu",
+      "context": "Radix primitive: @radix-ui/react-navigation-menu",
+      "tags": [
+        "components",
+        "shadcn",
+        "navigation",
+        "Mega menu support",
+        "Viewport animation",
+        "Active indicator"
+      ],
+      "appliesTo": [
+        "NavigationMenu",
+        "NavigationMenuList",
+        "NavigationMenuItem",
+        "NavigationMenuContent",
+        "NavigationMenuTrigger",
+        "NavigationMenuLink",
+        "NavigationMenuIndicator",
+        "NavigationMenuViewport"
+      ]
+    },
+    {
+      "id": "components-shadcn-pagination",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Pagination",
+      "severity": "suggestion",
+      "description": "Pagination with page navigation, next and previous links",
+      "example": "npx shadcn@latest add pagination",
+      "tags": [
+        "components",
+        "shadcn",
+        "navigation",
+        "Page numbers",
+        "Prev/next links",
+        "Ellipsis"
+      ],
+      "appliesTo": [
+        "Pagination",
+        "PaginationContent",
+        "PaginationItem",
+        "PaginationLink",
+        "PaginationPrevious",
+        "PaginationNext",
+        "PaginationEllipsis"
+      ]
+    },
+    {
+      "id": "components-shadcn-popover",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Popover",
+      "severity": "suggestion",
+      "description": "Displays rich content in a portal, triggered by a button",
+      "example": "npx shadcn@latest add popover",
+      "context": "Radix primitive: @radix-ui/react-popover",
+      "tags": [
+        "components",
+        "shadcn",
+        "overlay",
+        "Portal rendering",
+        "Side positioning",
+        "Focus management"
+      ],
+      "appliesTo": [
+        "Popover",
+        "PopoverTrigger",
+        "PopoverContent",
+        "PopoverAnchor"
+      ]
+    },
+    {
+      "id": "components-shadcn-progress",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Progress",
+      "severity": "suggestion",
+      "description": "Displays an indicator showing the completion progress of a task",
+      "example": "npx shadcn@latest add progress",
+      "context": "Radix primitive: @radix-ui/react-progress",
+      "tags": [
+        "components",
+        "shadcn",
+        "feedback",
+        "Determinate progress",
+        "Indeterminate state",
+        "Accessible"
+      ],
+      "appliesTo": [
+        "Progress"
+      ]
+    },
+    {
+      "id": "components-shadcn-radio-group",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Radio Group",
+      "severity": "suggestion",
+      "description": "A set of checkable buttons where only one can be checked at a time",
+      "example": "npx shadcn@latest add radio-group",
+      "context": "Radix primitive: @radix-ui/react-radio-group",
+      "tags": [
+        "components",
+        "shadcn",
+        "forms",
+        "Single selection",
+        "Keyboard navigation",
+        "Form integration"
+      ],
+      "appliesTo": [
+        "RadioGroup",
+        "RadioGroupItem"
+      ]
+    },
+    {
+      "id": "components-shadcn-resizable",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Resizable",
+      "severity": "suggestion",
+      "description": "Accessible resizable panel groups and layouts with keyboard support",
+      "example": "npx shadcn@latest add resizable",
+      "tags": [
+        "components",
+        "shadcn",
+        "layout",
+        "Drag to resize",
+        "Keyboard support",
+        "react-resizable-panels"
+      ],
+      "appliesTo": [
+        "ResizablePanelGroup",
+        "ResizablePanel",
+        "ResizableHandle"
+      ]
+    },
+    {
+      "id": "components-shadcn-scroll-area",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Scroll Area",
+      "severity": "suggestion",
+      "description": "Augments native scroll functionality for custom, cross-browser styling",
+      "example": "npx shadcn@latest add scroll-area",
+      "context": "Radix primitive: @radix-ui/react-scroll-area",
+      "tags": [
+        "components",
+        "shadcn",
+        "layout",
+        "Custom scrollbar",
+        "Touch support",
+        "Horizontal/vertical"
+      ],
+      "appliesTo": [
+        "ScrollArea",
+        "ScrollBar"
+      ]
+    },
+    {
+      "id": "components-shadcn-select",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Select",
+      "severity": "suggestion",
+      "description": "Displays a list of options for the user to pick from",
+      "example": "npx shadcn@latest add select",
+      "context": "Radix primitive: @radix-ui/react-select",
+      "tags": [
+        "components",
+        "shadcn",
+        "forms",
+        "Typeahead",
+        "Groups",
+        "Custom positioning"
+      ],
+      "appliesTo": [
+        "Select",
+        "SelectGroup",
+        "SelectValue",
+        "SelectTrigger",
+        "SelectContent",
+        "SelectLabel",
+        "SelectItem",
+        "SelectSeparator",
+        "SelectScrollUpButton",
+        "SelectScrollDownButton"
+      ]
+    },
+    {
+      "id": "components-shadcn-separator",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Separator",
+      "severity": "suggestion",
+      "description": "Visually or semantically separates content",
+      "example": "npx shadcn@latest add separator",
+      "context": "Radix primitive: @radix-ui/react-separator",
+      "tags": [
+        "components",
+        "shadcn",
+        "layout",
+        "Horizontal/vertical",
+        "Decorative option"
+      ],
+      "appliesTo": [
+        "Separator"
+      ]
+    },
+    {
+      "id": "components-shadcn-sheet",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Sheet",
+      "severity": "suggestion",
+      "description": "Extends the Dialog component to display content that complements the main content",
+      "example": "npx shadcn@latest add sheet",
+      "context": "Radix primitive: @radix-ui/react-dialog",
+      "tags": [
+        "components",
+        "shadcn",
+        "overlay",
+        "Side positioning",
+        "Slide animation",
+        "Focus trap"
+      ],
+      "appliesTo": [
+        "Sheet",
+        "SheetPortal",
+        "SheetOverlay",
+        "SheetTrigger",
+        "SheetClose",
+        "SheetContent",
+        "SheetHeader",
+        "SheetFooter",
+        "SheetTitle",
+        "SheetDescription"
+      ]
+    },
+    {
+      "id": "components-shadcn-sidebar",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Sidebar",
+      "severity": "suggestion",
+      "description": "A composable, themeable and customizable sidebar component",
+      "example": "npx shadcn@latest add sidebar",
+      "tags": [
+        "components",
+        "shadcn",
+        "navigation",
+        "Collapsible",
+        "Multiple variants",
+        "Mobile responsive"
+      ],
+      "appliesTo": [
+        "Sidebar",
+        "SidebarContent",
+        "SidebarFooter",
+        "SidebarGroup",
+        "SidebarGroupAction",
+        "SidebarGroupContent",
+        "SidebarGroupLabel",
+        "SidebarHeader",
+        "SidebarInput",
+        "SidebarInset",
+        "SidebarMenu",
+        "SidebarMenuAction",
+        "SidebarMenuBadge",
+        "SidebarMenuButton",
+        "SidebarMenuItem",
+        "SidebarMenuSkeleton",
+        "SidebarMenuSub",
+        "SidebarMenuSubButton",
+        "SidebarMenuSubItem",
+        "SidebarProvider",
+        "SidebarRail",
+        "SidebarSeparator",
+        "SidebarTrigger"
+      ]
+    },
+    {
+      "id": "components-shadcn-skeleton",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Skeleton",
+      "severity": "suggestion",
+      "description": "Use to show a placeholder while content is loading",
+      "example": "npx shadcn@latest add skeleton",
+      "tags": [
+        "components",
+        "shadcn",
+        "feedback",
+        "Pulse animation",
+        "Custom shapes"
+      ],
+      "appliesTo": [
+        "Skeleton"
+      ]
+    },
+    {
+      "id": "components-shadcn-slider",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Slider",
+      "severity": "suggestion",
+      "description": "An input where the user selects a value from within a given range",
+      "example": "npx shadcn@latest add slider",
+      "context": "Radix primitive: @radix-ui/react-slider",
+      "tags": [
+        "components",
+        "shadcn",
+        "forms",
+        "Range support",
+        "Step increments",
+        "Keyboard navigation"
+      ],
+      "appliesTo": [
+        "Slider"
+      ]
+    },
+    {
+      "id": "components-shadcn-sonner",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Sonner",
+      "severity": "suggestion",
+      "description": "An opinionated toast component for React",
+      "example": "npx shadcn@latest add sonner",
+      "tags": [
+        "components",
+        "shadcn",
+        "feedback",
+        "Auto dismiss",
+        "Multiple positions",
+        "Sonner library"
+      ],
+      "appliesTo": [
+        "Toaster"
+      ]
+    },
+    {
+      "id": "components-shadcn-spinner",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Spinner",
+      "severity": "suggestion",
+      "description": "A loading spinner indicator",
+      "example": "npx shadcn@latest add spinner",
+      "tags": [
+        "components",
+        "shadcn",
+        "feedback",
+        "Size variants",
+        "Color customization"
+      ],
+      "appliesTo": [
+        "Spinner"
+      ]
+    },
+    {
+      "id": "components-shadcn-switch",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Switch",
+      "severity": "suggestion",
+      "description": "A control that allows the user to toggle between checked and not checked",
+      "example": "npx shadcn@latest add switch",
+      "context": "Radix primitive: @radix-ui/react-switch",
+      "tags": [
+        "components",
+        "shadcn",
+        "forms",
+        "Toggle state",
+        "Disabled state",
+        "Form integration"
+      ],
+      "appliesTo": [
+        "Switch"
+      ]
+    },
+    {
+      "id": "components-shadcn-table",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Table",
+      "severity": "suggestion",
+      "description": "A responsive table component",
+      "example": "npx shadcn@latest add table",
+      "tags": [
+        "components",
+        "shadcn",
+        "data-display",
+        "Responsive",
+        "Striped rows",
+        "Sortable headers"
+      ],
+      "appliesTo": [
+        "Table",
+        "TableHeader",
+        "TableBody",
+        "TableFooter",
+        "TableHead",
+        "TableRow",
+        "TableCell",
+        "TableCaption"
+      ]
+    },
+    {
+      "id": "components-shadcn-tabs",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Tabs",
+      "severity": "suggestion",
+      "description": "A set of layered sections of content displayed one at a time",
+      "example": "npx shadcn@latest add tabs",
+      "context": "Radix primitive: @radix-ui/react-tabs",
+      "tags": [
+        "components",
+        "shadcn",
+        "navigation",
+        "Keyboard navigation",
+        "Orientation",
+        "Activation modes"
+      ],
+      "appliesTo": [
+        "Tabs",
+        "TabsList",
+        "TabsTrigger",
+        "TabsContent"
+      ]
+    },
+    {
+      "id": "components-shadcn-textarea",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Textarea",
+      "severity": "suggestion",
+      "description": "Displays a form textarea or a component that looks like a textarea",
+      "example": "npx shadcn@latest add textarea",
+      "tags": [
+        "components",
+        "shadcn",
+        "forms",
+        "Auto-resize",
+        "Character count"
+      ],
+      "appliesTo": [
+        "Textarea"
+      ]
+    },
+    {
+      "id": "components-shadcn-toast",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Toast",
+      "severity": "suggestion",
+      "description": "A succinct message that is displayed temporarily",
+      "example": "npx shadcn@latest add toast",
+      "context": "Radix primitive: @radix-ui/react-toast",
+      "tags": [
+        "components",
+        "shadcn",
+        "feedback",
+        "Auto dismiss",
+        "Action buttons",
+        "Swipe to dismiss"
+      ],
+      "appliesTo": [
+        "Toast",
+        "ToastAction",
+        "ToastClose",
+        "ToastDescription",
+        "ToastProvider",
+        "ToastTitle",
+        "ToastViewport",
+        "Toaster"
+      ]
+    },
+    {
+      "id": "components-shadcn-toggle",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Toggle",
+      "severity": "suggestion",
+      "description": "A two-state button that can be either on or off",
+      "example": "npx shadcn@latest add toggle",
+      "context": "Radix primitive: @radix-ui/react-toggle",
+      "tags": [
+        "components",
+        "shadcn",
+        "forms",
+        "Pressed state",
+        "Size variants",
+        "Outline style"
+      ],
+      "appliesTo": [
+        "Toggle"
+      ]
+    },
+    {
+      "id": "components-shadcn-toggle-group",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Toggle Group",
+      "severity": "suggestion",
+      "description": "A set of two-state buttons that can be toggled on or off",
+      "example": "npx shadcn@latest add toggle-group",
+      "context": "Radix primitive: @radix-ui/react-toggle-group",
+      "tags": [
+        "components",
+        "shadcn",
+        "forms",
+        "Single or multiple",
+        "Size variants",
+        "Outline style"
+      ],
+      "appliesTo": [
+        "ToggleGroup",
+        "ToggleGroupItem"
+      ]
+    },
+    {
+      "id": "components-shadcn-tooltip",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Tooltip",
+      "severity": "suggestion",
+      "description": "A popup that displays information related to an element",
+      "example": "npx shadcn@latest add tooltip",
+      "context": "Radix primitive: @radix-ui/react-tooltip",
+      "tags": [
+        "components",
+        "shadcn",
+        "overlay",
+        "Delay open/close",
+        "Side positioning",
+        "Arrow indicator"
+      ],
+      "appliesTo": [
+        "Tooltip",
+        "TooltipTrigger",
+        "TooltipContent",
+        "TooltipProvider"
+      ]
+    },
+    {
+      "id": "components-shadcn-typography",
+      "type": "pattern",
+      "domain": "components",
+      "title": "shadcn/ui: Typography",
+      "severity": "suggestion",
+      "description": "Styles for headings, paragraphs, lists and more",
+      "example": "npx shadcn@latest add typography",
+      "tags": [
+        "components",
+        "shadcn",
+        "typography",
+        "Heading styles",
+        "Paragraph styles",
+        "List styles",
+        "Prose styling"
+      ]
+    },
+    {
+      "id": "components-safe-change-add-optional-props",
+      "type": "pattern",
+      "domain": "components",
+      "title": "Safe change: Add Optional Props",
+      "severity": "suggestion",
+      "description": "Use optional syntax, always provide sensible defaults",
+      "example": "Add optional `loading` prop with default `false`; Add optional `className` for custom styling; Add optional callback props (`onFocus`, `onBlur`)",
+      "tags": [
+        "components",
+        "stabilization",
+        "safe-changes",
+        "low"
+      ]
+    },
+    {
+      "id": "components-safe-change-add-new-variants",
+      "type": "pattern",
+      "domain": "components",
+      "title": "Safe change: Add New Variants",
+      "severity": "suggestion",
+      "description": "Extend variant configuration without modifying existing values",
+      "example": "Add `ghost` variant to existing options; Add `lg` size to size options; Add semantic variants (`success`, `warning`)",
+      "tags": [
+        "components",
+        "stabilization",
+        "safe-changes",
+        "low"
+      ]
+    },
+    {
+      "id": "components-safe-change-fix-bugs",
+      "type": "pattern",
+      "domain": "components",
+      "title": "Safe change: Fix Bugs",
+      "severity": "suggestion",
+      "description": "Document fix in changelog, verify no visual regression",
+      "example": "Fix incorrect ARIA attributes; Fix focus trap behavior; Fix contrast ratio issues",
+      "tags": [
+        "components",
+        "stabilization",
+        "safe-changes",
+        "low"
+      ]
+    },
+    {
+      "id": "components-safe-change-improve-internals",
+      "type": "pattern",
+      "domain": "components",
+      "title": "Safe change: Improve Internals",
+      "severity": "suggestion",
+      "description": "Internal changes only, no API surface changes",
+      "example": "Optimize re-render performance; Improve type definitions; Add missing ref forwarding",
+      "tags": [
+        "components",
+        "stabilization",
+        "safe-changes",
+        "low"
+      ]
+    },
+    {
+      "id": "components-safe-change-add-accessibility",
+      "type": "pattern",
+      "domain": "components",
+      "title": "Safe change: Add Accessibility",
+      "severity": "suggestion",
+      "description": "Additive improvements, don't change existing behavior",
+      "example": "Add missing ARIA labels; Improve keyboard navigation; Add screen reader announcements",
+      "tags": [
+        "components",
+        "stabilization",
+        "safe-changes",
+        "low"
+      ]
+    },
+    {
+      "id": "components-breaking-change-rename-props",
+      "type": "rule",
+      "domain": "components",
+      "title": "Breaking change risk: Rename Props",
+      "severity": "critical",
+      "description": "Mitigation: Deprecate old prop, support both during transition",
+      "example": "`isDisabled` → `disabled`; `onClick` → `onPress`; `variant` → `appearance`",
+      "tags": [
+        "components",
+        "stabilization",
+        "breaking-changes"
+      ]
+    },
+    {
+      "id": "components-breaking-change-remove-props",
+      "type": "rule",
+      "domain": "components",
+      "title": "Breaking change risk: Remove Props",
+      "severity": "critical",
+      "description": "Mitigation: Mark `@deprecated`, maintain for 2 major versions minimum",
+      "example": "Remove `size` prop entirely; Remove deprecated variant; Remove callback prop",
+      "tags": [
+        "components",
+        "stabilization",
+        "breaking-changes"
+      ]
+    },
+    {
+      "id": "components-breaking-change-change-prop-types",
+      "type": "rule",
+      "domain": "components",
+      "title": "Breaking change risk: Change Prop Types",
+      "severity": "critical",
+      "description": "Mitigation: Use union types to support both during transition",
+      "example": "`string` → `number`; `boolean` → `enum`; `ReactNode` → `string`",
+      "tags": [
+        "components",
+        "stabilization",
+        "breaking-changes"
+      ]
+    },
+    {
+      "id": "components-breaking-change-remove-exports",
+      "type": "rule",
+      "domain": "components",
+      "title": "Breaking change risk: Remove Exports",
+      "severity": "critical",
+      "description": "Mitigation: Re-export from new location, mark `@deprecated`",
+      "example": "Remove component from public API; Remove sub-component export; Remove type export",
+      "tags": [
+        "components",
+        "stabilization",
+        "breaking-changes"
+      ]
+    },
+    {
+      "id": "components-clean-code-dead-code",
+      "type": "anti-pattern",
+      "domain": "components",
+      "title": "Clean code: Dead code",
+      "severity": "warning",
+      "description": "Problem: Commented out code, unused variables. Fix: Remove completely - version control is your backup",
+      "tags": [
+        "components",
+        "clean-code",
+        "anti-pattern"
+      ]
+    },
+    {
+      "id": "components-clean-code-duplicated-logic",
+      "type": "anti-pattern",
+      "domain": "components",
+      "title": "Clean code: Duplicated logic",
+      "severity": "warning",
+      "description": "Problem: Same validation in multiple places. Fix: Single source of truth utility",
+      "tags": [
+        "components",
+        "clean-code",
+        "anti-pattern"
+      ]
+    },
+    {
+      "id": "components-clean-code-repeated-calculations",
+      "type": "anti-pattern",
+      "domain": "components",
+      "title": "Clean code: Repeated calculations",
+      "severity": "warning",
+      "description": "Problem: Recalculates on every render. Fix: Memoize appropriately",
+      "tags": [
+        "components",
+        "clean-code",
+        "anti-pattern"
+      ]
+    },
+    {
+      "id": "components-clean-code-silent-failures",
+      "type": "anti-pattern",
+      "domain": "components",
+      "title": "Clean code: Silent failures",
+      "severity": "warning",
+      "description": "Problem: Errors logged but user unaware. Fix: Add UI feedback for all errors",
+      "tags": [
+        "components",
+        "clean-code",
+        "anti-pattern"
+      ]
+    },
+    {
+      "id": "components-clean-code-magic-numbers",
+      "type": "anti-pattern",
+      "domain": "components",
+      "title": "Clean code: Magic numbers",
+      "severity": "warning",
+      "description": "Problem: Hardcoded values without context. Fix: Named constants with meaningful names",
+      "tags": [
+        "components",
+        "clean-code",
+        "anti-pattern"
+      ]
+    },
+    {
+      "id": "components-function-size-warning",
+      "type": "rule",
+      "domain": "components",
+      "title": "Function size Warning: 25-35 lines",
+      "severity": "warning",
+      "description": "Consider extraction",
+      "tags": [
+        "components",
+        "clean-code",
+        "function-size"
+      ]
+    },
+    {
+      "id": "components-function-size-critical",
+      "type": "rule",
+      "domain": "components",
+      "title": "Function size Critical: >35 lines",
+      "severity": "critical",
+      "description": "Extract immediately",
+      "tags": [
+        "components",
+        "clean-code",
+        "function-size"
+      ]
+    },
+    {
+      "id": "components-file-limit-component",
+      "type": "rule",
+      "domain": "components",
+      "title": "File limit: Component max 300 lines",
+      "severity": "warning",
+      "description": "Extract sub-components",
+      "tags": [
+        "components",
+        "clean-code",
+        "file-limits"
+      ]
+    },
+    {
+      "id": "components-file-limit-dialog-modal",
+      "type": "rule",
+      "domain": "components",
+      "title": "File limit: Dialog/Modal max 400 lines",
+      "severity": "warning",
+      "description": "Extract content sections",
+      "tags": [
+        "components",
+        "clean-code",
+        "file-limits"
+      ]
+    },
+    {
+      "id": "components-file-limit-types-file",
+      "type": "rule",
+      "domain": "components",
+      "title": "File limit: Types file max 400 lines",
+      "severity": "warning",
+      "description": "Move utilities to separate file",
+      "tags": [
+        "components",
+        "clean-code",
+        "file-limits"
+      ]
+    },
+    {
+      "id": "components-file-limit-utils-file",
+      "type": "rule",
+      "domain": "components",
+      "title": "File limit: Utils file max 150 lines",
+      "severity": "warning",
+      "description": "Split by domain",
+      "tags": [
+        "components",
+        "clean-code",
+        "file-limits"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,366 @@
+{
+  "domain": "color-system",
+  "version": "1.0.0",
+  "entries": [
+    {
+      "id": "color-system-context-page",
+      "type": "pattern",
+      "domain": "color-system",
+      "title": "Color context: page",
+      "severity": "suggestion",
+      "description": "Main page background. Light: bg-white",
+      "tags": [
+        "color-system",
+        "context",
+        "page"
+      ]
+    },
+    {
+      "id": "color-system-context-card",
+      "type": "pattern",
+      "domain": "color-system",
+      "title": "Color context: card",
+      "severity": "suggestion",
+      "description": "Content cards, panels. Light: bg-white, Dark: bg-primary-800",
+      "tags": [
+        "color-system",
+        "context",
+        "card"
+      ]
+    },
+    {
+      "id": "color-system-context-surface",
+      "type": "pattern",
+      "domain": "color-system",
+      "title": "Color context: surface",
+      "severity": "suggestion",
+      "description": "Nested containers inside cards. Light: bg-neutral-50, Dark: bg-neutral-900",
+      "tags": [
+        "color-system",
+        "context",
+        "surface"
+      ]
+    },
+    {
+      "id": "color-system-context-button",
+      "type": "pattern",
+      "domain": "color-system",
+      "title": "Color context: button",
+      "severity": "suggestion",
+      "description": "Interactive button variants. Variants: primary, secondary, destructive, outline, ghost",
+      "tags": [
+        "color-system",
+        "context",
+        "button"
+      ]
+    },
+    {
+      "id": "color-system-context-input",
+      "type": "pattern",
+      "domain": "color-system",
+      "title": "Color context: input",
+      "severity": "suggestion",
+      "description": "Form inputs, selects, textareas",
+      "tags": [
+        "color-system",
+        "context",
+        "input"
+      ]
+    },
+    {
+      "id": "color-system-context-badge",
+      "type": "pattern",
+      "domain": "color-system",
+      "title": "Color context: badge",
+      "severity": "suggestion",
+      "description": "Status badges, tags. Variants: default, success, warning, error, info, accent",
+      "tags": [
+        "color-system",
+        "context",
+        "badge"
+      ]
+    },
+    {
+      "id": "color-system-harmony-p1-contrast-requirement",
+      "type": "rule",
+      "domain": "color-system",
+      "title": "Color harmony: Text on backgrounds must meet WCAG AA (4.5:1) minimum",
+      "severity": "critical",
+      "description": "Text on backgrounds must meet WCAG AA (4.5:1) minimum",
+      "example": "Always check contrast-matrix.json before applying colors",
+      "tags": [
+        "color-system",
+        "harmony",
+        "contrast"
+      ]
+    },
+    {
+      "id": "color-system-harmony-p2-family-contrast",
+      "type": "rule",
+      "domain": "color-system",
+      "title": "Color harmony: Same color family requires 400+ shade difference",
+      "severity": "critical",
+      "description": "If PRIMARY on PRIMARY → require |shade1 - shade2| >= 400",
+      "why": "PRIMARY[500] on PRIMARY[600] has insufficient contrast",
+      "example": "Good: PRIMARY[100] on PRIMARY[900] (800 step gap)",
+      "counterExample": "Bad: PRIMARY[200] on PRIMARY[500] (300 step gap)",
+      "tags": [
+        "color-system",
+        "harmony",
+        "contrast"
+      ]
+    },
+    {
+      "id": "color-system-harmony-p3-semantic-consistency",
+      "type": "rule",
+      "domain": "color-system",
+      "title": "Color harmony: Use semantic tokens consistently",
+      "severity": "critical",
+      "description": "text-primary, text-secondary, text-muted map to appropriate shades",
+      "tags": [
+        "color-system",
+        "harmony",
+        "contrast"
+      ]
+    },
+    {
+      "id": "color-system-forbidden-same-family-on-itself-without-400-gap",
+      "type": "anti-pattern",
+      "domain": "color-system",
+      "title": "Color forbidden: Same family on itself without 400+ gap",
+      "severity": "critical",
+      "description": "Insufficient contrast",
+      "example": "PRIMARY[300] on PRIMARY[500], NEUTRAL[400] on NEUTRAL[600]",
+      "tags": [
+        "color-system",
+        "forbidden"
+      ]
+    },
+    {
+      "id": "color-system-forbidden-raw-hex-colors",
+      "type": "anti-pattern",
+      "domain": "color-system",
+      "title": "Color forbidden: Raw hex colors",
+      "severity": "critical",
+      "description": "Breaks design system, not maintainable",
+      "example": "#FF0000, rgb(255,0,0)",
+      "tags": [
+        "color-system",
+        "forbidden"
+      ]
+    },
+    {
+      "id": "color-system-forbidden-standard-tailwind-colors",
+      "type": "anti-pattern",
+      "domain": "color-system",
+      "title": "Color forbidden: Standard Tailwind colors",
+      "severity": "critical",
+      "description": "Not design system tokens",
+      "example": "bg-blue-500, text-red-600",
+      "tags": [
+        "color-system",
+        "forbidden"
+      ]
+    },
+    {
+      "id": "color-system-depth-layer-elevated",
+      "type": "pattern",
+      "domain": "color-system",
+      "title": "Depth layer: Elevated (depth 1)",
+      "severity": "suggestion",
+      "description": "Use: Modals, dropdowns, highest elevation. Token: bg-elevated",
+      "example": "Shadow: shadow-lg. Light: IVORY[50]",
+      "tags": [
+        "color-system",
+        "depth",
+        "layering"
+      ]
+    },
+    {
+      "id": "color-system-depth-layer-card",
+      "type": "pattern",
+      "domain": "color-system",
+      "title": "Depth layer: Card (depth 2)",
+      "severity": "suggestion",
+      "description": "Use: Primary cards, content containers. Token: bg-elevated",
+      "example": "Shadow: shadow-md. Light: IVORY[50]",
+      "tags": [
+        "color-system",
+        "depth",
+        "layering"
+      ]
+    },
+    {
+      "id": "color-system-depth-layer-surface",
+      "type": "pattern",
+      "domain": "color-system",
+      "title": "Depth layer: Surface (depth 3)",
+      "severity": "suggestion",
+      "description": "Use: Nested containers, sections. Token: bg-surface",
+      "example": "Shadow: shadow-sm. Light: IVORY[100]",
+      "tags": [
+        "color-system",
+        "depth",
+        "layering"
+      ]
+    },
+    {
+      "id": "color-system-depth-layer-surfacehover",
+      "type": "pattern",
+      "domain": "color-system",
+      "title": "Depth layer: SurfaceHover (depth 4)",
+      "severity": "suggestion",
+      "description": "Use: Hover states on surface. Token: bg-surfaceHover",
+      "example": "Shadow: none. Light: IVORY[300]",
+      "tags": [
+        "color-system",
+        "depth",
+        "layering"
+      ]
+    },
+    {
+      "id": "color-system-depth-layer-page",
+      "type": "pattern",
+      "domain": "color-system",
+      "title": "Depth layer: Page (depth 5)",
+      "severity": "suggestion",
+      "description": "Use: Page background. Token: bg-page",
+      "example": "Shadow: none. Light: IVORY[400]",
+      "tags": [
+        "color-system",
+        "depth",
+        "layering"
+      ]
+    },
+    {
+      "id": "color-system-depth-antipattern-page-lighter-than-card",
+      "type": "anti-pattern",
+      "domain": "color-system",
+      "title": "Depth anti-pattern: Page lighter than card",
+      "severity": "warning",
+      "description": "Inverts depth perception. Fix: Use bg-page for page",
+      "tags": [
+        "color-system",
+        "depth",
+        "anti-pattern"
+      ]
+    },
+    {
+      "id": "color-system-depth-antipattern-elevated-without-shadow",
+      "type": "anti-pattern",
+      "domain": "color-system",
+      "title": "Depth anti-pattern: Elevated without shadow",
+      "severity": "warning",
+      "description": "Looks flat despite bg. Fix: Add shadow-md or shadow-lg",
+      "tags": [
+        "color-system",
+        "depth",
+        "anti-pattern"
+      ]
+    },
+    {
+      "id": "color-system-depth-antipattern-raw-colors-for-layers",
+      "type": "anti-pattern",
+      "domain": "color-system",
+      "title": "Depth anti-pattern: Raw colors for layers",
+      "severity": "warning",
+      "description": "Breaks dark mode. Fix: Use semantic tokens",
+      "tags": [
+        "color-system",
+        "depth",
+        "anti-pattern"
+      ]
+    },
+    {
+      "id": "color-system-depth-antipattern-skip-2-shade-steps",
+      "type": "anti-pattern",
+      "domain": "color-system",
+      "title": "Depth anti-pattern: Skip >2 shade steps",
+      "severity": "warning",
+      "description": "Jarring contrast. Fix: Use intermediate layer",
+      "tags": [
+        "color-system",
+        "depth",
+        "anti-pattern"
+      ]
+    },
+    {
+      "id": "color-system-depth-antipattern-nested-same-shade-no-border",
+      "type": "anti-pattern",
+      "domain": "color-system",
+      "title": "Depth anti-pattern: Nested same-shade no border",
+      "severity": "warning",
+      "description": "Elements merge. Fix: Add border or different shade",
+      "tags": [
+        "color-system",
+        "depth",
+        "anti-pattern"
+      ]
+    },
+    {
+      "id": "color-system-depth-antipattern-using-bg-white-for-page",
+      "type": "anti-pattern",
+      "domain": "color-system",
+      "title": "Depth anti-pattern: Using bg-white for page",
+      "severity": "warning",
+      "description": "Wrong in dark mode. Fix: Use bg-page",
+      "tags": [
+        "color-system",
+        "depth",
+        "anti-pattern"
+      ]
+    },
+    {
+      "id": "color-system-depth-antipattern-using-bg-gray-anywhere",
+      "type": "anti-pattern",
+      "domain": "color-system",
+      "title": "Depth anti-pattern: Using bg-gray-* anywhere",
+      "severity": "warning",
+      "description": "Not a design system token. Fix: Find semantic equivalent",
+      "tags": [
+        "color-system",
+        "depth",
+        "anti-pattern"
+      ]
+    },
+    {
+      "id": "color-system-dark-mode-formula",
+      "type": "rule",
+      "domain": "color-system",
+      "title": "Dark mode formula: Dark = 950 - Light",
+      "severity": "critical",
+      "description": "Shade mapping: 50 ↔ 900, 100 ↔ 800, 200 ↔ 700, 300 ↔ 600, 400 ↔ 500, 500 ↔ 400",
+      "tags": [
+        "color-system",
+        "dark-mode",
+        "formula"
+      ]
+    },
+    {
+      "id": "color-system-dark-mode-semantic-tokens",
+      "type": "pattern",
+      "domain": "color-system",
+      "title": "Dark mode semantic tokens",
+      "severity": "suggestion",
+      "description": "background: page: light=white or cream, dark=PRIMARY[900]; surface: light=white, dark=PRIMARY[800]; surfaceHover: light=PRIMARY[50], dark=PRIMARY[700]; elevated: light=white, dark=PRIMARY[700]; inverse: light=PRIMARY[500], dark=white | text: primary: light=PRIMARY[500], dark=NEUTRAL[100]; secondary: light=NEUTRAL[500], dark=NEUTRAL[300]; disabled: light=NEUTRAL[300], dark=NEUTRAL[600]; inverse: light=white, dark=PRIMARY[500] | border: default: light=NEUTRAL[300], dark=NEUTRAL[600]; subtle: light=PRIMARY[100], dark=PRIMARY[800]; strong: light=PRIMARY[300], dark=PRIMARY[600]",
+      "tags": [
+        "color-system",
+        "dark-mode",
+        "semantic-tokens"
+      ]
+    },
+    {
+      "id": "color-system-dark-mode-antipattern",
+      "type": "anti-pattern",
+      "domain": "color-system",
+      "title": "Dark mode anti-pattern: Hardcoded isDark ternaries - use CSS variables instead",
+      "severity": "critical",
+      "description": "Hardcoded isDark ternaries - use CSS variables instead",
+      "tags": [
+        "color-system",
+        "dark-mode",
+        "anti-pattern"
+      ]
+    }
+  ]
+}

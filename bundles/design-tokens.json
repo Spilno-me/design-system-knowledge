@@ -1,0 +1,504 @@
+{
+  "domain": "design-tokens",
+  "version": "1.0.0",
+  "entries": [
+    {
+      "id": "design-tokens-forbidden-bg-blue-d",
+      "type": "rule",
+      "domain": "design-tokens",
+      "title": "Forbidden: bg-blue-\\d+",
+      "severity": "critical",
+      "description": "Use semantic bg-primary-* tokens",
+      "context": "Token usage validation",
+      "tags": [
+        "tokens",
+        "forbidden",
+        "validation"
+      ]
+    },
+    {
+      "id": "design-tokens-forbidden-text-red-d",
+      "type": "rule",
+      "domain": "design-tokens",
+      "title": "Forbidden: text-red-\\d+",
+      "severity": "critical",
+      "description": "Use semantic text-error-* or text-destructive-* tokens",
+      "context": "Token usage validation",
+      "tags": [
+        "tokens",
+        "forbidden",
+        "validation"
+      ]
+    },
+    {
+      "id": "design-tokens-forbidden-bg-slate-d",
+      "type": "rule",
+      "domain": "design-tokens",
+      "title": "Forbidden: bg-slate-\\d+",
+      "severity": "critical",
+      "description": "Use semantic bg-neutral-* tokens",
+      "context": "Token usage validation",
+      "tags": [
+        "tokens",
+        "forbidden",
+        "validation"
+      ]
+    },
+    {
+      "id": "design-tokens-forbidden-bg-gray-d",
+      "type": "rule",
+      "domain": "design-tokens",
+      "title": "Forbidden: bg-gray-\\d+",
+      "severity": "critical",
+      "description": "Use semantic bg-neutral-* tokens",
+      "context": "Token usage validation",
+      "tags": [
+        "tokens",
+        "forbidden",
+        "validation"
+      ]
+    },
+    {
+      "id": "design-tokens-forbidden-0-9a-fa-f-6",
+      "type": "rule",
+      "domain": "design-tokens",
+      "title": "Forbidden: #[0-9a-fA-F]{6}",
+      "severity": "critical",
+      "description": "Hardcoded hex colors bypass theming",
+      "context": "Token usage validation",
+      "tags": [
+        "tokens",
+        "forbidden",
+        "validation"
+      ]
+    },
+    {
+      "id": "design-tokens-forbidden-0-9a-fa-f-3-0-9a-fa-f",
+      "type": "rule",
+      "domain": "design-tokens",
+      "title": "Forbidden: #[0-9a-fA-F]{3}(?![0-9a-fA-F])",
+      "severity": "critical",
+      "description": "Hardcoded shorthand hex colors bypass theming",
+      "context": "Token usage validation",
+      "tags": [
+        "tokens",
+        "forbidden",
+        "validation"
+      ]
+    },
+    {
+      "id": "design-tokens-forbidden-rgb",
+      "type": "rule",
+      "domain": "design-tokens",
+      "title": "Forbidden: rgb\\([^)]+\\)",
+      "severity": "critical",
+      "description": "rgb() values bypass theming",
+      "context": "Token usage validation",
+      "tags": [
+        "tokens",
+        "forbidden",
+        "validation"
+      ]
+    },
+    {
+      "id": "design-tokens-forbidden-rgba",
+      "type": "rule",
+      "domain": "design-tokens",
+      "title": "Forbidden: rgba\\([^)]+\\)",
+      "severity": "warning",
+      "description": "Use Tailwind opacity modifiers (bg-primary-500/50)",
+      "context": "Token usage validation",
+      "tags": [
+        "tokens",
+        "forbidden",
+        "validation"
+      ]
+    },
+    {
+      "id": "design-tokens-forbidden-hsl",
+      "type": "rule",
+      "domain": "design-tokens",
+      "title": "Forbidden: hsl\\([^)]+\\)",
+      "severity": "critical",
+      "description": "hsl() values bypass theming",
+      "context": "Token usage validation",
+      "tags": [
+        "tokens",
+        "forbidden",
+        "validation"
+      ]
+    },
+    {
+      "id": "design-tokens-forbidden-hsla",
+      "type": "rule",
+      "domain": "design-tokens",
+      "title": "Forbidden: hsla\\([^)]+\\)",
+      "severity": "warning",
+      "description": "Use Tailwind opacity modifiers",
+      "context": "Token usage validation",
+      "tags": [
+        "tokens",
+        "forbidden",
+        "validation"
+      ]
+    },
+    {
+      "id": "design-tokens-priority-rank-1-semantic",
+      "type": "pattern",
+      "domain": "design-tokens",
+      "title": "Token Priority 1: Semantic",
+      "severity": "critical",
+      "description": "Color conveys meaning. Examples: text-warning, bg-error, border-success",
+      "context": "Semantic tokens first. Always prefer tokens that convey meaning.",
+      "why": "Self-documenting (code reads as intent); Theme-aware (dark mode automatic); Consistent (all warnings look the same); Maintainable (change once, updates everywhere)",
+      "tags": [
+        "tokens",
+        "priority",
+        "semantic",
+        "semantic"
+      ]
+    },
+    {
+      "id": "design-tokens-priority-rank-2-contextual",
+      "type": "pattern",
+      "domain": "design-tokens",
+      "title": "Token Priority 2: Contextual",
+      "severity": "critical",
+      "description": "UI structure (text, backgrounds). Examples: text-primary, bg-surface, border-default",
+      "context": "Semantic tokens first. Always prefer tokens that convey meaning.",
+      "why": "Self-documenting (code reads as intent); Theme-aware (dark mode automatic); Consistent (all warnings look the same); Maintainable (change once, updates everywhere)",
+      "tags": [
+        "tokens",
+        "priority",
+        "semantic",
+        "contextual"
+      ]
+    },
+    {
+      "id": "design-tokens-priority-rank-3-primitive",
+      "type": "pattern",
+      "domain": "design-tokens",
+      "title": "Token Priority 3: Primitive",
+      "severity": "critical",
+      "description": "Only when neither above fits. Examples: text-primary-500, bg-error-200",
+      "context": "Semantic tokens first. Always prefer tokens that convey meaning.",
+      "why": "Self-documenting (code reads as intent); Theme-aware (dark mode automatic); Consistent (all warnings look the same); Maintainable (change once, updates everywhere)",
+      "tags": [
+        "tokens",
+        "priority",
+        "semantic",
+        "primitive"
+      ]
+    },
+    {
+      "id": "design-tokens-styling-prefer-tailwind",
+      "type": "rule",
+      "domain": "design-tokens",
+      "title": "Prefer Tailwind classes over inline styles",
+      "severity": "warning",
+      "description": "Tailwind classes over inline styles",
+      "context": "Avoid !important: Fix specificity at source instead",
+      "tags": [
+        "tokens",
+        "styling",
+        "tailwind"
+      ]
+    },
+    {
+      "id": "design-tokens-recommendations-map",
+      "type": "pattern",
+      "domain": "design-tokens",
+      "title": "Token replacement recommendations",
+      "severity": "suggestion",
+      "description": "Common color-to-token mappings: bg-blue-500 → bg-primary-500, bg-red-500 → bg-error-500, bg-green-500 → bg-success-500, #DC0000 → bg-primary-500, #000000 → bg-neutral-900, #FFFFFF → bg-white",
+      "tags": [
+        "tokens",
+        "migration",
+        "recommendations"
+      ]
+    },
+    {
+      "id": "design-tokens-violation-bg-blue-d",
+      "type": "rule",
+      "domain": "design-tokens",
+      "title": "Using Tailwind standard blue colors",
+      "severity": "critical",
+      "description": "Use bg-primary-* or bg-accent-*",
+      "example": "Auto-fix: bg-blue-(\\d+) → bg-primary-$1",
+      "tags": [
+        "tokens",
+        "validation",
+        "violation"
+      ]
+    },
+    {
+      "id": "design-tokens-violation-bg-red-d",
+      "type": "rule",
+      "domain": "design-tokens",
+      "title": "Using Tailwind standard red colors",
+      "severity": "critical",
+      "description": "Use bg-error-* or bg-destructive-*",
+      "example": "Auto-fix: bg-red-(\\d+) → bg-error-$1",
+      "tags": [
+        "tokens",
+        "validation",
+        "violation"
+      ]
+    },
+    {
+      "id": "design-tokens-violation-bg-green-d",
+      "type": "rule",
+      "domain": "design-tokens",
+      "title": "Using Tailwind standard green colors",
+      "severity": "critical",
+      "description": "Use bg-success-*",
+      "example": "Auto-fix: bg-green-(\\d+) → bg-success-$1",
+      "tags": [
+        "tokens",
+        "validation",
+        "violation"
+      ]
+    },
+    {
+      "id": "design-tokens-violation-bg-yellow-d",
+      "type": "rule",
+      "domain": "design-tokens",
+      "title": "Using Tailwind standard yellow colors",
+      "severity": "critical",
+      "description": "Use bg-warning-*",
+      "example": "Auto-fix: bg-yellow-(\\d+) → bg-warning-$1",
+      "tags": [
+        "tokens",
+        "validation",
+        "violation"
+      ]
+    },
+    {
+      "id": "design-tokens-violation-bg-gray-d",
+      "type": "rule",
+      "domain": "design-tokens",
+      "title": "Using Tailwind standard gray colors",
+      "severity": "critical",
+      "description": "Use bg-neutral-*",
+      "example": "Auto-fix: bg-gray-(\\d+) → bg-neutral-$1",
+      "tags": [
+        "tokens",
+        "validation",
+        "violation"
+      ]
+    },
+    {
+      "id": "design-tokens-violation-bg-slate-d",
+      "type": "rule",
+      "domain": "design-tokens",
+      "title": "Using Tailwind standard slate colors",
+      "severity": "critical",
+      "description": "Use bg-neutral-*",
+      "example": "Auto-fix: bg-slate-(\\d+) → bg-neutral-$1",
+      "tags": [
+        "tokens",
+        "validation",
+        "violation"
+      ]
+    },
+    {
+      "id": "design-tokens-violation-text-blue-d",
+      "type": "rule",
+      "domain": "design-tokens",
+      "title": "Using Tailwind standard blue text colors",
+      "severity": "critical",
+      "description": "Use text-primary-*",
+      "example": "Auto-fix: text-blue-(\\d+) → text-primary-$1",
+      "tags": [
+        "tokens",
+        "validation",
+        "violation"
+      ]
+    },
+    {
+      "id": "design-tokens-violation-text-red-d",
+      "type": "rule",
+      "domain": "design-tokens",
+      "title": "Using Tailwind standard red text colors",
+      "severity": "critical",
+      "description": "Use text-error-* or text-destructive-*",
+      "example": "Auto-fix: text-red-(\\d+) → text-error-$1",
+      "tags": [
+        "tokens",
+        "validation",
+        "violation"
+      ]
+    },
+    {
+      "id": "design-tokens-violation-text-green-d",
+      "type": "rule",
+      "domain": "design-tokens",
+      "title": "Using Tailwind standard green text colors",
+      "severity": "critical",
+      "description": "Use text-success-*",
+      "example": "Auto-fix: text-green-(\\d+) → text-success-$1",
+      "tags": [
+        "tokens",
+        "validation",
+        "violation"
+      ]
+    },
+    {
+      "id": "design-tokens-violation-text-gray-d",
+      "type": "rule",
+      "domain": "design-tokens",
+      "title": "Using Tailwind standard gray text colors",
+      "severity": "critical",
+      "description": "Use text-neutral-* or text-muted-*",
+      "example": "Auto-fix: text-gray-(\\d+) → text-neutral-$1",
+      "tags": [
+        "tokens",
+        "validation",
+        "violation"
+      ]
+    },
+    {
+      "id": "design-tokens-violation-0-9a-fa-f-6",
+      "type": "rule",
+      "domain": "design-tokens",
+      "title": "Hardcoded hex colors",
+      "severity": "critical",
+      "description": "Use design system tokens (bg-primary-*, text-neutral-*, etc.)",
+      "tags": [
+        "tokens",
+        "validation",
+        "violation"
+      ]
+    },
+    {
+      "id": "design-tokens-violation-0-9a-fa-f-3-0-9a-fa-f",
+      "type": "rule",
+      "domain": "design-tokens",
+      "title": "Hardcoded shorthand hex colors",
+      "severity": "critical",
+      "description": "Use design system tokens",
+      "tags": [
+        "tokens",
+        "validation",
+        "violation"
+      ]
+    },
+    {
+      "id": "design-tokens-violation-rgb",
+      "type": "rule",
+      "domain": "design-tokens",
+      "title": "Using rgb() color values",
+      "severity": "critical",
+      "description": "Use design system tokens",
+      "tags": [
+        "tokens",
+        "validation",
+        "violation"
+      ]
+    },
+    {
+      "id": "design-tokens-violation-rgba",
+      "type": "rule",
+      "domain": "design-tokens",
+      "title": "Using rgba() color values",
+      "severity": "warning",
+      "description": "Use design system tokens with opacity modifiers (bg-primary-500/50)",
+      "tags": [
+        "tokens",
+        "validation",
+        "violation"
+      ]
+    },
+    {
+      "id": "design-tokens-violation-hsl",
+      "type": "rule",
+      "domain": "design-tokens",
+      "title": "Using hsl() color values",
+      "severity": "critical",
+      "description": "Use design system tokens",
+      "tags": [
+        "tokens",
+        "validation",
+        "violation"
+      ]
+    },
+    {
+      "id": "design-tokens-violation-text-d-px",
+      "type": "rule",
+      "domain": "design-tokens",
+      "title": "Arbitrary text size breaks typography scale",
+      "severity": "critical",
+      "description": "Use text-xs, text-sm, text-base, text-lg, text-xl, text-2xl",
+      "tags": [
+        "tokens",
+        "validation",
+        "violation"
+      ]
+    },
+    {
+      "id": "design-tokens-violation-text-d-rem",
+      "type": "rule",
+      "domain": "design-tokens",
+      "title": "Arbitrary text size in rem breaks typography scale",
+      "severity": "critical",
+      "description": "Use text-xs, text-sm, text-base, text-lg, text-xl, text-2xl",
+      "tags": [
+        "tokens",
+        "validation",
+        "violation"
+      ]
+    },
+    {
+      "id": "design-tokens-guidance-button",
+      "type": "pattern",
+      "domain": "design-tokens",
+      "title": "Token guidance: button",
+      "severity": "suggestion",
+      "description": "Recommended tokens for button component: primary: background: bg-primary-500, text: text-white, hover: hover:bg-primary-600, focus: ring-2 ring-primary-500, disabled: disabled:bg-neutral-100 disabled:text-neutral-400; secondary: background: bg-neutral-100, text: text-neutral-900, hover: hover:bg-neutral-200, focus: ring-2 ring-neutral-500",
+      "tags": [
+        "tokens",
+        "guidance",
+        "button"
+      ]
+    },
+    {
+      "id": "design-tokens-guidance-card",
+      "type": "pattern",
+      "domain": "design-tokens",
+      "title": "Token guidance: card",
+      "severity": "suggestion",
+      "description": "Recommended tokens for card component: default: background: bg-white, border: border border-neutral-200, shadow: shadow-sm, text: text-neutral-900; elevated: background: bg-white, shadow: shadow-md, text: text-neutral-900",
+      "tags": [
+        "tokens",
+        "guidance",
+        "card"
+      ]
+    },
+    {
+      "id": "design-tokens-guidance-input",
+      "type": "pattern",
+      "domain": "design-tokens",
+      "title": "Token guidance: input",
+      "severity": "suggestion",
+      "description": "Recommended tokens for input component: default: background: bg-white, border: border border-neutral-300, text: text-neutral-900, placeholder: placeholder:text-neutral-500, focus: focus:ring-2 focus:ring-primary-500",
+      "tags": [
+        "tokens",
+        "guidance",
+        "input"
+      ]
+    },
+    {
+      "id": "design-tokens-guidance-badge",
+      "type": "pattern",
+      "domain": "design-tokens",
+      "title": "Token guidance: badge",
+      "severity": "suggestion",
+      "description": "Recommended tokens for badge component: default: background: bg-neutral-100, text: text-neutral-700; primary: background: bg-primary-100, text: text-primary-700",
+      "tags": [
+        "tokens",
+        "guidance",
+        "badge"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,375 @@
+{
+  "domain": "storybook",
+  "version": "1.0.0",
+  "entries": [
+    {
+      "id": "storybook-required-story-default",
+      "type": "pattern",
+      "domain": "storybook",
+      "title": "Required story: Default",
+      "severity": "critical",
+      "description": "Basic usage example. Shows: Component in its default state",
+      "tags": [
+        "storybook",
+        "required",
+        "stories"
+      ]
+    },
+    {
+      "id": "storybook-required-story-allstates",
+      "type": "pattern",
+      "domain": "storybook",
+      "title": "Required story: AllStates",
+      "severity": "critical",
+      "description": "Visual regression testing. Shows: All variants, sizes, states in organized sections",
+      "tags": [
+        "storybook",
+        "required",
+        "stories"
+      ]
+    },
+    {
+      "id": "storybook-optional-story-withform",
+      "type": "pattern",
+      "domain": "storybook",
+      "title": "Optional story: WithForm",
+      "severity": "suggestion",
+      "description": "When: Component is form-related. Shows: Integration with forms",
+      "tags": [
+        "storybook",
+        "optional",
+        "stories"
+      ]
+    },
+    {
+      "id": "storybook-optional-story-ondarkbackground",
+      "type": "pattern",
+      "domain": "storybook",
+      "title": "Optional story: OnDarkBackground",
+      "severity": "suggestion",
+      "description": "When: Component supports dark mode. Shows: Component on dark backgrounds",
+      "tags": [
+        "storybook",
+        "optional",
+        "stories"
+      ]
+    },
+    {
+      "id": "storybook-optional-story-interactive",
+      "type": "pattern",
+      "domain": "storybook",
+      "title": "Optional story: Interactive",
+      "severity": "suggestion",
+      "description": "When: Component has complex interactions. Shows: User interaction scenarios",
+      "tags": [
+        "storybook",
+        "optional",
+        "stories"
+      ]
+    },
+    {
+      "id": "storybook-forbidden-inline-decorators-story-div-div",
+      "type": "anti-pattern",
+      "domain": "storybook",
+      "title": "Storybook forbidden: Inline decorators: (Story) => <div>...</div>",
+      "severity": "critical",
+      "description": "Inline decorators: (Story) => <div>...</div>",
+      "tags": [
+        "storybook",
+        "forbidden"
+      ]
+    },
+    {
+      "id": "storybook-forbidden-hardcoded-colors-or-spacing",
+      "type": "anti-pattern",
+      "domain": "storybook",
+      "title": "Storybook forbidden: Hardcoded colors or spacing",
+      "severity": "critical",
+      "description": "Hardcoded colors or spacing",
+      "tags": [
+        "storybook",
+        "forbidden"
+      ]
+    },
+    {
+      "id": "storybook-forbidden-custom-wrapper-functions",
+      "type": "anti-pattern",
+      "domain": "storybook",
+      "title": "Storybook forbidden: Custom wrapper functions",
+      "severity": "critical",
+      "description": "Custom wrapper functions",
+      "tags": [
+        "storybook",
+        "forbidden"
+      ]
+    },
+    {
+      "id": "storybook-forbidden-emojis-in-code",
+      "type": "anti-pattern",
+      "domain": "storybook",
+      "title": "Storybook forbidden: Emojis in code",
+      "severity": "critical",
+      "description": "Emojis in code",
+      "tags": [
+        "storybook",
+        "forbidden"
+      ]
+    },
+    {
+      "id": "storybook-state-real-mechanisms",
+      "type": "rule",
+      "domain": "storybook",
+      "title": "Use real HTML/React mechanisms for states",
+      "severity": "critical",
+      "description": "Use real HTML/React mechanisms for states, not visual overrides. autoFocus: Use autoFocus prop for initial focus state; defaultChecked: Use defaultChecked for checkbox/radio initial state; disabled: Use disabled prop, not opacity/pointer-events classes; ariaInvalid: Use aria-invalid=\"true\" for error states",
+      "counterExample": "Hardcoded className overrides for states; Custom CSS classes mimicking disabled state; Visual-only error indicators without aria",
+      "tags": [
+        "storybook",
+        "states",
+        "accessibility"
+      ]
+    },
+    {
+      "id": "storybook-mobile-device-frames",
+      "type": "pattern",
+      "domain": "storybook",
+      "title": "Mobile device frames for story testing",
+      "severity": "suggestion",
+      "description": "Device frames for mobile-specific story testing. iPhone models: iphone16promax: 440x956, iphone16pro: 402x874, iphone16: 393x852, iphone6: 375x667. Scale: scale={1}",
+      "tags": [
+        "storybook",
+        "mobile",
+        "responsive",
+        "testing"
+      ]
+    },
+    {
+      "id": "storybook-master-story-protocol",
+      "type": "pattern",
+      "domain": "storybook",
+      "title": "Master story protocol: source of truth for page compositions",
+      "severity": "critical",
+      "description": "Prototype master stories serve as the SOURCE OF TRUTH for page compositions and API contracts",
+      "example": "Naming: *-prototype-master.stories.tsx. Examples: partner-portal-prototype-master.stories.tsx, leads-page-prototype-master.stories.tsx, tenant-wizard-prototype-master.stories.tsx",
+      "why": "Frontend and backend teams share a single source of truth; API contracts are defined by actual usage, not documentation; Integration issues are discovered during development, not testing; Handoff documents are auto-generated from real code",
+      "tags": [
+        "storybook",
+        "master",
+        "protocol",
+        "api-contract"
+      ]
+    },
+    {
+      "id": "storybook-master-api-simulation",
+      "type": "rule",
+      "domain": "storybook",
+      "title": "Master stories: use API hooks, never inline mocks",
+      "severity": "critical",
+      "description": "Components MUST use API hooks, never inline mock data",
+      "why": "API hooks define the contract between frontend and backend",
+      "example": "import { useApiStore } from '@/api/store'; import { useTenants } from '@/api/hooks/useTenants'; const { data, isLoading } = useQuery({ queryKey: ['tenants'] })",
+      "counterExample": "const mockData = [{ id: 1, name: 'Test' }]; args: { data: [...] }; Inline objects passed directly to components",
+      "tags": [
+        "storybook",
+        "master",
+        "api",
+        "mocking"
+      ]
+    },
+    {
+      "id": "storybook-test-must-have-form-inputs-input-select-checkbox",
+      "type": "rule",
+      "domain": "storybook",
+      "title": "Must have data-testid: Form inputs (input, select, checkbox)",
+      "severity": "warning",
+      "description": "Elements that must have data-testid attributes: Form inputs (input, select, checkbox)",
+      "tags": [
+        "storybook",
+        "testing",
+        "data-testid"
+      ]
+    },
+    {
+      "id": "storybook-test-must-have-buttons-submit-cancel-navigation",
+      "type": "rule",
+      "domain": "storybook",
+      "title": "Must have data-testid: Buttons (submit, cancel, navigation)",
+      "severity": "warning",
+      "description": "Elements that must have data-testid attributes: Buttons (submit, cancel, navigation)",
+      "tags": [
+        "storybook",
+        "testing",
+        "data-testid"
+      ]
+    },
+    {
+      "id": "storybook-test-must-have-interactive-elements-clickable-cards-tabs",
+      "type": "rule",
+      "domain": "storybook",
+      "title": "Must have data-testid: Interactive elements (clickable cards, tabs)",
+      "severity": "warning",
+      "description": "Elements that must have data-testid attributes: Interactive elements (clickable cards, tabs)",
+      "tags": [
+        "storybook",
+        "testing",
+        "data-testid"
+      ]
+    },
+    {
+      "id": "storybook-test-must-have-container-sections-for-scoping",
+      "type": "rule",
+      "domain": "storybook",
+      "title": "Must have data-testid: Container sections (for scoping)",
+      "severity": "warning",
+      "description": "Elements that must have data-testid attributes: Container sections (for scoping)",
+      "tags": [
+        "storybook",
+        "testing",
+        "data-testid"
+      ]
+    },
+    {
+      "id": "storybook-test-must-have-dynamic-items-cards-rows-with-ids",
+      "type": "rule",
+      "domain": "storybook",
+      "title": "Must have data-testid: Dynamic items (cards, rows with IDs)",
+      "severity": "warning",
+      "description": "Elements that must have data-testid attributes: Dynamic items (cards, rows with IDs)",
+      "tags": [
+        "storybook",
+        "testing",
+        "data-testid"
+      ]
+    },
+    {
+      "id": "storybook-test-forbidden-generic-ids-data-testid-button",
+      "type": "anti-pattern",
+      "domain": "storybook",
+      "title": "Test ID anti-pattern: Generic IDs: data-testid=\"button\"",
+      "severity": "warning",
+      "description": "Generic IDs: data-testid=\"button\"",
+      "tags": [
+        "storybook",
+        "testing",
+        "data-testid",
+        "anti-pattern"
+      ]
+    },
+    {
+      "id": "storybook-test-forbidden-index-only-data-testid-item-0",
+      "type": "anti-pattern",
+      "domain": "storybook",
+      "title": "Test ID anti-pattern: Index-only: data-testid=\"item-0\"",
+      "severity": "warning",
+      "description": "Index-only: data-testid=\"item-0\"",
+      "tags": [
+        "storybook",
+        "testing",
+        "data-testid",
+        "anti-pattern"
+      ]
+    },
+    {
+      "id": "storybook-test-forbidden-camelcase-data-testid-submitbutton",
+      "type": "anti-pattern",
+      "domain": "storybook",
+      "title": "Test ID anti-pattern: CamelCase: data-testid=\"submitButton\"",
+      "severity": "warning",
+      "description": "CamelCase: data-testid=\"submitButton\"",
+      "tags": [
+        "storybook",
+        "testing",
+        "data-testid",
+        "anti-pattern"
+      ]
+    },
+    {
+      "id": "storybook-test-forbidden-skipping-form-inputs-or-action-buttons",
+      "type": "anti-pattern",
+      "domain": "storybook",
+      "title": "Test ID anti-pattern: Skipping form inputs or action buttons",
+      "severity": "warning",
+      "description": "Skipping form inputs or action buttons",
+      "tags": [
+        "storybook",
+        "testing",
+        "data-testid",
+        "anti-pattern"
+      ]
+    },
+    {
+      "id": "storybook-testid-layer-atom",
+      "type": "pattern",
+      "domain": "storybook",
+      "title": "Test ID layer: atom",
+      "severity": "suggestion",
+      "description": "Consumer provides - atoms are context-agnostic",
+      "tags": [
+        "storybook",
+        "testing",
+        "data-testid",
+        "atom"
+      ]
+    },
+    {
+      "id": "storybook-testid-layer-molecule",
+      "type": "pattern",
+      "domain": "storybook",
+      "title": "Test ID layer: molecule",
+      "severity": "suggestion",
+      "description": "Format: {feature}-{element}-${id}",
+      "example": "user-card-avatar-${user.id}, pricing-plan-select-${plan.id}",
+      "tags": [
+        "storybook",
+        "testing",
+        "data-testid",
+        "molecule"
+      ]
+    },
+    {
+      "id": "storybook-testid-layer-wizard",
+      "type": "pattern",
+      "domain": "storybook",
+      "title": "Test ID layer: wizard",
+      "severity": "suggestion",
+      "description": "Format: {step-name}-step",
+      "example": "company-info-step, billing-details-step, review-step",
+      "tags": [
+        "storybook",
+        "testing",
+        "data-testid",
+        "wizard"
+      ]
+    },
+    {
+      "id": "storybook-testid-layer-formfield",
+      "type": "pattern",
+      "domain": "storybook",
+      "title": "Test ID layer: formField",
+      "severity": "suggestion",
+      "description": "Format: {step}-{field}",
+      "example": "company-name-input, billing-address-input",
+      "tags": [
+        "storybook",
+        "testing",
+        "data-testid",
+        "formField"
+      ]
+    },
+    {
+      "id": "storybook-testid-layer-navigation",
+      "type": "pattern",
+      "domain": "storybook",
+      "title": "Test ID layer: navigation",
+      "severity": "suggestion",
+      "description": "Format: {scope}-nav-{action}",
+      "example": "wizard-nav-next, wizard-nav-back, modal-nav-close",
+      "tags": [
+        "storybook",
+        "testing",
+        "data-testid",
+        "navigation"
+      ]
+    }
+  ]
+}

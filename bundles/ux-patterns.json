@@ -1,0 +1,1057 @@
+{
+  "domain": "ux-patterns",
+  "version": "1.0.0",
+  "entries": [
+    {
+      "id": "ux-patterns-law-fitts-s-law",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "UX Law: Fitts's Law",
+      "severity": "warning",
+      "description": "Target size + distance affect interaction time. Application: min-h-11 (44px) for touch targets on mobile",
+      "example": "min-h-11, min-h-8 (desktop)",
+      "counterExample": "Buttons <44px on mobile, Tiny click targets",
+      "tags": [
+        "ux-patterns",
+        "ux-laws",
+        "fitts-s-law"
+      ]
+    },
+    {
+      "id": "ux-patterns-law-hick-s-law",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "UX Law: Hick's Law",
+      "severity": "warning",
+      "description": "Decision time increases with number of options. Application: Limit to 5-7 max options",
+      "example": "Navigation: ≤7 items, Action overflow: ≥4 actions → menu",
+      "counterExample": "10+ navigation items, Showing all actions inline",
+      "tags": [
+        "ux-patterns",
+        "ux-laws",
+        "hick-s-law"
+      ]
+    },
+    {
+      "id": "ux-patterns-law-miller-s-law",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "UX Law: Miller's Law",
+      "severity": "warning",
+      "description": "Working memory holds 7±2 items. Application: Group into chunks of 5-7",
+      "example": "Form sections: 5-7 fields, Lists: 7 visible items",
+      "counterExample": "20 form fields without grouping, Endless lists without pagination",
+      "tags": [
+        "ux-patterns",
+        "ux-laws",
+        "miller-s-law"
+      ]
+    },
+    {
+      "id": "ux-patterns-law-doherty-threshold",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "UX Law: Doherty Threshold",
+      "severity": "warning",
+      "description": "Response time <400ms feels instant. Application: >400ms show loading indicator",
+      "example": "<100ms instant, >400ms spinner, >1s progress bar",
+      "counterExample": "No loading state for slow operations, Blocking UI during fetch",
+      "tags": [
+        "ux-patterns",
+        "ux-laws",
+        "doherty-threshold"
+      ]
+    },
+    {
+      "id": "ux-patterns-law-von-restorff-effect",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "UX Law: Von Restorff Effect",
+      "severity": "warning",
+      "description": "Different items are more memorable. Application: Primary action must be visually distinct",
+      "example": "variant='default' (filled), variant='outline' (secondary)",
+      "counterExample": "All buttons look the same, Primary not emphasized",
+      "tags": [
+        "ux-patterns",
+        "ux-laws",
+        "von-restorff-effect"
+      ]
+    },
+    {
+      "id": "ux-patterns-law-jakob-s-law",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "UX Law: Jakob's Law",
+      "severity": "warning",
+      "description": "Users expect your site to work like others. Application: Follow established conventions",
+      "example": "Logo top-left, Search top-right, Profile top-right",
+      "counterExample": "Unconventional layouts, Breaking user expectations",
+      "tags": [
+        "ux-patterns",
+        "ux-laws",
+        "jakob-s-law"
+      ]
+    },
+    {
+      "id": "ux-patterns-law-goal-gradient-effect",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "UX Law: Goal-Gradient Effect",
+      "severity": "warning",
+      "description": "Users accelerate as they approach a goal. Application: Show progress clearly, celebrate milestones, make completion feel achievable",
+      "example": "Progress bars with percentage, Step X of Y indicators, Completion checkmarks",
+      "counterExample": "No progress indication, Hidden step count, No milestone feedback",
+      "tags": [
+        "ux-patterns",
+        "ux-laws",
+        "goal-gradient-effect"
+      ]
+    },
+    {
+      "id": "ux-patterns-law-peak-end-rule",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "UX Law: Peak-End Rule",
+      "severity": "warning",
+      "description": "Experiences are judged by peaks and endings. Application: Design memorable moments and strong endings, invest in error recovery",
+      "example": "Success celebrations, Onboarding completion, Checkout confirmation",
+      "counterExample": "Abrupt endings, No confirmation feedback, Forgettable experiences",
+      "tags": [
+        "ux-patterns",
+        "ux-laws",
+        "peak-end-rule"
+      ]
+    },
+    {
+      "id": "ux-patterns-law-serial-position-effect",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "UX Law: Serial Position Effect",
+      "severity": "warning",
+      "description": "First and last items are remembered best. Application: Place most important items at start or end of lists",
+      "example": "Primary nav at start/end, Key actions first/last, Important options at edges",
+      "counterExample": "Critical items buried in middle, Random ordering, No priority placement",
+      "tags": [
+        "ux-patterns",
+        "ux-laws",
+        "serial-position-effect"
+      ]
+    },
+    {
+      "id": "ux-patterns-law-zeigarnik-effect",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "UX Law: Zeigarnik Effect",
+      "severity": "warning",
+      "description": "Incomplete tasks are remembered better than completed ones. Application: Show incomplete progress, use draft indicators, leverage tension",
+      "example": "Draft badges, Progress indicators, Save reminders, Resume prompts",
+      "counterExample": "No draft indication, Lost progress, No save prompts",
+      "tags": [
+        "ux-patterns",
+        "ux-laws",
+        "zeigarnik-effect"
+      ]
+    },
+    {
+      "id": "ux-patterns-law-aesthetic-usability-effect",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "UX Law: Aesthetic-Usability Effect",
+      "severity": "warning",
+      "description": "Aesthetically pleasing designs are perceived as more usable. Application: Invest in visual polish, consistent styling builds trust",
+      "example": "Consistent spacing, Harmonious colors, Refined typography, Smooth animations",
+      "counterExample": "Inconsistent styling, Jarring transitions, Neglected visual details",
+      "tags": [
+        "ux-patterns",
+        "ux-laws",
+        "aesthetic-usability-effect"
+      ]
+    },
+    {
+      "id": "ux-patterns-law-postel-s-law",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "UX Law: Postel's Law",
+      "severity": "warning",
+      "description": "Be liberal in what you accept, conservative in what you send. Application: Accept varied input formats, provide clear normalized output",
+      "example": "Flexible date parsing, Phone format tolerance, Case-insensitive search",
+      "counterExample": "Rigid input requirements, Rejecting valid variations, No input normalization",
+      "tags": [
+        "ux-patterns",
+        "ux-laws",
+        "postel-s-law"
+      ]
+    },
+    {
+      "id": "ux-patterns-law-tesler-s-law",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "UX Law: Tesler's Law",
+      "severity": "warning",
+      "description": "Complexity cannot be eliminated, only moved. Application: Move complexity to the system, not the user",
+      "example": "Smart defaults, Auto-detection, Progressive disclosure",
+      "counterExample": "Exposing system complexity, Too many required fields, No sensible defaults",
+      "tags": [
+        "ux-patterns",
+        "ux-laws",
+        "tesler-s-law"
+      ]
+    },
+    {
+      "id": "ux-patterns-law-cognitive-load",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "UX Law: Cognitive Load",
+      "severity": "warning",
+      "description": "Mental effort is finite - reduce unnecessary cognitive burden. Application: Minimize choices, use recognition over recall, maintain context",
+      "example": "Clear labels, Visible options, Contextual help, Reduced form fields",
+      "counterExample": "Information overload, Hidden options, Requiring memorization, Dense layouts",
+      "tags": [
+        "ux-patterns",
+        "ux-laws",
+        "cognitive-load"
+      ]
+    },
+    {
+      "id": "ux-patterns-law-occam-s-razor",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "UX Law: Occam's Razor",
+      "severity": "warning",
+      "description": "The simplest solution is usually the best. Application: Prefer fewer features done well over many features done poorly",
+      "example": "Minimal props, Single responsibility, Clear purpose",
+      "counterExample": "Feature bloat, Unnecessary options, Over-engineered solutions",
+      "tags": [
+        "ux-patterns",
+        "ux-laws",
+        "occam-s-razor"
+      ]
+    },
+    {
+      "id": "ux-patterns-gestalt-proximity",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "Gestalt: Proximity",
+      "severity": "suggestion",
+      "description": "Close elements are perceived as related",
+      "example": "gap-2 within group, gap-6 between groups",
+      "tags": [
+        "ux-patterns",
+        "gestalt",
+        "proximity"
+      ]
+    },
+    {
+      "id": "ux-patterns-gestalt-similarity",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "Gestalt: Similarity",
+      "severity": "suggestion",
+      "description": "Similar elements are perceived as related",
+      "example": "Consistent styling for same type",
+      "tags": [
+        "ux-patterns",
+        "gestalt",
+        "similarity"
+      ]
+    },
+    {
+      "id": "ux-patterns-gestalt-common-region",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "Gestalt: Common Region",
+      "severity": "suggestion",
+      "description": "Bounded elements are grouped",
+      "example": "Cards, Borders, Background containers",
+      "tags": [
+        "ux-patterns",
+        "gestalt",
+        "common region"
+      ]
+    },
+    {
+      "id": "ux-patterns-gestalt-pr-gnanz",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "Gestalt: Prägnanz",
+      "severity": "suggestion",
+      "description": "Simplicity is preferred",
+      "example": "Reduce visual noise, Clear hierarchy",
+      "tags": [
+        "ux-patterns",
+        "gestalt",
+        "prägnanz"
+      ]
+    },
+    {
+      "id": "ux-patterns-button-color-semantics",
+      "type": "rule",
+      "domain": "ux-patterns",
+      "title": "Button color semantics",
+      "severity": "critical",
+      "description": "Primary for action, Green for confirmation. primary: Main CTA, Save, Submit, Confirm (not for: Success states); success: Success feedback, status badges, completion (not for: Action buttons); destructive: Delete, Remove, irreversible actions (not for: Warnings); outline: Secondary actions, Cancel, Back (not for: Primary CTA)",
+      "why": "Green fatigue: If every button is green, users develop blindness; Reserve green for feedback: Success toast has more impact when button wasn't green; Hierarchy > Semantics: Filled vs outline signals primary vs secondary; Industry convention: Apple, Google, Figma use brand color for main CTA",
+      "tags": [
+        "ux-patterns",
+        "buttons",
+        "color",
+        "semantics"
+      ]
+    },
+    {
+      "id": "ux-patterns-action-overflow",
+      "type": "rule",
+      "domain": "ux-patterns",
+      "title": "Action overflow rule",
+      "severity": "warning",
+      "description": "≤3 actions = Visible buttons | ≥4 actions = Overflow menu",
+      "counterExample": "3 actions in menu (hiding unnecessarily); 6 actions as individual buttons (overwhelming)",
+      "tags": [
+        "ux-patterns",
+        "actions",
+        "overflow",
+        "hicks-law"
+      ]
+    },
+    {
+      "id": "ux-patterns-validation-layer-primitive-components",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "Validation layer: Primitive Components",
+      "severity": "suggestion",
+      "description": "Dumb, reusable, no domain knowledge. Has validation: false. Action: Trust props",
+      "context": "Analogy: Kitchen utensils (a knife doesn't check if food is fresh)",
+      "tags": [
+        "ux-patterns",
+        "defensive-design",
+        "validation"
+      ]
+    },
+    {
+      "id": "ux-patterns-validation-layer-composite-components",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "Validation layer: Composite Components",
+      "severity": "suggestion",
+      "description": "Combines primitives, still generic. Has validation: false. Action: Trust props",
+      "context": "Analogy: Cooking stations (a grill doesn't validate ingredients)",
+      "tags": [
+        "ux-patterns",
+        "defensive-design",
+        "validation"
+      ]
+    },
+    {
+      "id": "ux-patterns-validation-layer-domain-components",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "Validation layer: Domain Components",
+      "severity": "suggestion",
+      "description": "Domain-aware, API boundary. Has validation: true. Action: Validate here",
+      "context": "Analogy: The chef (inspects ingredients before cooking, rejects bad ones)",
+      "tags": [
+        "ux-patterns",
+        "defensive-design",
+        "validation"
+      ]
+    },
+    {
+      "id": "ux-patterns-degradation-show-error-inline",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "Graceful degradation: Show Error Inline",
+      "severity": "suggestion",
+      "description": "Display error indicator in place of bad data. When: Single field invalid",
+      "tags": [
+        "ux-patterns",
+        "defensive-design",
+        "error-handling",
+        "degradation"
+      ]
+    },
+    {
+      "id": "ux-patterns-degradation-show-fallback-value",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "Graceful degradation: Show Fallback Value",
+      "severity": "suggestion",
+      "description": "Display safe default with warning. When: Non-critical field",
+      "tags": [
+        "ux-patterns",
+        "defensive-design",
+        "error-handling",
+        "degradation"
+      ]
+    },
+    {
+      "id": "ux-patterns-degradation-show-error-row",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "Graceful degradation: Show Error Row",
+      "severity": "suggestion",
+      "description": "Entire row highlighted as problematic. When: Multiple fields invalid",
+      "tags": [
+        "ux-patterns",
+        "defensive-design",
+        "error-handling",
+        "degradation"
+      ]
+    },
+    {
+      "id": "ux-patterns-degradation-show-error-boundary",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "Graceful degradation: Show Error Boundary",
+      "severity": "suggestion",
+      "description": "Component-level error state. When: Critical failure",
+      "tags": [
+        "ux-patterns",
+        "defensive-design",
+        "error-handling",
+        "degradation"
+      ]
+    },
+    {
+      "id": "ux-patterns-status-badge-pending",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "Status badge: Pending Approval",
+      "severity": "suggestion",
+      "description": "Waiting for review or sign-off. Color: Yellow (Warning). Icon: Clock",
+      "tags": [
+        "ux-patterns",
+        "status",
+        "badges",
+        "pending"
+      ]
+    },
+    {
+      "id": "ux-patterns-status-badge-in-progress",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "Status badge: In Progress",
+      "severity": "suggestion",
+      "description": "Work is actively being done. Color: Primary. Icon: Loader",
+      "tags": [
+        "ux-patterns",
+        "status",
+        "badges",
+        "in-progress"
+      ]
+    },
+    {
+      "id": "ux-patterns-status-badge-completed",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "Status badge: Completed",
+      "severity": "suggestion",
+      "description": "Work has been finished successfully. Color: Green (Success). Icon: CheckCircle",
+      "tags": [
+        "ux-patterns",
+        "status",
+        "badges",
+        "completed"
+      ]
+    },
+    {
+      "id": "ux-patterns-status-badge-failed",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "Status badge: Failed/Overdue",
+      "severity": "suggestion",
+      "description": "Past due date or failed state. Color: Red (Error). Icon: AlertTriangle",
+      "tags": [
+        "ux-patterns",
+        "status",
+        "badges",
+        "failed"
+      ]
+    },
+    {
+      "id": "ux-patterns-status-badge-cancelled",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "Status badge: Closed/Cancelled",
+      "severity": "suggestion",
+      "description": "Item closed (may or may not be completed). Color: Neutral (Gray). Icon: XCircle",
+      "tags": [
+        "ux-patterns",
+        "status",
+        "badges",
+        "cancelled"
+      ]
+    },
+    {
+      "id": "ux-patterns-status-badge-on-hold",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "Status badge: Deferred/On Hold",
+      "severity": "suggestion",
+      "description": "Postponed for later consideration. Color: Light Gray. Icon: PauseCircle",
+      "tags": [
+        "ux-patterns",
+        "status",
+        "badges",
+        "on-hold"
+      ]
+    },
+    {
+      "id": "ux-patterns-status-badge-scheduled",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "Status badge: Assigned/Scheduled",
+      "severity": "suggestion",
+      "description": "Task has been assigned to someone. Color: Blue (Info). Icon: UserCheck",
+      "tags": [
+        "ux-patterns",
+        "status",
+        "badges",
+        "scheduled"
+      ]
+    },
+    {
+      "id": "ux-patterns-status-badge-draft",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "Status badge: Draft",
+      "severity": "suggestion",
+      "description": "Not yet published or finalized. Color: Light Neutral. Icon: FileEdit",
+      "tags": [
+        "ux-patterns",
+        "status",
+        "badges",
+        "draft"
+      ]
+    },
+    {
+      "id": "ux-patterns-status-badge-blocked",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "Status badge: Blocked",
+      "severity": "suggestion",
+      "description": "Cannot proceed due to blocker. Color: Light Error. Icon: Ban",
+      "tags": [
+        "ux-patterns",
+        "status",
+        "badges",
+        "blocked"
+      ]
+    },
+    {
+      "id": "ux-patterns-priority-badge-critical",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "Priority badge: Urgent/Critical",
+      "severity": "suggestion",
+      "description": "Color: Red (Error). Icon: AlertOctagon. Animation: pulse",
+      "tags": [
+        "ux-patterns",
+        "priority",
+        "badges",
+        "critical"
+      ]
+    },
+    {
+      "id": "ux-patterns-priority-badge-high",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "Priority badge: High",
+      "severity": "suggestion",
+      "description": "Color: Yellow (Warning). Icon: ArrowUp",
+      "tags": [
+        "ux-patterns",
+        "priority",
+        "badges",
+        "high"
+      ]
+    },
+    {
+      "id": "ux-patterns-priority-badge-medium",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "Priority badge: Medium",
+      "severity": "suggestion",
+      "description": "Color: Blue (Info). Icon: Minus",
+      "tags": [
+        "ux-patterns",
+        "priority",
+        "badges",
+        "medium"
+      ]
+    },
+    {
+      "id": "ux-patterns-priority-badge-low",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "Priority badge: Low",
+      "severity": "suggestion",
+      "description": "Color: Gray (Neutral). Icon: ArrowDown",
+      "tags": [
+        "ux-patterns",
+        "priority",
+        "badges",
+        "low"
+      ]
+    },
+    {
+      "id": "ux-patterns-container-selection-1-3-fields",
+      "type": "rule",
+      "domain": "ux-patterns",
+      "title": "Container selection: 1-3 fields → dialog",
+      "severity": "warning",
+      "description": "Complexity: low. Examples: Delete confirmation, Password reset",
+      "tags": [
+        "ux-patterns",
+        "dialog",
+        "container-selection",
+        "dialog"
+      ]
+    },
+    {
+      "id": "ux-patterns-container-selection-4-7-fields",
+      "type": "rule",
+      "domain": "ux-patterns",
+      "title": "Container selection: 4-7 fields → dialog or sheet",
+      "severity": "warning",
+      "description": "Complexity: medium. Examples: Create account, Quick settings",
+      "tags": [
+        "ux-patterns",
+        "dialog",
+        "container-selection",
+        "dialog or sheet"
+      ]
+    },
+    {
+      "id": "ux-patterns-container-selection-8-12-fields",
+      "type": "rule",
+      "domain": "ux-patterns",
+      "title": "Container selection: 8-12 fields → page",
+      "severity": "warning",
+      "description": "Complexity: high. Examples: Edit profile, Invoice forms",
+      "tags": [
+        "ux-patterns",
+        "dialog",
+        "container-selection",
+        "page"
+      ]
+    },
+    {
+      "id": "ux-patterns-container-selection-13-fields",
+      "type": "rule",
+      "domain": "ux-patterns",
+      "title": "Container selection: 13+ fields → wizard",
+      "severity": "warning",
+      "description": "Complexity: very-high. Examples: Onboarding, Multi-step setup",
+      "tags": [
+        "ux-patterns",
+        "dialog",
+        "container-selection",
+        "wizard"
+      ]
+    },
+    {
+      "id": "ux-patterns-dialog-antipattern-11-field-form-in-dialog",
+      "type": "anti-pattern",
+      "domain": "ux-patterns",
+      "title": "Dialog anti-pattern: 11-field form in dialog",
+      "severity": "warning",
+      "description": "Problem: Exceeds cognitive capacity. Solution: Use Page",
+      "tags": [
+        "ux-patterns",
+        "dialog",
+        "anti-pattern"
+      ]
+    },
+    {
+      "id": "ux-patterns-dialog-antipattern-multi-step-wizard-in-dialog",
+      "type": "anti-pattern",
+      "domain": "ux-patterns",
+      "title": "Dialog anti-pattern: Multi-step wizard in dialog",
+      "severity": "warning",
+      "description": "Problem: Wrong container for complexity. Solution: Use dedicated Wizard",
+      "tags": [
+        "ux-patterns",
+        "dialog",
+        "anti-pattern"
+      ]
+    },
+    {
+      "id": "ux-patterns-dialog-antipattern-primary-workflow-in-dialog",
+      "type": "anti-pattern",
+      "domain": "ux-patterns",
+      "title": "Dialog anti-pattern: Primary workflow in dialog",
+      "severity": "warning",
+      "description": "Problem: Undervalues importance. Solution: Use Page",
+      "tags": [
+        "ux-patterns",
+        "dialog",
+        "anti-pattern"
+      ]
+    },
+    {
+      "id": "ux-patterns-dialog-antipattern-dialog-for-data-entry-1-minute",
+      "type": "anti-pattern",
+      "domain": "ux-patterns",
+      "title": "Dialog anti-pattern: Dialog for data entry > 1 minute",
+      "severity": "warning",
+      "description": "Problem: Interruption cost too high. Solution: Use Page",
+      "tags": [
+        "ux-patterns",
+        "dialog",
+        "anti-pattern"
+      ]
+    },
+    {
+      "id": "ux-patterns-ux-writing-buttons",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "UX writing: Buttons & CTAs",
+      "severity": "suggestion",
+      "description": "Use action verbs: Save, Create, Delete. Be specific: \"Save Changes\" not just \"Save\". Match button to dialog title. Keep under 3 words",
+      "example": "Save Changes; Create Project; Delete Item",
+      "counterExample": "OK; Click Here to Continue; Yes, I Want to Delete This Item",
+      "tags": [
+        "ux-patterns",
+        "ux-writing",
+        "buttons"
+      ]
+    },
+    {
+      "id": "ux-patterns-ux-writing-errors",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "UX writing: Error Messages",
+      "severity": "suggestion",
+      "description": "Explain what happened in plain language. Offer a solution. Take responsibility. Be specific",
+      "example": "We couldn't save your changes. Please try again.; Password must be at least 8 characters with one number.",
+      "counterExample": "Error: Invalid input; You failed to complete the form correctly",
+      "tags": [
+        "ux-patterns",
+        "ux-writing",
+        "errors"
+      ]
+    },
+    {
+      "id": "ux-patterns-ux-writing-empty-states",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "UX writing: Empty States",
+      "severity": "suggestion",
+      "description": "Explain why the area is empty. Provide a clear action. Be encouraging. Use illustrations when appropriate",
+      "example": "No projects yet. Create your first one to get started.; Your inbox is empty. You're all caught up!",
+      "counterExample": "No data; 0 records found",
+      "tags": [
+        "ux-patterns",
+        "ux-writing",
+        "empty-states"
+      ]
+    },
+    {
+      "id": "ux-patterns-ux-writing-success",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "UX writing: Success Messages",
+      "severity": "suggestion",
+      "description": "Celebrate the accomplishment. Be specific about what happened. Include next steps. Use positive language",
+      "example": "Project created! Ready to add your first task?; Changes saved successfully.",
+      "counterExample": "Success; Transaction ID: 8492840294",
+      "tags": [
+        "ux-patterns",
+        "ux-writing",
+        "success"
+      ]
+    },
+    {
+      "id": "ux-patterns-ux-writing-forms",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "UX writing: Form Labels",
+      "severity": "suggestion",
+      "description": "Sentence case: \"Email address\". Helpful examples: \"e.g., john@company.com\". Explain requirements upfront. Use placeholder sparingly",
+      "example": "Label: \"Email address\" / Helper: \"e.g., john@company.com\"",
+      "counterExample": "EMAIL ADDRESS *",
+      "tags": [
+        "ux-patterns",
+        "ux-writing",
+        "forms"
+      ]
+    },
+    {
+      "id": "ux-patterns-ux-writing-loading",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "UX writing: Loading Messages",
+      "severity": "suggestion",
+      "description": "Tell users what's happening. Be reassuring. Provide time estimates. Use active verbs",
+      "example": "Loading your dashboard...; Processing payment... This usually takes 3-5 seconds.",
+      "counterExample": "Loading...; Executing database query...",
+      "tags": [
+        "ux-patterns",
+        "ux-writing",
+        "loading"
+      ]
+    },
+    {
+      "id": "ux-patterns-ux-writing-warnings",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "UX writing: Warning Messages",
+      "severity": "suggestion",
+      "description": "Clearly state what might go wrong. Explain consequences. Offer alternatives. Use cautious but calm tone",
+      "example": "Deleting this project will remove all tasks and files. This cannot be undone.",
+      "counterExample": "WARNING!!! DATA WILL BE LOST!!!",
+      "tags": [
+        "ux-patterns",
+        "ux-writing",
+        "warnings"
+      ]
+    },
+    {
+      "id": "ux-patterns-writing-rule-we-work-for-the-users",
+      "type": "rule",
+      "domain": "ux-patterns",
+      "title": "UX writing rule: We work for the users",
+      "severity": "warning",
+      "description": "They don't work for us",
+      "tags": [
+        "ux-patterns",
+        "ux-writing",
+        "golden-rules"
+      ]
+    },
+    {
+      "id": "ux-patterns-writing-rule-stay-consistent",
+      "type": "rule",
+      "domain": "ux-patterns",
+      "title": "UX writing rule: Stay consistent",
+      "severity": "warning",
+      "description": "Use consistent terminology",
+      "tags": [
+        "ux-patterns",
+        "ux-writing",
+        "golden-rules"
+      ]
+    },
+    {
+      "id": "ux-patterns-writing-rule-keep-it-stress-free",
+      "type": "rule",
+      "domain": "ux-patterns",
+      "title": "UX writing rule: Keep it stress-free",
+      "severity": "warning",
+      "description": "Never manipulate or guilt users",
+      "tags": [
+        "ux-patterns",
+        "ux-writing",
+        "golden-rules"
+      ]
+    },
+    {
+      "id": "ux-patterns-writing-rule-gradual-complexity",
+      "type": "rule",
+      "domain": "ux-patterns",
+      "title": "UX writing rule: Gradual complexity",
+      "severity": "warning",
+      "description": "Introduce features one step at a time",
+      "tags": [
+        "ux-patterns",
+        "ux-writing",
+        "golden-rules"
+      ]
+    },
+    {
+      "id": "ux-patterns-writing-rule-kind-over-clever",
+      "type": "rule",
+      "domain": "ux-patterns",
+      "title": "UX writing rule: Kind over clever",
+      "severity": "warning",
+      "description": "Never use passive-aggressive language",
+      "tags": [
+        "ux-patterns",
+        "ux-writing",
+        "golden-rules"
+      ]
+    },
+    {
+      "id": "ux-patterns-writing-rule-write-for-all-readers",
+      "type": "rule",
+      "domain": "ux-patterns",
+      "title": "UX writing rule: Write for all readers",
+      "severity": "warning",
+      "description": "Clear language without jargon",
+      "tags": [
+        "ux-patterns",
+        "ux-writing",
+        "golden-rules"
+      ]
+    },
+    {
+      "id": "ux-patterns-container-dialog",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "Container pattern: dialog",
+      "severity": "suggestion",
+      "description": "Use for: Confirmations, Simple forms (1-7 fields), Password entry, Quick creation, <30 sec completion. Fields: 1-7. Complexity: Low",
+      "tags": [
+        "ux-patterns",
+        "containers",
+        "dialog"
+      ]
+    },
+    {
+      "id": "ux-patterns-container-page",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "Container pattern: page",
+      "severity": "suggestion",
+      "description": "Use for: Complex forms (8+ fields), Primary CRUD, Data entry with sections, >1 minute tasks, Primary workflows. Fields: 8-12. Complexity: High",
+      "tags": [
+        "ux-patterns",
+        "containers",
+        "page"
+      ]
+    },
+    {
+      "id": "ux-patterns-container-wizard",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "Container pattern: wizard",
+      "severity": "suggestion",
+      "description": "Use for: Multi-step processes, Onboarding, Provisioning, Natural step divisions, 13+ fields. Fields: 13+. Complexity: Very High",
+      "tags": [
+        "ux-patterns",
+        "containers",
+        "wizard"
+      ]
+    },
+    {
+      "id": "ux-patterns-container-sheet",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "Container pattern: sheet",
+      "severity": "suggestion",
+      "description": "Use for: Preview/detail views, Mobile interactions, Filters, Desktop Dialog → Mobile Sheet. Fields: Variable. Complexity: Medium",
+      "tags": [
+        "ux-patterns",
+        "containers",
+        "sheet"
+      ]
+    },
+    {
+      "id": "ux-patterns-error-handling-errorboundary",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "Error handling: errorBoundary",
+      "severity": "suggestion",
+      "description": "Use: Catch component crashes. ",
+      "tags": [
+        "ux-patterns",
+        "error-handling",
+        "errorBoundary"
+      ]
+    },
+    {
+      "id": "ux-patterns-error-handling-loadingstates",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "Error handling: loadingStates",
+      "severity": "suggestion",
+      "description": "Use: Show during async operations. >400ms show loading (Doherty Threshold)",
+      "tags": [
+        "ux-patterns",
+        "error-handling",
+        "loadingStates"
+      ]
+    },
+    {
+      "id": "ux-patterns-error-handling-emptystates",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "Error handling: emptyStates",
+      "severity": "suggestion",
+      "description": "Use: No data scenarios. ",
+      "tags": [
+        "ux-patterns",
+        "error-handling",
+        "emptyStates"
+      ]
+    },
+    {
+      "id": "ux-patterns-error-handling-errorstates",
+      "type": "pattern",
+      "domain": "ux-patterns",
+      "title": "Error handling: errorStates",
+      "severity": "suggestion",
+      "description": "Use: Operation failed. ",
+      "tags": [
+        "ux-patterns",
+        "error-handling",
+        "errorStates"
+      ]
+    },
+    {
+      "id": "ux-patterns-response-time-100ms",
+      "type": "rule",
+      "domain": "ux-patterns",
+      "title": "Response time < 100ms: Instant",
+      "severity": "suggestion",
+      "description": "Required feedback: None needed",
+      "tags": [
+        "ux-patterns",
+        "performance",
+        "response-time"
+      ]
+    },
+    {
+      "id": "ux-patterns-response-time-100-400ms",
+      "type": "rule",
+      "domain": "ux-patterns",
+      "title": "Response time 100-400ms: Slight delay",
+      "severity": "warning",
+      "description": "Required feedback: Subtle indicator (disable button, cursor change)",
+      "tags": [
+        "ux-patterns",
+        "performance",
+        "response-time"
+      ]
+    },
+    {
+      "id": "ux-patterns-response-time-400ms",
+      "type": "rule",
+      "domain": "ux-patterns",
+      "title": "Response time > 400ms: Noticeable wait",
+      "severity": "warning",
+      "description": "Required feedback: Spinner or skeleton",
+      "tags": [
+        "ux-patterns",
+        "performance",
+        "response-time"
+      ]
+    },
+    {
+      "id": "ux-patterns-response-time-1s",
+      "type": "rule",
+      "domain": "ux-patterns",
+      "title": "Response time > 1s: Long operation",
+      "severity": "warning",
+      "description": "Required feedback: Progress indicator with percentage",
+      "tags": [
+        "ux-patterns",
+        "performance",
+        "response-time"
+      ]
+    },
+    {
+      "id": "ux-patterns-response-time-10s",
+      "type": "rule",
+      "domain": "ux-patterns",
+      "title": "Response time > 10s: Extended operation",
+      "severity": "warning",
+      "description": "Required feedback: Progress bar, status messages, cancel button",
+      "tags": [
+        "ux-patterns",
+        "performance",
+        "response-time"
+      ]
+    }
+  ]
+}

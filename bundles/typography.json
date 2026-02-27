@@ -1,0 +1,291 @@
+{
+  "domain": "typography",
+  "version": "1.0.0",
+  "entries": [
+    {
+      "id": "typography-scale-page-title",
+      "type": "pattern",
+      "domain": "typography",
+      "title": "Type scale: Page Title",
+      "severity": "suggestion",
+      "description": "Main page headings. Size: 24px, weight: 600",
+      "example": "Tailwind: text-2xl font-semibold",
+      "tags": [
+        "typography",
+        "scale",
+        "page-title"
+      ]
+    },
+    {
+      "id": "typography-scale-section-title",
+      "type": "pattern",
+      "domain": "typography",
+      "title": "Type scale: Section Title",
+      "severity": "suggestion",
+      "description": "Section headings. Size: 18px, weight: 600",
+      "example": "Tailwind: text-lg font-semibold",
+      "tags": [
+        "typography",
+        "scale",
+        "section-title"
+      ]
+    },
+    {
+      "id": "typography-scale-card-title",
+      "type": "pattern",
+      "domain": "typography",
+      "title": "Type scale: Card Title",
+      "severity": "suggestion",
+      "description": "Component titles. Size: 16px, weight: 600",
+      "example": "Tailwind: text-base font-semibold",
+      "tags": [
+        "typography",
+        "scale",
+        "card-title"
+      ]
+    },
+    {
+      "id": "typography-scale-body",
+      "type": "pattern",
+      "domain": "typography",
+      "title": "Type scale: Body",
+      "severity": "suggestion",
+      "description": "Paragraphs, descriptions. Size: 14px, weight: 400",
+      "example": "Tailwind: text-sm",
+      "tags": [
+        "typography",
+        "scale",
+        "body"
+      ]
+    },
+    {
+      "id": "typography-scale-body-emphasis",
+      "type": "pattern",
+      "domain": "typography",
+      "title": "Type scale: Body Emphasis",
+      "severity": "suggestion",
+      "description": "Labels, important text. Size: 14px, weight: 500",
+      "example": "Tailwind: text-sm font-medium",
+      "tags": [
+        "typography",
+        "scale",
+        "body-emphasis"
+      ]
+    },
+    {
+      "id": "typography-scale-caption",
+      "type": "pattern",
+      "domain": "typography",
+      "title": "Type scale: Caption",
+      "severity": "suggestion",
+      "description": "Helper text, metadata. Size: 12px, weight: 400",
+      "example": "Tailwind: text-xs",
+      "tags": [
+        "typography",
+        "scale",
+        "caption"
+      ]
+    },
+    {
+      "id": "typography-golden-rule-max-3-4-sizes-per-view",
+      "type": "rule",
+      "domain": "typography",
+      "title": "Typography rule: Max 3-4 sizes per view",
+      "severity": "warning",
+      "description": "Max 3-4 sizes per view",
+      "tags": [
+        "typography",
+        "golden-rules"
+      ]
+    },
+    {
+      "id": "typography-golden-rule-use-weight-for-emphasis-not-size",
+      "type": "rule",
+      "domain": "typography",
+      "title": "Typography rule: Use weight for emphasis, not size",
+      "severity": "warning",
+      "description": "Use weight for emphasis, not size",
+      "tags": [
+        "typography",
+        "golden-rules"
+      ]
+    },
+    {
+      "id": "typography-golden-rule-line-length-45-75-characters-optimal",
+      "type": "rule",
+      "domain": "typography",
+      "title": "Typography rule: Line length: 45-75 characters optimal",
+      "severity": "warning",
+      "description": "Line length: 45-75 characters optimal",
+      "tags": [
+        "typography",
+        "golden-rules"
+      ]
+    },
+    {
+      "id": "typography-golden-rule-important-larger-bolder",
+      "type": "rule",
+      "domain": "typography",
+      "title": "Typography rule: Important = Larger + Bolder",
+      "severity": "warning",
+      "description": "Important = Larger + Bolder",
+      "tags": [
+        "typography",
+        "golden-rules"
+      ]
+    },
+    {
+      "id": "typography-forbidden-font-serif",
+      "type": "anti-pattern",
+      "domain": "typography",
+      "title": "Typography forbidden: font-serif",
+      "severity": "critical",
+      "description": "font-serif",
+      "tags": [
+        "typography",
+        "forbidden"
+      ]
+    },
+    {
+      "id": "typography-forbidden-font-display",
+      "type": "anti-pattern",
+      "domain": "typography",
+      "title": "Typography forbidden: font-display",
+      "severity": "critical",
+      "description": "font-display",
+      "tags": [
+        "typography",
+        "forbidden"
+      ]
+    },
+    {
+      "id": "typography-forbidden-arbitrary-text-sizes-text-17px",
+      "type": "anti-pattern",
+      "domain": "typography",
+      "title": "Typography forbidden: Arbitrary text sizes (text-[17px])",
+      "severity": "critical",
+      "description": "Arbitrary text sizes (text-[17px])",
+      "tags": [
+        "typography",
+        "forbidden"
+      ]
+    },
+    {
+      "id": "typography-forbidden-more-than-4-sizes-in-one-view",
+      "type": "anti-pattern",
+      "domain": "typography",
+      "title": "Typography forbidden: More than 4 sizes in one view",
+      "severity": "critical",
+      "description": "More than 4 sizes in one view",
+      "tags": [
+        "typography",
+        "forbidden"
+      ]
+    },
+    {
+      "id": "typography-font-formats",
+      "type": "rule",
+      "domain": "typography",
+      "title": "Font format requirements",
+      "severity": "warning",
+      "description": "Required formats: woff2: priority 1 (required), woff: priority 2, ttf: priority 3. Preference: woff2 > woff > ttf",
+      "tags": [
+        "typography",
+        "fonts",
+        "formats"
+      ]
+    },
+    {
+      "id": "typography-font-minimum-weights",
+      "type": "rule",
+      "domain": "typography",
+      "title": "Font minimum weights: 400, 600",
+      "severity": "warning",
+      "description": "Minimum weights: 400, 600. Recommended: 400, 500, 600, 700",
+      "tags": [
+        "typography",
+        "fonts",
+        "weights"
+      ]
+    },
+    {
+      "id": "typography-icon-size-xs",
+      "type": "pattern",
+      "domain": "typography",
+      "title": "Icon size: XS (16px)",
+      "severity": "suggestion",
+      "description": "Use: Inline text, badges",
+      "tags": [
+        "typography",
+        "iconography",
+        "sizes"
+      ]
+    },
+    {
+      "id": "typography-icon-size-sm",
+      "type": "pattern",
+      "domain": "typography",
+      "title": "Icon size: SM (20px)",
+      "severity": "suggestion",
+      "description": "Use: Buttons, inputs",
+      "tags": [
+        "typography",
+        "iconography",
+        "sizes"
+      ]
+    },
+    {
+      "id": "typography-icon-size-md",
+      "type": "pattern",
+      "domain": "typography",
+      "title": "Icon size: MD (24px)",
+      "severity": "suggestion",
+      "description": "Use: Navigation, default",
+      "tags": [
+        "typography",
+        "iconography",
+        "sizes"
+      ]
+    },
+    {
+      "id": "typography-icon-size-lg",
+      "type": "pattern",
+      "domain": "typography",
+      "title": "Icon size: LG (32px)",
+      "severity": "suggestion",
+      "description": "Use: Feature highlights",
+      "tags": [
+        "typography",
+        "iconography",
+        "sizes"
+      ]
+    },
+    {
+      "id": "typography-icon-size-xl",
+      "type": "pattern",
+      "domain": "typography",
+      "title": "Icon size: XL (48px)",
+      "severity": "suggestion",
+      "description": "Use: Empty states, heroes",
+      "tags": [
+        "typography",
+        "iconography",
+        "sizes"
+      ]
+    },
+    {
+      "id": "typography-icon-forbidden-emojis",
+      "type": "anti-pattern",
+      "domain": "typography",
+      "title": "Icons forbidden: All emojis except typographic symbols",
+      "severity": "critical",
+      "description": "NEVER emojis. ALWAYS Lucide React.. Use lucide-react instead.",
+      "tags": [
+        "typography",
+        "iconography",
+        "forbidden",
+        "emojis"
+      ]
+    }
+  ]
+}

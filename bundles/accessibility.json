@@ -1,0 +1,467 @@
+{
+  "domain": "accessibility",
+  "version": "1.0.0",
+  "entries": [
+    {
+      "id": "accessibility-violation-image-missing-alt-attribute",
+      "type": "rule",
+      "domain": "accessibility",
+      "title": "Image missing alt attribute",
+      "severity": "critical",
+      "description": "Add alt=\"description\" for informative images or alt=\"\" for decorative",
+      "context": "Pattern: <img(?![^>]*alt[=\\s])",
+      "tags": [
+        "accessibility",
+        "validation",
+        "violation"
+      ]
+    },
+    {
+      "id": "accessibility-violation-svg-may-need-accessibility-attributes",
+      "type": "rule",
+      "domain": "accessibility",
+      "title": "SVG may need accessibility attributes",
+      "severity": "warning",
+      "description": "Add aria-label for meaningful icons or aria-hidden=\"true\" for decorative",
+      "context": "Pattern: <svg(?![^>]*aria-)",
+      "tags": [
+        "accessibility",
+        "validation",
+        "violation"
+      ]
+    },
+    {
+      "id": "accessibility-violation-click-handler-on-non-interactive-element",
+      "type": "rule",
+      "domain": "accessibility",
+      "title": "Click handler on non-interactive element",
+      "severity": "critical",
+      "description": "Use <button> for actions or <a> for navigation, or add role=\"button\" tabIndex={0}",
+      "context": "Pattern: onClick=[^}]*}\\s*(?:className)?[^>]*>(?!.*<\\/(button|a))",
+      "tags": [
+        "accessibility",
+        "validation",
+        "violation"
+      ]
+    },
+    {
+      "id": "accessibility-violation-clickable-div-is-not-keyboard-accessible",
+      "type": "rule",
+      "domain": "accessibility",
+      "title": "Clickable div is not keyboard accessible",
+      "severity": "critical",
+      "description": "Use <button> instead, or add role=\"button\" tabIndex={0} onKeyDown handler",
+      "context": "Pattern: <div[^>]*onClick",
+      "tags": [
+        "accessibility",
+        "validation",
+        "violation"
+      ]
+    },
+    {
+      "id": "accessibility-violation-clickable-span-is-not-keyboard-accessible",
+      "type": "rule",
+      "domain": "accessibility",
+      "title": "Clickable span is not keyboard accessible",
+      "severity": "critical",
+      "description": "Use <button> instead, or add role=\"button\" tabIndex={0} onKeyDown handler",
+      "context": "Pattern: <span[^>]*onClick",
+      "tags": [
+        "accessibility",
+        "validation",
+        "violation"
+      ]
+    },
+    {
+      "id": "accessibility-violation-negative-tabindex-removes-element-from-tab-order",
+      "type": "rule",
+      "domain": "accessibility",
+      "title": "Negative tabIndex removes element from tab order",
+      "severity": "warning",
+      "description": "Only use tabIndex={-1} for programmatically focused elements",
+      "context": "Pattern: tabIndex=[\"']-1[\"']",
+      "tags": [
+        "accessibility",
+        "validation",
+        "violation"
+      ]
+    },
+    {
+      "id": "accessibility-violation-positive-tabindex-disrupts-natural-tab-order",
+      "type": "rule",
+      "domain": "accessibility",
+      "title": "Positive tabIndex disrupts natural tab order",
+      "severity": "critical",
+      "description": "Use tabIndex={0} or restructure DOM for natural order",
+      "context": "Pattern: tabIndex=[\"'][1-9]",
+      "tags": [
+        "accessibility",
+        "validation",
+        "violation"
+      ]
+    },
+    {
+      "id": "accessibility-violation-autofocus-can-disorient-screen-reader-users",
+      "type": "rule",
+      "domain": "accessibility",
+      "title": "autoFocus can disorient screen reader users",
+      "severity": "warning",
+      "description": "Use sparingly, only for modals/dialogs where focus management is needed",
+      "context": "Pattern: autoFocus",
+      "tags": [
+        "accessibility",
+        "validation",
+        "violation"
+      ]
+    },
+    {
+      "id": "accessibility-violation-input-without-id-may-lack-label-association",
+      "type": "rule",
+      "domain": "accessibility",
+      "title": "Input without id may lack label association",
+      "severity": "warning",
+      "description": "Add id and associate with <label htmlFor=\"id\">",
+      "context": "Pattern: <input(?![^>]*id[=\\s])",
+      "tags": [
+        "accessibility",
+        "validation",
+        "violation"
+      ]
+    },
+    {
+      "id": "accessibility-violation-icon-only-button-may-lack-accessible-name",
+      "type": "rule",
+      "domain": "accessibility",
+      "title": "Icon-only button may lack accessible name",
+      "severity": "warning",
+      "description": "Add aria-label=\"description\" or visually hidden text",
+      "context": "Pattern: <button[^>]*>\\s*<(svg|img|Icon)",
+      "tags": [
+        "accessibility",
+        "validation",
+        "violation"
+      ]
+    },
+    {
+      "id": "accessibility-violation-placeholder-is-not-a-substitute-for-labels",
+      "type": "rule",
+      "domain": "accessibility",
+      "title": "Placeholder is not a substitute for labels",
+      "severity": "warning",
+      "description": "Add visible <label> or aria-label for accessibility",
+      "context": "Pattern: placeholder=[\"'][^\"']+[\"'](?![^>]*aria-label)",
+      "tags": [
+        "accessibility",
+        "validation",
+        "violation"
+      ]
+    },
+    {
+      "id": "accessibility-violation-color-alone-used-to-convey-meaning",
+      "type": "rule",
+      "domain": "accessibility",
+      "title": "Color alone used to convey meaning",
+      "severity": "warning",
+      "description": "Add icons, text, or patterns alongside color for colorblind users",
+      "context": "Pattern: color:\\s*red|color:\\s*green(?![^;]*;[^}]*aria)",
+      "tags": [
+        "accessibility",
+        "validation",
+        "violation"
+      ]
+    },
+    {
+      "id": "accessibility-violation-anchor-tag-without-href",
+      "type": "rule",
+      "domain": "accessibility",
+      "title": "Anchor tag without href",
+      "severity": "critical",
+      "description": "Use <button> for actions or add href for navigation",
+      "context": "Pattern: <a(?![^>]*href)",
+      "tags": [
+        "accessibility",
+        "validation",
+        "violation"
+      ]
+    },
+    {
+      "id": "accessibility-violation-empty-href-creates-navigation-issues",
+      "type": "rule",
+      "domain": "accessibility",
+      "title": "Empty href=\"#\" creates navigation issues",
+      "severity": "warning",
+      "description": "Use <button> for actions, or provide meaningful href",
+      "context": "Pattern: href=[\"']#[\"']",
+      "tags": [
+        "accessibility",
+        "validation",
+        "violation"
+      ]
+    },
+    {
+      "id": "accessibility-required-interactive-data-testid",
+      "type": "rule",
+      "domain": "accessibility",
+      "title": "Required: Interactive element missing data-testid",
+      "severity": "suggestion",
+      "description": "Add data-testid=\"descriptive-name\" for testing",
+      "context": "Context: interactive",
+      "appliesTo": [
+        "<button",
+        "<input",
+        "<select",
+        "<a href"
+      ],
+      "tags": [
+        "accessibility",
+        "required-patterns",
+        "interactive"
+      ]
+    },
+    {
+      "id": "accessibility-required-icon-button-aria-label-aria-labelledby-aria-describedby",
+      "type": "rule",
+      "domain": "accessibility",
+      "title": "Required: Icon button should have aria-label",
+      "severity": "warning",
+      "description": "Add aria-label=\"action description\"",
+      "context": "Context: icon-button",
+      "appliesTo": [
+        "<button[^>]*>[\\s]*<(Icon|svg)"
+      ],
+      "tags": [
+        "accessibility",
+        "required-patterns",
+        "icon-button"
+      ]
+    },
+    {
+      "id": "accessibility-required-button-type-button-submit-reset",
+      "type": "rule",
+      "domain": "accessibility",
+      "title": "Required: Button missing explicit type attribute",
+      "severity": "warning",
+      "description": "Add type=\"button\" to prevent form submission, or type=\"submit\" for forms",
+      "context": "Context: button",
+      "appliesTo": [
+        "<button(?![^>]*type=)"
+      ],
+      "tags": [
+        "accessibility",
+        "required-patterns",
+        "button"
+      ]
+    },
+    {
+      "id": "accessibility-required-variant-component-classname-cn",
+      "type": "rule",
+      "domain": "accessibility",
+      "title": "Required: Component with variants should use cn() for class merging",
+      "severity": "suggestion",
+      "description": "Use cn() from lib/utils for proper Tailwind class merging",
+      "context": "Context: variant-component",
+      "appliesTo": [
+        "cva\\(",
+        "variants"
+      ],
+      "tags": [
+        "accessibility",
+        "required-patterns",
+        "variant-component"
+      ]
+    },
+    {
+      "id": "accessibility-required-reusable-component-forwardref",
+      "type": "rule",
+      "domain": "accessibility",
+      "title": "Required: Reusable component should support ref forwarding",
+      "severity": "suggestion",
+      "description": "Wrap component with React.forwardRef for ref support",
+      "context": "Context: reusable-component",
+      "appliesTo": [
+        "export (const|function).*=.*\\("
+      ],
+      "tags": [
+        "accessibility",
+        "required-patterns",
+        "reusable-component"
+      ]
+    },
+    {
+      "id": "accessibility-keyboard-all-interactive-components-must-be-keyboard-accessible",
+      "type": "pattern",
+      "domain": "accessibility",
+      "title": "Keyboard: All interactive components must be keyboard accessible",
+      "severity": "critical",
+      "description": "All interactive components must be keyboard accessible",
+      "tags": [
+        "accessibility",
+        "keyboard",
+        "navigation"
+      ]
+    },
+    {
+      "id": "accessibility-keyboard-support-tab-enter-space-arrow-keys-escape",
+      "type": "pattern",
+      "domain": "accessibility",
+      "title": "Keyboard: Support Tab, Enter, Space, Arrow keys, Escape",
+      "severity": "critical",
+      "description": "Support Tab, Enter, Space, Arrow keys, Escape",
+      "tags": [
+        "accessibility",
+        "keyboard",
+        "navigation"
+      ]
+    },
+    {
+      "id": "accessibility-keyboard-provide-visible-focus-indicators",
+      "type": "pattern",
+      "domain": "accessibility",
+      "title": "Keyboard: Provide visible focus indicators",
+      "severity": "critical",
+      "description": "Provide visible focus indicators",
+      "tags": [
+        "accessibility",
+        "keyboard",
+        "navigation"
+      ]
+    },
+    {
+      "id": "accessibility-keyboard-implement-proper-focus-management-in-overlays",
+      "type": "pattern",
+      "domain": "accessibility",
+      "title": "Keyboard: Implement proper focus management in overlays",
+      "severity": "critical",
+      "description": "Implement proper focus management in overlays",
+      "tags": [
+        "accessibility",
+        "keyboard",
+        "navigation"
+      ]
+    },
+    {
+      "id": "accessibility-screenreader-use-semantic-html-elements",
+      "type": "pattern",
+      "domain": "accessibility",
+      "title": "Screen reader: Use semantic HTML elements",
+      "severity": "critical",
+      "description": "Use semantic HTML elements",
+      "tags": [
+        "accessibility",
+        "screen-reader",
+        "aria"
+      ]
+    },
+    {
+      "id": "accessibility-screenreader-provide-aria-labels-for-icon-only-controls",
+      "type": "pattern",
+      "domain": "accessibility",
+      "title": "Screen reader: Provide ARIA labels for icon-only controls",
+      "severity": "critical",
+      "description": "Provide ARIA labels for icon-only controls",
+      "tags": [
+        "accessibility",
+        "screen-reader",
+        "aria"
+      ]
+    },
+    {
+      "id": "accessibility-screenreader-announce-state-changes-loading-errors-success",
+      "type": "pattern",
+      "domain": "accessibility",
+      "title": "Screen reader: Announce state changes (loading, errors, success)",
+      "severity": "critical",
+      "description": "Announce state changes (loading, errors, success)",
+      "tags": [
+        "accessibility",
+        "screen-reader",
+        "aria"
+      ]
+    },
+    {
+      "id": "accessibility-screenreader-use-aria-live-regions-for-dynamic-content",
+      "type": "pattern",
+      "domain": "accessibility",
+      "title": "Screen reader: Use ARIA live regions for dynamic content",
+      "severity": "critical",
+      "description": "Use ARIA live regions for dynamic content",
+      "tags": [
+        "accessibility",
+        "screen-reader",
+        "aria"
+      ]
+    },
+    {
+      "id": "accessibility-contrast-meet-wcag-aa-contrast-ratios-4-5-1-text-3-1-ui",
+      "type": "rule",
+      "domain": "accessibility",
+      "title": "Color contrast: Meet WCAG AA contrast ratios (4.5:1 text, 3:1 UI)",
+      "severity": "critical",
+      "description": "Meet WCAG AA contrast ratios (4.5:1 text, 3:1 UI)",
+      "tags": [
+        "accessibility",
+        "color",
+        "contrast",
+        "wcag"
+      ]
+    },
+    {
+      "id": "accessibility-contrast-don-t-rely-on-color-alone-for-information",
+      "type": "rule",
+      "domain": "accessibility",
+      "title": "Color contrast: Don't rely on color alone for information",
+      "severity": "critical",
+      "description": "Don't rely on color alone for information",
+      "tags": [
+        "accessibility",
+        "color",
+        "contrast",
+        "wcag"
+      ]
+    },
+    {
+      "id": "accessibility-contrast-provide-patterns-icons-alongside-color-coding",
+      "type": "rule",
+      "domain": "accessibility",
+      "title": "Color contrast: Provide patterns/icons alongside color coding",
+      "severity": "critical",
+      "description": "Provide patterns/icons alongside color coding",
+      "tags": [
+        "accessibility",
+        "color",
+        "contrast",
+        "wcag"
+      ]
+    },
+    {
+      "id": "accessibility-fitts-law-touch-targets",
+      "type": "rule",
+      "domain": "accessibility",
+      "title": "Fitts's Law: minimum touch target size",
+      "severity": "critical",
+      "description": "Target size + distance affect interaction time. Application: min-h-11 (44px) for touch targets on mobile",
+      "example": "min-h-11, min-h-8 (desktop)",
+      "counterExample": "Buttons <44px on mobile, Tiny click targets",
+      "tags": [
+        "accessibility",
+        "touch-target",
+        "fitts-law",
+        "mobile"
+      ]
+    },
+    {
+      "id": "accessibility-cognitive-load",
+      "type": "rule",
+      "domain": "accessibility",
+      "title": "Cognitive Load: reduce unnecessary mental burden",
+      "severity": "warning",
+      "description": "Mental effort is finite - reduce unnecessary cognitive burden. Application: Minimize choices, use recognition over recall, maintain context",
+      "counterExample": "Information overload, Hidden options, Requiring memorization, Dense layouts",
+      "tags": [
+        "accessibility",
+        "cognitive-load",
+        "usability"
+      ]
+    }
+  ]
+}

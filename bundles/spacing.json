@@ -1,0 +1,576 @@
+{
+  "domain": "spacing",
+  "version": "1.0.0",
+  "entries": [
+    {
+      "id": "spacing-two-layer-system",
+      "type": "pattern",
+      "domain": "spacing",
+      "title": "Two-layer spacing system: precision (4pt) + rhythm (8pt)",
+      "severity": "critical",
+      "description": "One scale, two layers. Modern design systems don't choose between 4pt or 8pt — they assign responsibility.",
+      "example": "Precision: Icons, typography baselines, and internal component spacing. Rhythm: Layout spacing, padding, margins, and component sizing",
+      "tags": [
+        "spacing",
+        "layers",
+        "system",
+        "4pt",
+        "8pt"
+      ]
+    },
+    {
+      "id": "spacing-token-micro",
+      "type": "pattern",
+      "domain": "spacing",
+      "title": "Spacing token: micro (4px)",
+      "severity": "suggestion",
+      "description": "Use: Icon ↔ text. Layer: precision",
+      "example": "Tailwind: gap-1",
+      "tags": [
+        "spacing",
+        "tokens",
+        "precision"
+      ]
+    },
+    {
+      "id": "spacing-token-tight",
+      "type": "pattern",
+      "domain": "spacing",
+      "title": "Spacing token: tight (8px)",
+      "severity": "suggestion",
+      "description": "Use: Label ↔ input. Layer: both",
+      "example": "Tailwind: gap-2",
+      "tags": [
+        "spacing",
+        "tokens",
+        "both"
+      ]
+    },
+    {
+      "id": "spacing-token-compact",
+      "type": "pattern",
+      "domain": "spacing",
+      "title": "Spacing token: compact (12px)",
+      "severity": "suggestion",
+      "description": "Use: Button groups, tight lists. Layer: precision",
+      "example": "Tailwind: gap-3",
+      "tags": [
+        "spacing",
+        "tokens",
+        "precision"
+      ]
+    },
+    {
+      "id": "spacing-token-base",
+      "type": "pattern",
+      "domain": "spacing",
+      "title": "Spacing token: base (16px)",
+      "severity": "suggestion",
+      "description": "Use: Within component. Layer: both",
+      "example": "Tailwind: gap-4",
+      "tags": [
+        "spacing",
+        "tokens",
+        "both"
+      ]
+    },
+    {
+      "id": "spacing-token-related",
+      "type": "pattern",
+      "domain": "spacing",
+      "title": "Spacing token: related (20px)",
+      "severity": "suggestion",
+      "description": "Use: Related content groups. Layer: precision",
+      "example": "Tailwind: gap-5",
+      "tags": [
+        "spacing",
+        "tokens",
+        "precision"
+      ]
+    },
+    {
+      "id": "spacing-token-comfortable",
+      "type": "pattern",
+      "domain": "spacing",
+      "title": "Spacing token: comfortable (24px)",
+      "severity": "suggestion",
+      "description": "Use: Between components. Layer: both",
+      "example": "Tailwind: gap-6",
+      "tags": [
+        "spacing",
+        "tokens",
+        "both"
+      ]
+    },
+    {
+      "id": "spacing-token-spacious",
+      "type": "pattern",
+      "domain": "spacing",
+      "title": "Spacing token: spacious (32px)",
+      "severity": "suggestion",
+      "description": "Use: Between sections. Layer: rhythm",
+      "example": "Tailwind: gap-8",
+      "tags": [
+        "spacing",
+        "tokens",
+        "rhythm"
+      ]
+    },
+    {
+      "id": "spacing-token-loose",
+      "type": "pattern",
+      "domain": "spacing",
+      "title": "Spacing token: loose (40px)",
+      "severity": "suggestion",
+      "description": "Use: Major content blocks. Layer: rhythm",
+      "example": "Tailwind: gap-10",
+      "tags": [
+        "spacing",
+        "tokens",
+        "rhythm"
+      ]
+    },
+    {
+      "id": "spacing-token-section",
+      "type": "pattern",
+      "domain": "spacing",
+      "title": "Spacing token: section (48px)",
+      "severity": "suggestion",
+      "description": "Use: Major sections. Layer: rhythm",
+      "example": "Tailwind: gap-12",
+      "tags": [
+        "spacing",
+        "tokens",
+        "rhythm"
+      ]
+    },
+    {
+      "id": "spacing-token-page",
+      "type": "pattern",
+      "domain": "spacing",
+      "title": "Spacing token: page (96px)",
+      "severity": "suggestion",
+      "description": "Use: Hero, footer. Layer: rhythm",
+      "example": "Tailwind: gap-24",
+      "tags": [
+        "spacing",
+        "tokens",
+        "rhythm"
+      ]
+    },
+    {
+      "id": "spacing-forbidden-arbitrary-values-m-32px",
+      "type": "anti-pattern",
+      "domain": "spacing",
+      "title": "Spacing forbidden: Arbitrary values: m-[32px]",
+      "severity": "critical",
+      "description": "Arbitrary values: m-[32px]",
+      "tags": [
+        "spacing",
+        "forbidden"
+      ]
+    },
+    {
+      "id": "spacing-forbidden-inline-styles-style-margin-32px",
+      "type": "anti-pattern",
+      "domain": "spacing",
+      "title": "Spacing forbidden: Inline styles: style={{ margin: '32px' }}",
+      "severity": "critical",
+      "description": "Inline styles: style={{ margin: '32px' }}",
+      "tags": [
+        "spacing",
+        "forbidden"
+      ]
+    },
+    {
+      "id": "spacing-forbidden-breaking-4px-grid",
+      "type": "anti-pattern",
+      "domain": "spacing",
+      "title": "Spacing forbidden: Breaking 4px grid",
+      "severity": "critical",
+      "description": "Breaking 4px grid",
+      "tags": [
+        "spacing",
+        "forbidden"
+      ]
+    },
+    {
+      "id": "spacing-forbidden-inconsistent-spacing-within-same-context",
+      "type": "anti-pattern",
+      "domain": "spacing",
+      "title": "Spacing forbidden: Inconsistent spacing within same context",
+      "severity": "critical",
+      "description": "Inconsistent spacing within same context",
+      "tags": [
+        "spacing",
+        "forbidden"
+      ]
+    },
+    {
+      "id": "spacing-forbidden-off-grid-values-5px-7px-18px-29px-random-values-confuse-users",
+      "type": "anti-pattern",
+      "domain": "spacing",
+      "title": "Spacing forbidden: Off-grid values: 5px, 7px, 18px, 29px — random values confuse users",
+      "severity": "critical",
+      "description": "Off-grid values: 5px, 7px, 18px, 29px — random values confuse users",
+      "tags": [
+        "spacing",
+        "forbidden"
+      ]
+    },
+    {
+      "id": "spacing-forbidden-typography-that-doesn-t-snap-to-8pt-baseline-grid",
+      "type": "anti-pattern",
+      "domain": "spacing",
+      "title": "Spacing forbidden: Typography that doesn't snap to 8pt baseline grid",
+      "severity": "critical",
+      "description": "Typography that doesn't snap to 8pt baseline grid",
+      "tags": [
+        "spacing",
+        "forbidden"
+      ]
+    },
+    {
+      "id": "spacing-layout-antipattern-fillingeverygap",
+      "type": "anti-pattern",
+      "domain": "spacing",
+      "title": "Layout anti-pattern: fillingEveryGap",
+      "severity": "critical",
+      "description": "Filling every available gap with content reduces scannability, makes layouts harder to parse, and forces users to work harder to understand structure",
+      "why": "If everything is filled, nothing stands out",
+      "counterExample": "Use white space to define grouping, separate content blocks, and clarify intent — leave intentional gaps",
+      "tags": [
+        "spacing",
+        "layout",
+        "anti-pattern"
+      ]
+    },
+    {
+      "id": "spacing-layout-antipattern-sectionsbleeding",
+      "type": "anti-pattern",
+      "domain": "spacing",
+      "title": "Layout anti-pattern: sectionsBleeding",
+      "severity": "critical",
+      "description": "Sections visually bleed into each other when vertical gaps between sections are not significantly larger than gaps within sections",
+      "why": "Spacing is the primary signal of hierarchy",
+      "counterExample": "Use section-level tokens (gap-12/gap-16, 48-64px) between sections and smaller tokens (gap-4/gap-6, 16-24px) within sections — the ratio should be at least 2:1",
+      "tags": [
+        "spacing",
+        "layout",
+        "anti-pattern"
+      ]
+    },
+    {
+      "id": "spacing-layout-antipattern-crowdingtextblocks",
+      "type": "anti-pattern",
+      "domain": "spacing",
+      "title": "Layout anti-pattern: crowdingTextBlocks",
+      "severity": "warning",
+      "description": "Tight paragraphs and minimal line/section spacing kills readability and increases cognitive load, making long-form content exhausting to read",
+      "why": "Readability depends more on space than on font choice",
+      "counterExample": "Increase spacing between paragraphs more than between lines — use mb-4 to mb-6 between paragraphs, leading-relaxed for long-form content",
+      "tags": [
+        "spacing",
+        "layout",
+        "anti-pattern"
+      ]
+    },
+    {
+      "id": "spacing-layout-antipattern-overpackingcomponents",
+      "type": "anti-pattern",
+      "domain": "spacing",
+      "title": "Layout anti-pattern: overpackingComponents",
+      "severity": "warning",
+      "description": "Stuffing cards and components with too many elements (buttons, tags, metadata, badges) increases cognitive load and blurs the component's primary purpose",
+      "why": "More content does not equal more value — one clear intent per component",
+      "counterExample": "Remove non-essential elements, use progressive disclosure (expand/detail views), limit cards to: title + description + 1 primary action + 1-2 metadata items",
+      "tags": [
+        "spacing",
+        "layout",
+        "anti-pattern"
+      ]
+    },
+    {
+      "id": "spacing-layout-antipattern-inconsistentcomponentspacing",
+      "type": "anti-pattern",
+      "domain": "spacing",
+      "title": "Layout anti-pattern: inconsistentComponentSpacing",
+      "severity": "warning",
+      "description": "Each component inventing its own internal spacing logic makes the system feel fragmented and harder to maintain at scale",
+      "why": "Components inherit spacing rules from the system — spacing tokens are reused, not improvised",
+      "counterExample": "Define spacing tokens per component type: cards use p-6, forms use space-y-4, button groups use gap-2 or gap-3 — never ad-hoc values",
+      "tags": [
+        "spacing",
+        "layout",
+        "anti-pattern"
+      ]
+    },
+    {
+      "id": "spacing-layout-antipattern-ignoringverticalrhythm",
+      "type": "anti-pattern",
+      "domain": "spacing",
+      "title": "Layout anti-pattern: ignoringVerticalRhythm",
+      "severity": "warning",
+      "description": "Treating spacing as purely horizontal while ignoring vertical rhythm makes the interface flow feel erratic and uncomfortable",
+      "why": "Vertical spacing controls pace, comfort, and flow",
+      "counterExample": "Establish predictable Y-axis spacing patterns — repeat the same vertical rhythm across sections using the 8pt rhythm layer",
+      "tags": [
+        "spacing",
+        "layout",
+        "anti-pattern"
+      ]
+    },
+    {
+      "id": "spacing-principle-space-defines-grouping-and-separates-content-blocks",
+      "type": "rule",
+      "domain": "spacing",
+      "title": "Spacing principle: Space defines grouping and separates content blocks",
+      "severity": "warning",
+      "description": "Space defines grouping and separates content blocks",
+      "context": "White space is not empty — it is an active design tool that creates structure, hierarchy, focus, rhythm, and comfort. Treating space as 'unused' leads to clutter, cognitive overload, and loss of hierarchy.",
+      "tags": [
+        "spacing",
+        "principles",
+        "white-space"
+      ]
+    },
+    {
+      "id": "spacing-principle-if-everything-is-filled-nothing-stands-out",
+      "type": "rule",
+      "domain": "spacing",
+      "title": "Spacing principle: If everything is filled, nothing stands out",
+      "severity": "warning",
+      "description": "If everything is filled, nothing stands out",
+      "context": "White space is not empty — it is an active design tool that creates structure, hierarchy, focus, rhythm, and comfort. Treating space as 'unused' leads to clutter, cognitive overload, and loss of hierarchy.",
+      "tags": [
+        "spacing",
+        "principles",
+        "white-space"
+      ]
+    },
+    {
+      "id": "spacing-principle-spacing-is-the-primary-signal-of-hierarchy-larger-gaps-between-sections-than-within-sections",
+      "type": "rule",
+      "domain": "spacing",
+      "title": "Spacing principle: Spacing is the primary signal of hierarchy — larger gaps between sections than within sections",
+      "severity": "warning",
+      "description": "Spacing is the primary signal of hierarchy — larger gaps between sections than within sections",
+      "context": "White space is not empty — it is an active design tool that creates structure, hierarchy, focus, rhythm, and comfort. Treating space as 'unused' leads to clutter, cognitive overload, and loss of hierarchy.",
+      "tags": [
+        "spacing",
+        "principles",
+        "white-space"
+      ]
+    },
+    {
+      "id": "spacing-principle-readability-depends-more-on-space-than-on-font-choice",
+      "type": "rule",
+      "domain": "spacing",
+      "title": "Spacing principle: Readability depends more on space than on font choice",
+      "severity": "warning",
+      "description": "Readability depends more on space than on font choice",
+      "context": "White space is not empty — it is an active design tool that creates structure, hierarchy, focus, rhythm, and comfort. Treating space as 'unused' leads to clutter, cognitive overload, and loss of hierarchy.",
+      "tags": [
+        "spacing",
+        "principles",
+        "white-space"
+      ]
+    },
+    {
+      "id": "spacing-principle-vertical-spacing-controls-pace-comfort-and-flow",
+      "type": "rule",
+      "domain": "spacing",
+      "title": "Spacing principle: Vertical spacing controls pace, comfort, and flow",
+      "severity": "warning",
+      "description": "Vertical spacing controls pace, comfort, and flow",
+      "context": "White space is not empty — it is an active design tool that creates structure, hierarchy, focus, rhythm, and comfort. Treating space as 'unused' leads to clutter, cognitive overload, and loss of hierarchy.",
+      "tags": [
+        "spacing",
+        "principles",
+        "white-space"
+      ]
+    },
+    {
+      "id": "spacing-principle-one-clear-intent-per-component-more-content-does-not-equal-more-value",
+      "type": "rule",
+      "domain": "spacing",
+      "title": "Spacing principle: One clear intent per component — more content does not equal more value",
+      "severity": "warning",
+      "description": "One clear intent per component — more content does not equal more value",
+      "context": "White space is not empty — it is an active design tool that creates structure, hierarchy, focus, rhythm, and comfort. Treating space as 'unused' leads to clutter, cognitive overload, and loss of hierarchy.",
+      "tags": [
+        "spacing",
+        "principles",
+        "white-space"
+      ]
+    },
+    {
+      "id": "spacing-principle-components-inherit-spacing-rules-from-the-system-not-invent-their-own",
+      "type": "rule",
+      "domain": "spacing",
+      "title": "Spacing principle: Components inherit spacing rules from the system, not invent their own",
+      "severity": "warning",
+      "description": "Components inherit spacing rules from the system, not invent their own",
+      "context": "White space is not empty — it is an active design tool that creates structure, hierarchy, focus, rhythm, and comfort. Treating space as 'unused' leads to clutter, cognitive overload, and loss of hierarchy.",
+      "tags": [
+        "spacing",
+        "principles",
+        "white-space"
+      ]
+    },
+    {
+      "id": "spacing-principle-white-space-must-scale-with-screen-size",
+      "type": "rule",
+      "domain": "spacing",
+      "title": "Spacing principle: White space must scale with screen size",
+      "severity": "warning",
+      "description": "White space must scale with screen size",
+      "context": "White space is not empty — it is an active design tool that creates structure, hierarchy, focus, rhythm, and comfort. Treating space as 'unused' leads to clutter, cognitive overload, and loss of hierarchy.",
+      "tags": [
+        "spacing",
+        "principles",
+        "white-space"
+      ]
+    },
+    {
+      "id": "spacing-border-radius-none",
+      "type": "pattern",
+      "domain": "spacing",
+      "title": "Border radius: none (0px)",
+      "severity": "suggestion",
+      "description": "Use: Sharp edges",
+      "example": "Tailwind: rounded-none",
+      "tags": [
+        "spacing",
+        "border-radius",
+        "tokens"
+      ]
+    },
+    {
+      "id": "spacing-border-radius-xs",
+      "type": "pattern",
+      "domain": "spacing",
+      "title": "Border radius: xs (4px)",
+      "severity": "suggestion",
+      "description": "Use: Badges, chips",
+      "example": "Tailwind: rounded-xs",
+      "tags": [
+        "spacing",
+        "border-radius",
+        "tokens"
+      ]
+    },
+    {
+      "id": "spacing-border-radius-sm",
+      "type": "pattern",
+      "domain": "spacing",
+      "title": "Border radius: sm (8px)",
+      "severity": "suggestion",
+      "description": "Use: Buttons, inputs",
+      "example": "Tailwind: rounded-sm",
+      "tags": [
+        "spacing",
+        "border-radius",
+        "tokens"
+      ]
+    },
+    {
+      "id": "spacing-border-radius-md",
+      "type": "pattern",
+      "domain": "spacing",
+      "title": "Border radius: md (12px)",
+      "severity": "suggestion",
+      "description": "Use: Nested containers",
+      "example": "Tailwind: rounded-md",
+      "tags": [
+        "spacing",
+        "border-radius",
+        "tokens"
+      ]
+    },
+    {
+      "id": "spacing-border-radius-lg",
+      "type": "pattern",
+      "domain": "spacing",
+      "title": "Border radius: lg (16px)",
+      "severity": "suggestion",
+      "description": "Use: Medium containers",
+      "example": "Tailwind: rounded-lg",
+      "tags": [
+        "spacing",
+        "border-radius",
+        "tokens"
+      ]
+    },
+    {
+      "id": "spacing-border-radius-xl",
+      "type": "pattern",
+      "domain": "spacing",
+      "title": "Border radius: xl (20px)",
+      "severity": "suggestion",
+      "description": "Use: Cards, dialogs, tables",
+      "example": "Tailwind: rounded-xl",
+      "tags": [
+        "spacing",
+        "border-radius",
+        "tokens"
+      ]
+    },
+    {
+      "id": "spacing-border-radius-2xl",
+      "type": "pattern",
+      "domain": "spacing",
+      "title": "Border radius: 2xl (24px)",
+      "severity": "suggestion",
+      "description": "Use: Hero sections",
+      "example": "Tailwind: rounded-2xl",
+      "tags": [
+        "spacing",
+        "border-radius",
+        "tokens"
+      ]
+    },
+    {
+      "id": "spacing-border-radius-3xl",
+      "type": "pattern",
+      "domain": "spacing",
+      "title": "Border radius: 3xl (32px)",
+      "severity": "suggestion",
+      "description": "Use: Full-width sections",
+      "example": "Tailwind: rounded-3xl",
+      "tags": [
+        "spacing",
+        "border-radius",
+        "tokens"
+      ]
+    },
+    {
+      "id": "spacing-border-radius-full",
+      "type": "pattern",
+      "domain": "spacing",
+      "title": "Border radius: full (9999px)",
+      "severity": "suggestion",
+      "description": "Use: Pills, avatars",
+      "example": "Tailwind: rounded-full",
+      "tags": [
+        "spacing",
+        "border-radius",
+        "tokens"
+      ]
+    },
+    {
+      "id": "spacing-nested-radius-formula",
+      "type": "rule",
+      "domain": "spacing",
+      "title": "Nested border radius: Outer = Inner + Padding",
+      "severity": "warning",
+      "description": "Outer = Inner + Padding. inner xs (4) + padding xs (4) = outer sm (8); inner sm (8) + padding xs (4) = outer md (12); inner sm (8) + padding sm (8) = outer lg (16); inner md (12) + padding sm (8) = outer xl (20)",
+      "tags": [
+        "spacing",
+        "border-radius",
+        "nested",
+        "formula"
+      ]
+    }
+  ]
+}
