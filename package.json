@@ -1,0 +1,14 @@
+{
+  "name": "design-system-knowledge",
+  "version": "1.0.0",
+  "description": "Pre-built intelligence bundles for Agent Forge agents — design system patterns, tokens, components, UX, accessibility",
+  "private": true,
+  "scripts": {
+    "build": "npx tsx scripts/convert.ts",
+    "validate": "npx tsx scripts/validate.ts"
+  },
+  "devDependencies": {
+    "tsx": "^4.0.0",
+    "typescript": "^5.0.0"
+  }
+}
